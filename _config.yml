@@ -69,8 +69,9 @@ theme: yelee
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
   type: git
+  #repository: git@github.com:sunhao-java/sunhao-java.github.io.git
   repository: git@github.com:sunhao-java/sunhao-java.github.io.git
-  branch: master
+  branch: gh-pages
 
 index_generator:
   per_page: 15
