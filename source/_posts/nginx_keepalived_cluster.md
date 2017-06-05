@@ -12,6 +12,8 @@ date: 2017-06-05 20:43
 	- pcre-8.36.zip
 	- keepalived-1.2.22.tar.gz
 
+<!-- more -->
+
 ## 安装`nginx`
 1. 参考[安装Linux](http://www.lodsve.com/2016/03/15/linux_ubuntu_install_nginx/)一文，在两台服务器安装nginx
 	
