@@ -4,6 +4,8 @@ date: 2017-05-26
 ---
 > 在新的服务器上安装了FastDFS_v5.05，相比较FastDFSV3.02还是有很多变化，现将安装配置过程记录下，供大家参考，出于安全考虑，其中涉及到IP地址的地方，随意用了一个IP202.98.27.31，在访问量不大情况下，将tracker和storage都部署在同一台服务器上，后期根据业务需要进行扩展：
 
+<!-- more -->
+
 1. 软件下载：
 
 		wget https://github.com/happyfish100/libfastcommon/archive/V1.0.7.tar.gz
