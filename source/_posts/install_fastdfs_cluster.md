@@ -17,6 +17,8 @@ date: 2017-06-05 15:24
 	- pcre-8.36.zip
 	- zlib-1.2.8.tar.gz
 
+<!-- more -->
+
 ## <span id="install_tracker">安装tracker</span>
 1. 安装依赖libfastcommon
 
