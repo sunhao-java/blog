@@ -69,11 +69,9 @@ date: 2017-06-05 15:24
 			
 			error_log  logs/error.log  info;
 			
-			
 			events {
 			    worker_connections  1024;
 			}
-			
 			
 			http {
 			    include       mime.types;
