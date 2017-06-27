@@ -99,7 +99,7 @@ date: 2017-06-05 20:43
 以上配置为主节点配置，从节点类似，有区别的已经标明。下面是监控服务脚本内容
 
 	#!/bin/bash
-	A=`ps -C nginx –no-header |wc -l`
+	A=`ps -C nginx --no-header |wc -l`
 	if [ $A -eq 0 ];then
 	    /opt/nginx/sbin/nginx
 	    sleep 2
