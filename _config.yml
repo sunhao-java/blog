@@ -5,14 +5,14 @@
 # Site
 title: 孙昊的博客
 subtitle: Crazy Coding
-description: Good good study, day day up!
+description: Talk is cheap，show me the code。
 author: 孙昊
 language: zh-CN
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://blog.lodsve.com
+url: https://www.lodsve.com
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -69,8 +69,7 @@ theme: yelee
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
   type: git
-  #repository: git@github.com:sunhao-java/sunhao-java.github.io.git
-  repository: git@github.com:sunhao-java/myblog.git
+  repository: git@github.com:sunhao-java/blog_hexo.git
   branch: gh-pages
 
 index_generator:
