@@ -85,9 +85,9 @@ before_install:
   - eval $(ssh-agent)
   - ssh-add ~/.ssh/id_rsa_github
   - cp .travis/ssh_config ~/.ssh/config
-  - git config --global user.name 'Your Name'
-  - git config --global user.email 'Your Email'
-```    
+  - git config --global user.name \'Your Name\'
+  - git config --global user.email \'Your Email\'
+```
 4. 附上上面的`.travis/ssh_config`文件内容：
 ```
 Host github.com
