@@ -1,9 +1,15 @@
 language: node_js
 node_js: stable
-
-# S: Build Lifecycle
 install:
   - npm install
-
 script:
   - hexo d -g
+before_install:
+  - openssl aes-256-cbc -K $encrypted_65cc9ea56965_key -iv $encrypted_65cc9ea56965_iv
+    -in .travis/id_rsa_github.enc -out ~/.ssh/id_rsa_github -d
+  - chmod 600 ~/.ssh/id_rsa_github
+  - eval $(ssh-agent)
+  - ssh-add ~/.ssh/id_rsa_github
+  - cp .travis/ssh_config ~/.ssh/config
+  - git config --global user.name '孙昊'
+  - git config --global user.email 'sunhao.java@gmail.com'
