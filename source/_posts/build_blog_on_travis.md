@@ -5,6 +5,8 @@ date: 2018-12-13
 
 > 本文基于熟练搭建基于github+hexo搭建博客的基础上，并且对github简单操作，并且会使用通过ssh的方式提交代码到github上
 
+<!-- more -->
+
 # 准备工作
 1. 通过github账号登录Travis
 2. 并且启用已经在github上创建好的博客项目，如下图
