@@ -7,7 +7,7 @@ date: 2019-01-18
 2. 放置在`/opt`目录下
 3. 解压
 4. `cd /opt/harbor`
-
+<!-- more -->
 # 修改配置文件
 1. 修改配置文件`/opt/harbor/harbor.cfg`
 
