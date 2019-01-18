@@ -6,6 +6,7 @@
 ## Tags Cloud Page: `hexo new page tags`
 menu:
   所有文章: /archives/
+  容器Docker: /tags/Docker
   Java: /tags/Java
   Linux: /tags/Linux
   数据库: /tags/database
