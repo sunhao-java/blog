@@ -1,5 +1,5 @@
 title: 安装kubernetes
-tags: [Docker,运维,kubernetes,Linux]
+tags: [Docker,kubernetes]
 date: 2019-01-10
 ---
 1. 安装好3台虚拟机
