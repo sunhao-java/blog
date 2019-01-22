@@ -1,7 +1,7 @@
 title: 关于maven的几个常用插件
 tags: [Java, maven]
 date: 2013-11-18 00:07
-categories: 工具
+categories: 后端
 ---
 > 最近整理了自己写的一个项目,使用maven+svn管理,idea开发,搭建了一个maven的私服.原来是凌乱不堪,所以费了好大劲才整理好,而且平时公司项目上事情多的一米...
 
