@@ -16,6 +16,9 @@ menu:
   About:
     url: /about
     icon: fa-user-circle-o
+  Resume:
+    url: /1900/01/01/ge-ren-jian-li/
+    icon: fa-file
   Friends:
     url: /friends
     icon: fa-address-book
