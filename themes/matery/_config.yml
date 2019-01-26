@@ -88,7 +88,7 @@ clicklove:
 profile:
   avatar: /medias/coder.jpg
   career: 资深Java开发工程师
-  introduction: Talk is cheap,show me the code.<br />姓名：孙昊<br />邮箱：sunhao.java@gmail.com<br />QQ：86785140<br />Tel：18014480006
+  introduction: Talk is cheap,show me the code.
 
 # config my projects informations in about page.
 # If you don't want to display this `My Projects` content, you can deactivate or delete this configuration.
