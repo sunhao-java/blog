@@ -134,7 +134,7 @@ categories: 工具
         }
         
 # 安装`Privoxy`
-上述安好了梯子，但它是`socks5`代理，我门在shell里执行的命令，发起的网络请求现在还不支持socks5代理，只支持http/https代理。为了我门需要安装`privoxy`代理，它能把电脑上所有http请求转发给梯子
+上述安装好了梯子，但它是`socks5`代理，我们在shell里执行的命令，发起的网络请求现在还不支持socks5代理，只支持http/https代理。为了我门需要安装`privoxy`代理，它能把电脑上所有http请求转发给梯子
 
 1. 安装
 
