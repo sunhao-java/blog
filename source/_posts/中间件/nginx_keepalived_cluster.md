@@ -16,7 +16,7 @@ categories: 中间件
 <!-- more -->
 
 ## 安装`nginx`
-1. 参考[安装Linux](http://www.lodsve.com/2016/03/15/linux_ubuntu_install_nginx/)一文，在两台服务器安装nginx
+1. 参考[安装Linux](http://www.crazy-coder.cn/2016/03/15/linux_ubuntu_install_nginx/)一文，在两台服务器安装nginx
 	
 	`10.211.55.8` 称为 `nginx1`<br/>
 	`10.211.55.10` 称为 `nginx2`

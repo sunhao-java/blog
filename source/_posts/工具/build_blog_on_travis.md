@@ -106,6 +106,6 @@ Host github.com
 
 
 # Tks，安利下我写的东西
-- 博客：[https://www.lodsve.com/](https://www.lodsve.com/)
+- 博客：[https://www.crazy-coder.cn/](https://www.crazy-coder.cn/)
 - 开源的代码：[https://github.com/lodsve/lodsve-framework](https://github.com/lodsve/lodsve-framework)
 - 欢迎提Issue和PR

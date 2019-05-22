@@ -55,7 +55,7 @@ categories: 中间件
 
 	在tracker上安装的nginx主要为了提供http访问的反向代理、负载均衡以及缓存服务。
 	
-	1. 安装nginx（具体参考[安装Nginx](http://www.lodsve.com/2016/03/15/linux_ubuntu_install_nginx/)）
+	1. 安装nginx（具体参考[安装Nginx](http://www.crazy-coder.cn/2016/03/15/linux_ubuntu_install_nginx/)）
 		
 			tar -zxvf nginx-1.8.1.tar.gz 
 			tar -zxvf ngx_cache_purge-2.3.tar.gz 
@@ -185,7 +185,7 @@ categories: 中间件
 	1. 解压`fastdfs-nginx-module.zip`插件
 
 			unzip  fastdfs-nginx-module.zip
-	2. 安装nginx（具体参考[安装Nginx](http://blog.lodsve.com/2016/03/15/linux_ubuntu_install_nginx/)）
+	2. 安装nginx（具体参考[安装Nginx](http://blog.crazy-coder.cn/2016/03/15/linux_ubuntu_install_nginx/)）
 
 			tar -zxvf nginx-1.8.1.tar.gz 
 			cd nginx-1.8.1
