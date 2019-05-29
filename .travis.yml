@@ -1,18 +1,21 @@
 language: node_js
 node_js: stable
 install:
-  - npm install
+- npm install
 script:
-  - hexo d -g
+- hexo d -g
 before_install:
-  - openssl aes-256-cbc -K $encrypted_65cc9ea56965_key -iv $encrypted_65cc9ea56965_iv
-    -in .travis/id_rsa_github.enc -out ~/.ssh/id_rsa_github -d
-  - chmod 600 ~/.ssh/id_rsa_github
-  - eval $(ssh-agent)
-  - ssh-add ~/.ssh/id_rsa_github
-  - cp .travis/ssh_config ~/.ssh/config
-  - git config --global user.name '孙昊'
-  - git config --global user.email 'sunhao.java@gmail.com'
+- openssl aes-256-cbc -K $encrypted_acfb2c9c2fe4_key -iv $encrypted_acfb2c9c2fe4_iv
+  -in .travis/id_rsa_github.enc -out ~/.ssh/id_rsa_github -d
+- chmod 600 ~/.ssh/id_rsa_github
+- eval $(ssh-agent)
+- ssh-add ~/.ssh/id_rsa_github
+- cp .travis/ssh_config ~/.ssh/config
+- git config --global user.name '孙昊'
+- git config --global user.email 'sunhao.java@gmail.com'
 notifications:
   webhooks:
-    - https://oapi.dingtalk.com/robot/send?access_token=be28d8d6223fc97c0c8540546a5b7bd0f54ac71f70e308ba40afe5d3db739e8d
+  - https://oapi.dingtalk.com/robot/send?access_token=be28d8d6223fc97c0c8540546a5b7bd0f54ac71f70e308ba40afe5d3db739e8d
+dd:
+- openssl aes-256-cbc -K $encrypted_acfb2c9c2fe4_key -iv $encrypted_acfb2c9c2fe4_iv
+  -in id_rsa_github.enc -out id_rsa_github -d
