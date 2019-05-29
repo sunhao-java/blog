@@ -4,7 +4,8 @@ date: 2018-12-13
 categories: 工具
 ---
 
-> 本文基于熟练搭建基于github+hexo搭建博客的基础上，并且对github简单操作，并且会使用通过ssh的方式提交代码到github上
+> 本文基于熟练搭建基于github+hexo搭建博客的基础上，并且对github简单操作，并且会使用通过ssh的方式提交代码到github上。
+> PS：如果你只有Windows电脑，那请放弃！或者选择使用Linux、macOS系统!
 
 <!-- more -->
 
