@@ -27,7 +27,7 @@ categories: 工具
       - hexo d -g
     ```
 3. 我们用`hexo deploy`去发布博客，会发现Travis后台提示说没有权限
-4. 这是因为我们用`git@github.com:[Your name]/[Your project].git`的方式去拉取代码的，并且在hexo的配置文件中，我们也是这样配置使用ssh方式拉取、推送代码的
+4. 这是因为我们用`git@github.com:[Your name]/[Your project].git`的方式去拉取代码的，并且在hexo的配置文件中，我们也是这样配置使用ssh方式拉取、推送代码的
 5. 而Travis环境中没有对应的ssh key，所以不能推送代码。
 
 # 为Travis创建SSH
