@@ -106,7 +106,7 @@ categories: 工具
 4. 稍等片刻就可以在博客上看到你刚刚写的文章了
 
 
-# Tks，安利下我写的东西
+# Tks，安利一下我写的东西
 - 博客：[https://www.crazy-coder.cn/](https://www.crazy-coder.cn/)
 - 开源的代码：[https://github.com/lodsve/lodsve-framework](https://github.com/lodsve/lodsve-framework)
 - 欢迎提Issue和PR
