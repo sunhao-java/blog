@@ -15,13 +15,7 @@ before_install:
 - git config --global user.email 'sunhao.java@gmail.com'
 notifications:
   webhooks:
-    urls:
-      - https://oapi.dingtalk.com/robot/send?access_token=afb0d72e05ae079591106df39946294ced531bf802d8e560c2ec4bdb3f3c68d8
-    on_success: always
-    on_failure: always
-    on_start:   always
-    on_cancel:  always
-    on_error:   always
+    https://oapi.dingtalk.com/robot/send?access_token=afb0d72e05ae079591106df39946294ced531bf802d8e560c2ec4bdb3f3c68d8
 dd:
 - openssl aes-256-cbc -K $encrypted_5a97868b3888_key -iv $encrypted_5a97868b3888_iv
   -in id_rsa_github.enc -out id_rsa_github -d
