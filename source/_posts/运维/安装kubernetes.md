@@ -1,5 +1,5 @@
 title: 安装kubernetes
-tags: [Docker,kubernetes]
+tags: [Docker,k8s,DevOps]
 date: 2019-01-10
 categories: 运维
 ---

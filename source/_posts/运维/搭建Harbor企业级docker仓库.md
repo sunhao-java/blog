@@ -1,5 +1,5 @@
 title: 搭建Harbor企业级docker仓库
-tags: [Docker,Harbor]
+tags: [Docker,Harbor,k8s,DevOps]
 date: 2019-01-18
 categories: 运维
 ---

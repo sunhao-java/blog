@@ -1,5 +1,5 @@
 title: Helm学习
-tags: [DevOps, k8s]
+tags: [Docker,DevOps,k8s]
 date: 2019-11-22
 categories: 运维
 ---
