@@ -12,7 +12,7 @@ categories: 工具
 3. 在线Demo：[http://yapi.demo.qunar.com/](http://yapi.demo.qunar.com/)
 4. 最新版本：[https://github.com/YMFE/yapi/releases](https://github.com/YMFE/yapi/releases)
 5. 版本记录：[https://yapi.ymfe.org/documents/CHANGELOG.html](https://yapi.ymfe.org/documents/CHANGELOG.html)
-
+<!-- more -->    
 # 创建镜像
 1. 编写`Dockerfile`文件，文件太长，直接查看[Github](https://github.com/sunhao-java/docker-templates/blob/master/yapi/Dockerfile)上的文件
 2. 下载好`yapi-1.4.4.tar.gz`

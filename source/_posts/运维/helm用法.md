@@ -10,7 +10,7 @@ categories: 运维
         curl https://raw.githubusercontent.com/helm/helm/master/scripts/get > get_helm.sh
         $ chmod 700 get_helm.sh
         $ ./get_helm.sh
-    
+<!-- more -->    
 2. 安装Tiller
     1. 先在 K8S 集群上每个节点安装 socat 软件(yum install -y socat)，否则会报错
         
