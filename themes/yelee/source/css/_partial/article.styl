@@ -1,7 +1,12 @@
-.body-wrap{
-  margin-bottom: 126px;
-  overflow: hidden;
-}
+.body-wrap
+    if hexo-config("limit_article_width.on")
+        max-width hexo-config("limit_article_width.max_width")em
+        margin auto
+
+    margin-bottom 126px
+    overflow hidden
+
+
 .article {
   margin: 30px;
   margin-bottom: 5px;
@@ -100,10 +105,9 @@
 .article-title {
   color: #696969;
   margin-left: 0px;
-  font-weight: 300;
-  line-height: 35px;
+  font-weight: 400;
+  line-height: 1.3;
   margin-bottom: 20px;
-  font-size: 26px;
   -webkit-transition: color 0.3s;
   -moz-transition: color 0.3s;
   -o-transition: color 0.3s;
@@ -145,95 +149,26 @@
   @require "customise/blockquote"
   line-height: 1.65em;
   padding:0 2em;
+  font-size 1rem
   a:hover {
     text-decoration: underline;
     color: #9c9;
   }
   p{
     margin: .85em auto;
-    line-height: 1.7em;
-    font-size: 1em;
-  }
-  li{
-    margin: 0.1em
-    font-size: 1.1em;
+    line-height: 1.7;
   }
   em {
     font-style: italic;
-  }
-  ul{
-    li:before{
-      display inline-block;
-      content: "";
-      width: .4em;
-      height: .4em;
-      margin-right: .5em;
-      margin-bottom: .11em;
-      border: 1px solid lightgray;
-      border-radius: 50%;
-      background: lightgray;
-    }
-  }
-  ul,ol{
-    font-size: 14px;
-    margin: 10px 0px;  
-  }
-  li{
-    ul,ol{
-      margin-left: 30px;
-      li:before{
-        content: "";
-        background: #dedede;
-      }
-    }
-  }
-  h1{
-    margin-top: 30px;
-  }
-  h2{
-    margin: .5em auto;
-    font-weight: bold;
-    color: #9c9;
-    padding-bottom: 5px;
-    border-bottom: 1px solid #ddd;
-    &:hover {
-      color:#88acdb;
-    };
-    text-align: center;
-    &::before, &::after {
-    content:" —— ";
-    font-family: Arial;
-    };
-  }
-  h3 {
-    margin: .5em auto;
-    color: #438aac;
-    background: rgba(243, 248, 253, .6);
-    border: 1px solid #d2e8fa;
-    padding: 0.2em 0.6em;
-    font-weight: normal;
-    &:hover a {
-      text-decoration: underline;
-    };
-    &::after {
-      content: " >";
-    };
-  }
-  h4,h5,h6{
-    margin-top: 20px;
-    font-weight: bold;
-    color: #574C4C;
-    padding-bottom: 5px;
-    border-bottom: 1px solid #ddd;
-    &:hover {
-      color:#88acdb;
-    };
   }
   video{
     max-width: 100%;
   }
   strong {
     font-weight: bold;
+  }
+  li strong {
+    color: #708090;
   }
   .caption{
     display: block;
@@ -284,6 +219,8 @@
       white-space: nowrap;
     }
   }
+  @import "customise/list"
+  @import "customise/heading"
   figure{
     table {
       border: none;
@@ -298,25 +235,34 @@
   }
 }
 
-.article-meta{
-    position: absolute;
-    right: 0;
-    top: 23px;
-    width: 150px;
-    font-size: 14;
-    text-align: center;
-    z-index: 1;
-    time {
-        color: #aaa;
-        &:before {
-            margin-top: 0px;
-            margin-right: 4px;
-            content: "\f073";
-            font: 1em FontAwesome;
-            color: #999;
-        }
-    }
-}
+.article-meta
+    position absolute
+    right 0
+    top 23px
+    width 9rem
+    padding-right 1.2rem
+    font-size 0.875rem
+    text-align right
+    z-index 1
+    time
+        color #aaa
+        float right
+        &:before
+            margin-top 0px
+            margin-right 4px
+            content "\f073"
+            font 1em FontAwesome
+            color #999
+    a:nth-child(2)
+        &:hover
+            color #258fb8
+            font-size 110%
+        i
+            vertical-align top
+        clear right
+        float right
+        padding-top .45rem
+        color #999
 
 .article-more-link {
     float: right;
@@ -328,8 +274,9 @@
         border-radius: 2px;
         background: #88acdb;
         color: #fff;
-        font-size: .9em;
+        font-size: .9rem;
         line-height: 1em;
+        white-space: nowrap;
         transition: background 0.3s;
         opacity: i-opacity;
         &:hover {
@@ -350,6 +297,7 @@
     width: 100%;
     height: 2.5em;
     margin: 1em auto;
+    font-size 1rem
     background: rgba(158, 188, 226, i-opacity);
     &:hover {
         background: #93b5e0;
@@ -417,77 +365,7 @@ li:hover {
     };
 }
 
-/*toc*/
-#tocButton {
-    position: fixed;
-    border: none;
-    left: left-col-width - 80px;
-    top: 382px;
-    background: none;
-    font-size: .9em;
-    font-weight: bold;
-    color: lightgray;
-    cursor: pointer
-    font-family: inherit;
-    outline: none; /*Remove button border when clicked.*/
-    -webkit-appearance: none; /*Remove iOS button style*/
-    &:hover {
-        color: #88acdb;
-    }
-}
-.toc-article {
-  position: fixed;
-  width: left-col-width - 70px;
-  top: 378px;
-  bottom: 1em;
-  left: 0;
-  margin-left: 0em;
-  padding: 6px 10px 10px 50px;
-  border-radius: 2.8%;
-  overflow: auto;
-}
-#toc {
-    float: right;
-    font-size: .9em;
-    line-height: 1.65em;
-    a {
-        color: gray;
-        &:visited {
-            color: rgba(244, 131, 133, 1);
-        } 
-        &:hover {
-            color: #88acdb;
-            text-decoration: none;
-        }
-    }
-    li:hover {
-        background: none;
-        li:hover {
-            background: rgba(158, 188, 226, .21);
-        }
-    }
-    .toc-title {
-        font-weight: bold;
-        color: gray;
-    }
-    .toc {
-        padding: .7em;
-        padding-right: 0;
-        li {
-            list-style-type: none;
-        }
-    }
-    ol {
-        margin-left: 0;
-    }
-    .toc-child {
-        padding-left: 1.25em;
-        margin: 4px 0; 
-    }
-    .toc-link:hover {
-        background: rgba(158, 188, 226, .21);
-    }
-}
+@import "toc"
 
 .copyright {
     width: 85%;
@@ -495,13 +373,13 @@ li:hover {
     margin: 1.2em auto 0;
     padding: .5em 1.8em;
     border: 1px solid lightgray;
-    font-size: .93em;
+    font-size: .93rem;
     line-height: 1.6em;
     word-break: break-all;
     background: rgba(255, 255, 255, .4);
     span {
         display: inline-block;
-        margin-right: 1em;
+        width: 5.8em;
         color: #B5B5B5;
         font-weight: bold;
     }
@@ -512,12 +390,12 @@ li:hover {
             text-decoration: underline;
         }
     }
-    &:hover p .copy-path::after {
-        content: "复制";
+    &:hover .fa-clipboard {
+        color: black;
     }
     .copy-path {
-        display: inline-block;
         margin-left: 1em;
+        width 1em
         &:hover {
             color: gray;
             cursor: pointer;
@@ -525,3 +403,20 @@ li:hover {
     }
 }
 
+aside.comment-bar
+    display block
+    cursor pointer
+    background rgba(white, .3)
+    padding .5rem
+    box-shadow 3px 2px 8px rgba(black, .07)
+    text-align center
+    font-size 2rem
+    i.fa-spinner
+        display none
+    a
+        display inline-block
+        width 3em
+        span
+            font-size 1.5rem
+    &:active
+        background none

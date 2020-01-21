@@ -34,9 +34,12 @@ define([], function(){
         $tag = document.getElementById("js-tagcloud");
         $aboutme = document.getElementById("js-aboutme");
         $friends = document.getElementById("js-friends");
-        var tagStr = $tag?'<span class="viewer-title">标签</span><div class="viewer-div tagcloud" id="js-mobile-tagcloud"></div>':"";
-        var friendsStr = $friends?'<span class="viewer-title">友情链接</span><div class="viewer-div friends" id="js-mobile-friends"></div>':"";
-        var aboutmeStr = $aboutme?'<span class="viewer-title">关于我</span><div class="viewer-div aboutme" id="js-mobile-aboutme"></div>':"";
+        function menuList(name) {
+            return $("link.menu-list").attr(name);
+        };
+        var tagStr = $tag?'<span class="viewer-title">'+ menuList("tags") + '</span><div class="viewer-div tagcloud" id="js-mobile-tagcloud"></div>':"";
+        var friendsStr = $friends?'<span class="viewer-title">'+ menuList("friends") + '</span><div class="viewer-div friends" id="js-mobile-friends"></div>':"";
+        var aboutmeStr = $aboutme?'<span class="viewer-title">'+ menuList("about") + '</span><div class="viewer-div aboutme" id="js-mobile-aboutme"></div>':"";
 
         $viewer.innerHTML = '<div id="viewer-box">\
         <div class="viewer-box-l">\
@@ -108,6 +111,13 @@ define([], function(){
             touchEndTime = 0;
         }, false);
 
+        $(".slider-trigger").click(function(){
+            show();
+        })
+        $(".viewer-box-r").click(function(){
+            hide();
+        })
+
         //滚动样式
         var $overlay = $("#mobile-nav .overlay");
         var $header = $(".js-mobile-header");
@@ -128,16 +138,6 @@ define([], function(){
             $('html, body').animate({scrollTop:0}, 'slow');
         }, false);
     };
-
-    var resetTags = function(){
-        var tags = $(".tagcloud a");
-        tags.css({"font-size": "12px"});
-        for(var i = 0; i < tags.length; i++){
-            var num = parseInt(4*Math.random()) + 1;
-            tags.eq(i).addClass("color" + num);
-        };
-        $(".article-category a:nth-child(-n+2)").attr("class", "color5");
-    }
 
     return{
         init: function(){

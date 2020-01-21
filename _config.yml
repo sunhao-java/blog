@@ -69,7 +69,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://github.com/hexojs/hexo/wiki/Plugins
 ## Themes: https://github.com/hexojs/hexo/wiki/Themes
-theme: yelee-new
+theme: yelee
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html

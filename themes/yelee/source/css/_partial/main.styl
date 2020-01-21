@@ -42,10 +42,10 @@
         opacity:1;
         transition:all .2s ease-in;
         height:100%;
-        overflow-y: hidden;
+        overflow-y: auto;
         .overlay{
             width: 100%;
-            height: 250px;
+            height: 180px;
             background-color: black;
             position: absolute;
             opacity: 0.7;
@@ -53,7 +53,7 @@
         .intrude-less {
             width: 76%;
             text-align: center;
-            margin: 20px auto 0;
+            margin: 112px auto 0;
         }
         li:hover {
             background: none;
@@ -70,7 +70,7 @@
     }
 
     @media screen and (max-width:1040px) {
-
+        
     }@media screen and (max-width:800px) {
         @import "_partial/mobile"
     }
@@ -78,8 +78,8 @@
 .header-author{
     text-align: center;
     margin: 13px 0;
-    font-family: Roboto, "Roboto", serif;
-    font-size: 30px;
+    font-family: font-serif, serif;
+    font-size: base-font-size + 14;
     transition: 0.3s;
 }
 #header{
@@ -95,8 +95,8 @@
         display: block;
         border: 5px solid #fff;
         border-radius: 50%;
-        width: 128px;
-        height: 128px;
+        width: 128 + base-font-size - 16;
+        height: @width;
         margin: 0 auto;
         position: relative;
         overflow: hidden;
@@ -118,8 +118,8 @@
             background: white;
             border: 5px solid #88acdb;
             box-shadow: 0 0 1.5em #88acdb;
-            /*animation: profilepic .15s linear infinite alternate;*/
-            /*-webkit-animation: profilepic .15s linear infinite alternate;*/
+            animation: profilepic .15s linear infinite alternate;
+            -webkit-animation: profilepic .15s linear infinite alternate; 
         }
         @keyframes profilepic {
             0% {
@@ -135,8 +135,8 @@
     .header-subtitle{
         text-align: center;
         color:#999;
-        font-size: 14px;
-        line-height: 25px;
+        font-size: (14/16)rem;
+        line-height: 1.75;
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
@@ -144,16 +144,16 @@
         -webkit-box-orient: vertical;
     }
     .header-menu{
-        menu-line-height = 28px
+        menu-line-height = (28/16)rem
         font-weight: 550;
         line-height: menu-line-height;
         font-family: inherit;
         cursor: pointer;
         text-transform: uppercase;
         float: none;
-        min-height: menu-line-height * 3px;
-        max-height: menu-line-height * 11px;
-        overflow: auto;
+        min-height: @line-height * 3;
+        max-height: @line-height * 5;
+        overflow: visible;
         text-align: center;
         display: -webkit-box;
         -webkit-box-orient: horizontal;
@@ -162,7 +162,7 @@
         li{
             cursor: default;
             a{
-                font-size: 14px;
+                font-size: (14/16)rem;
                 min-width: left-col-width;
             }
         }
@@ -171,8 +171,8 @@
         position: relative;
         width: 100%;
         overflow: hidden;
-        min-height: 400px;
-        font-size: 14px;
+        min-height: 260px;
+        font-size: (14/16)rem;
         .switch-wrap{
             transition: transform .3s ease-in;
             position: relative;
@@ -195,15 +195,17 @@
     }
     .switch-part2{
         left: 100%;
-        top: 20px;
-        overlay-x: hidden;
         overflow-y: auto;
-        max-height: 200px;
+        max-height: 260px;
+        font-size (12/16)rem
     }
     .switch-part3{
         left: 200%;
-        line-height: 30px;
+        line-height: 1.6;
+        overflow-y: auto;
+        max-height: 260px;
         .switch-friends-link{
+            display: inline-block;
             margin-right: 9px;
             border-radius: 3px;
             padding: 5px;
@@ -230,24 +232,6 @@
     padding: 0 40px;
 }
 
-.search {
-    width: 68%;
-    height: 18px;
-    margin-top: 1px;
-    padding: 0;
-    font-family: inherit;
-    border: 2px solid transparent;
-    border-bottom: 2px solid lightgray;
-    border-radius: 2px;
-    opacity: .2;
-    background: none;
-    &:hover {
-        border: 2px solid lightgray;
-        opacity: 1;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    };
-}
-
 #scroll{
     right: 0;
 }
@@ -268,7 +252,7 @@
             color: rgba(255, 255, 255, .8);
         }
         &:hover {
-            background: rgba(147, 181, 224, .3) !important;
+            background: rgba(147, 181, 224, .3) !important; 
             .fa {
                 color: white;
             }
@@ -297,7 +281,7 @@
     -webkit-appearance: none;
     &:hover {
         color: #88acdb;
-        opacity: 1;
+        opacity: 1; 
     }
 }
 
@@ -338,30 +322,21 @@
    }
 }
 
-span.friend img.friend-icon {
-    display: inline-block;
-    width: 15px;
-    height: 15px;
-    margin-top: 1.5px;
-    margin-right: 5px;
-    line-height: 14px;
-    vertical-align: text-top;
-    background-repeat: no-repeat;
-    background-position: -120px -96px;
-}
-
-span.friend img.friend-icon:hover {
-    background-color: rgba(255,0,0,.25);
-}
-
-div#js-friends {
-    text-align: left;
-    margin-left: 50px;
-}
-
 if hexo-config("github_widget")
-    .article-entry .github-widget h3::after
-        content none
+    .article-entry .github-widget
+        h3::after
+            content none
+        .github-box 
+            font-size (13/16)rem
+            .github-box-title
+                h3
+                    font-size 1rem
+                .github-stats
+                    font-size (11/16)rem
+            .updated
+                font-size (11/16)rem
+            .download
+                font-size (12/16)rem
 
 if hexo-config("jquery_ui")
     .ui-tooltip
@@ -369,9 +344,32 @@ if hexo-config("jquery_ui")
         max-width 30em
         box-shadow 0 0 .8em rgba(0, 0, 0, .6)
         color white
-        font-family font-sans, font-chs
+        font-family font-sans, font-chs, sans-serif
         font-size .9em
         background rgba(0, 0, 0, .65)
 
     body .ui-tooltip
         border 1px solid white
+        
+
+if hexo-config("progressBar.on") && hexo-config("progressBar.type") == "minimal"
+        bar-color = hexo-config("progressBar.color")
+        if bar-color == "blue"
+            .pace .pace-progress
+                background #77b6ff
+                box-shadow 0 0 10px rgba(@background, .7) 
+
+.article-entry ul > li,
+.share,
+.article-category::before,
+.article-tag::before,
+.article-meta time:before
+    text-rendering auto
+    -webkit-font-smoothing antialiased
+    -moz-osx-font-smoothing grayscale
+
+.youyan
+    padding 20px 40px
+@media (max-width: 767px)
+    .youyan
+        padding 20px 10px

@@ -8,6 +8,10 @@
     .header-nav{
         position: relative;
     }
+    .header-menu {
+        line-height: 1.3
+        min-height 3rem
+    }
 }
 .header-author{
     &.fixed{
@@ -48,7 +52,7 @@
     padding: 0;
     border-bottom: 1px dotted #ddd;
     h1{
-        margin-bottom: 10px;
+        margin-bottom: 2px;
     }
 }
 #header .header-subtitle{
@@ -67,71 +71,26 @@
     border: none;
 }
 
-.article-more-link{
-    a{
-        float:right;
-    }
-}
 #viewer-box .viewer-box-l{
     font-size: 14px;
 }
 .article{
-/*    padding: 10px;*/
-    margin: 10px;
-    font-size: 14px;
+    margin: (10/16)rem 10px;
     .article-entry{
         padding-left: 0;
         padding-right: 0;
-        padding-top: 10px;
+        .highlight {
+            padding .35em .6em
+        }
     }
     .article-title{
-        font-size: 18px;
-        /*max-width: 185px;*/
-        padding-right: 5em;
         display: block;
         margin: 0;
+        font-size 1.5rem
+        font-weight bold
     }
     .article-meta{
-        width: auto;
-        .article-date {
-            margin: 0;
-            time {
-                padding-right: .5em;
-            }
-        }
-        .article-tag-list{
-            margin-top: 7px;
-            position: absolute;
-            right: 10px;
-            top: 0;
-            &:before{
-                float: left;
-                margin-top: 1px;
-                left: 0;
-            }
-            .article-tag-list-item{
-                float: left;
-                padding-left: 0;
-                width: auto;
-                max-width: 83px;
-            }
-        }
-        .article-category{
-            margin-top: 7px;
-            position: absolute;
-            right: 10px;
-            top: -30px;
-            &:before{
-                float: left;
-                margin-top: 1px;
-                left: 15px;
-            }
-            .article-category-link{
-                max-width: 83px;
-                width: auto;
-                padding-left:10px;
-            }
-        }
+        display: none;
     }
 }
 
@@ -282,6 +241,10 @@
     line-height: 1.25em;
     .toc-title {
         display: none;
+        padding: .3em;
+        color: white;
+        background: lightgray;
+        border-radius 3px
     }
     .toc {
         padding: 0.5em;
@@ -290,7 +253,7 @@
         margin: 0;
         padding: 0.5em;
         border-radius: 5px;
-        background: rgba(255, 255, 255, .75);
+        background: rgba(255, 255, 255, .85);
         ol {
             padding: 0.1em 0;
             padding-left: 1.2em;
@@ -301,9 +264,13 @@
     }
 }
 
+if toc-nowrap
+    li.toc-item
+        line-height: 1.2
+
 .copyright {
     width: 90%;
-    padding: .5em 1.3em;
+    padding: .5em .8em;
 }
 
 .scroll {
@@ -344,3 +311,12 @@
 if hexo-config("github_widget")
     .github-text
         display none
+
+.copyright
+    font-size 16px
+    .copy-path
+        display none
+
+// Tags Cloud Page
+.tags a
+    line-height 45px

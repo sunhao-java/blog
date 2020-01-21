@@ -11,9 +11,15 @@
         <% if (theme.subtitle){ %>
         <p class="header-subtitle"><%=theme.subtitle%></p>
         <%}%>
-        <% if (theme.search_box){ %>
-        <form><input type="text" class="search" placeholder=" Search..."></form>
-        <%}%>        
+
+        <% if (theme.search.on){ %>
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="<%= theme.search.onload %>" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        <%}%>
 
 
         <%if(theme.tagcloud){%>
@@ -45,13 +51,13 @@
                 <div class="tips-box hide">
                     <div class="tips-arrow"></div>
                     <ul class="tips-inner">
-                        <li>菜单</li>
-                        <li>标签</li>
+                        <li><%= __('index.menu') %></li>
+                        <li><%= __('index.tags') %></li>
                         <%if(theme.friends && theme.friends.length != 0){%>
-                        <li>友情链接</li>
+                        <li><%= __('index.friends') %></li>
                         <%}%>
                         <%if(theme.aboutme){%>
-                        <li>关于我</li>
+                        <li><%= __('index.about') %></li>
                         <%}%>
                     </ul>
                 </div>
@@ -71,7 +77,7 @@
                     <nav class="header-nav">
                         <ul class="social">
                             <% for (var i in theme.subnav){ %>
-                                <li id="<%= i %>"><a class="<%= i %>" target="_blank" href="<%- url_for(theme.subnav[i]) %>" title="<%= i %>"></a></li>
+                                <a class="fa <%= i %>" href="<%- url_for(theme.subnav[i]) %>" title="<%= i %>"></a>
                             <%}%>
                         </ul>
                     </nav>
@@ -80,25 +86,17 @@
                 <%if(theme.tagcloud){%>
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <%- tagcloud() %>
+                        <%- list_tags({show_count: false}) %>
                     </div>
                 </section>
                 <%}%>
-
+                
                 <%if(theme.friends && theme.friends.length != 0){%>
                 <section class="switch-part switch-part3">
                     <div id="js-friends">
-                        <% for (var i in theme.friends){ %>
-                        <span class="friend">
-						  <a href="<%= theme.friends[i].url %>" target="_blank">
-                              <%if(theme.friends[i].icon){%>
-                              <img src="<%= '/img/icon/' + theme.friends[i].icon %>" class="friend-icon"/>
-                              <%}%>
-                              <%= i %>
-                          </a>
-					  </span>
-                        <br/>
-                        <% } %>
+                    <% for (var i in theme.friends){ %>
+                      <a class="main-nav-link switch-friends-link" href="<%- url_for(theme.friends[i]) %>"><%= i %></a>
+                    <% } %>
                     </div>
                 </section>
                 <%}%>
