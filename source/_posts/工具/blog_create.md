@@ -67,7 +67,7 @@ categories: 工具
 			sunhaodeMacBook-Pro:test sunhao$ hexo serve
 			INFO  Start processing
 			INFO  Hexo is running at http://0.0.0.0:4000/. Press Ctrl+C to stop.
-		这样在本机浏览器上直接访问http://localhost:4000即可以访问最简单的博客
+		这样在本机浏览器上直接访问`http://localhost:4000`即可以访问最简单的博客
 	- hexo构建静态文件,可以放入nginx中直接访问(本人就是这种方式)
 	
 			hexo generate

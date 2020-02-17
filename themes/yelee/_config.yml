@@ -18,19 +18,6 @@ subnav:
   简书: "https://www.jianshu.com/u/9a33a20b0343"
   知乎: "https://www.zhihu.com/people/crazy_coder"
 
-preload_comment: true
-
-show_count: true
-
-disqus: 
-  shortname: 
-
-duoshuo: 
-  domain: 
-
-youyan:
-  id: 
-
 background_image: 0
 base_font_size: 16
 
