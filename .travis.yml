@@ -11,8 +11,8 @@ before_install:
 - eval $(ssh-agent)
 - ssh-add ~/.ssh/id_rsa_github
 - cp .travis/ssh_config ~/.ssh/config
-- git config --global user.name '孙昊'
-- git config --global user.email 'sunhao.java@gmail.com'
+- git config user.name '孙昊'
+- git config user.email 'sunhao.java@gmail.com'
 dd:
 - openssl aes-256-cbc -K $encrypted_5a97868b3888_key -iv $encrypted_5a97868b3888_iv
   -in id_rsa_github.enc -out id_rsa_github -d
