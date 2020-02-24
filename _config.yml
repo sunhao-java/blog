@@ -75,7 +75,7 @@ theme: yelee
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: git@github.com:sunhao-java/blog_hexo.git
+  repository: git@github.com:sunhao-java/blog.git
   branch: gh-pages
 
 index_generator:
