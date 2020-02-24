@@ -6,7 +6,7 @@ categories: 后端
 ---
 
 # 架构图
-![](https://cdn.nlark.com/yuque/0/2020/png/105898/1582533715595-8c1c1261-840f-4dff-af20-a59e541d8fa5.png#align=left&display=inline&height=824&originHeight=824&originWidth=1554&size=0&status=done&style=none&width=1554)
+![](/imgs/xxl-job/1.png)
 <!-- more -->
 # xxl-job的jar包
 1. xxl-job-admin: 调度中心（包含了前端html）
