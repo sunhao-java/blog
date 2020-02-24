@@ -6,6 +6,8 @@ menu:
   标签云: /tags
   关于我: /1900/01/01/ge-ren-jian-li/
 
+show_more: 查看更多  
+
 avatar: /imgs/coder.jpg
 favicon: /imgs/coder.jpg
 
@@ -94,8 +96,8 @@ fancybox: true
 mathjax: true
 
 share: 
-  on: false
-  baidu: false
+  on: true
+  baidu: true
   addthis: false
   addthis_pubid: "ra-56ff76c972fc0cf9"
 
