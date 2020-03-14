@@ -1,18 +1,24 @@
 Yelee: "3.5"
 
+# 左侧菜单
 menu:
   主页: /
   所有文章: /archives
   标签云: /tags
   关于我: /1900/01/01/ge-ren-jian-li/
 
+# 文章列表页，查看更多显示的文字【自定义】
 show_more: 查看更多  
 
+# 头像
 avatar: /imgs/coder.jpg
+# 网站icon
 favicon: /imgs/coder.jpg
 
+# 页脚 网站成立年份
 since: 2012
 
+# 首页左侧下方图标
 subnav:
   Email: "mailto:&#115;&#117;&#110;&#104;&#97;&#111;&#48;&#53;&#53;&#48;&#64;&#49;&#54;&#51;&#46;&#99;&#111;&#109;"
   GitHub: "https://github.com/sunhao-java"
@@ -20,64 +26,100 @@ subnav:
   简书: "https://www.jianshu.com/u/9a33a20b0343"
   知乎: "https://www.zhihu.com/people/crazy_coder"
 
-background_image: 0
-base_font_size: 16
-
-color_scheme: yilia
-
-highlight_style:
-  on: true
-  inline_code: 3
-  code_block: 4
-
-blockquote_style:
-  on: true
-  blockquote: 3
-
-heading_style: 2
-
-list_style: 1
-
-left_col_width: 300
-
-copyright: true
-
-toc:
-  on: true
-  list_number: true
-  max_depth: 3
-  nowrap: false
-
-animate: true
-jquery_ui: true
-
-limit_article_width: 
-  on: false
-  max_width: 60
-
-tagcloud: true
-
+  # 友情链接
 friends:
   GitHub: https://github.com/sunhao-java
   Git@OSC: https://gitee.com/crazy-coder
   开源中国: https://my.oschina.net/sunhaojava
   路路同学的博客: https://broucetrong.github.io/
 
+# 背景图片【source/background目录下】
+background_image: 0
+# 文字大小
+base_font_size: 16
+
+# 主题配色方案
+color_scheme: yilia
+
+# 代码高亮风格
+highlight_style:
+  on: true
+  # 单行代码【用``包含的代码】
+  inline_code: 3
+  # 代码块
+  code_block: 4
+
+# 引用区
+blockquote_style:
+  on: true
+  blockquote: 3
+
+# 标题风格
+## 0-Yelee, 1-Yilia, 2-GitHub
+heading_style: 2
+
+# 列表标记
+list_style: 1
+
+# 左边栏宽度
+left_col_width: 300
+
+# 文末版权信息
+copyright: true
+
+# 文章目录
+toc:
+  on: true
+  # 目录序号
+  list_number: true
+  # 目录最大级数
+  max_depth: 3
+  # 标题不换行
+  nowrap: true
+
+# 动画效果
+animate: true
+# 提示框美化
+jquery_ui: true
+
+# 文章显示部分最大宽度限制
+limit_article_width: 
+  on: false
+  # 最大宽度
+  max_width: 60
+
+# 是否显示左侧小房子图标
+tagcloud: true
+
+# 是否开启“关于我”。
 aboutme: Talk is cheap,show me the code.
 
+# 新窗口打开链接
 open_in_new:
+  ## `global` 0: 分开设置, 1: 全部在新标签打开, 2: 全部在"当前"标签打开
   global: 0
+  # 主页文章标题
   title: false
+  # 正文中的链接
   post: true
+  # 标签
   tags: false
+  # 分类
   categories: false
+  # 导航
   article_nav: false
+  # 归档
   archives: true
+  # 迷你归档
   mini_archives: true
+  # 边栏菜单
   menu: false
+  # 友情链接
   friends: true
+  # 社交图标
   socail: true
 
+# rss
 rss: /atom.xml
 
 ie_updater:
@@ -89,33 +131,47 @@ tab_title_change:
   left_tab_title: '(つェ⊂) 我藏好了哦~ '
   return_tab_title: '(*´∇｀*) 被你发现啦~ '
 
+# 本地站内搜索
 search: 
   on: true
-  onload: true
+  # 索引数据 是否在打开页面即加载
+  onload: false
 
+# 图片浏览器
 fancybox: true
-mathjax: true
+# 数学公式显示
+mathjax: false
 
+# 分享设置
 share: 
   on: true
   baidu: true
   addthis: false
-  addthis_pubid: "ra-56ff76c972fc0cf9"
+  addthis_pubid: ""
 
+# 百度和google 验证使用
+# 填写 HTML 标签 content
 baidu_site: 
 google_site: 
 
+# 谷歌分析 Google Analytics
 google_analytics: UA-75096622-1
 
-baidu_tongji: 
+# 百度统计
+baidu_tongji: 2fbe3a6aa0a9653968e568d4869949e8
 
+# 不蒜子统计
 visit_counter:
-  on: false
+  on: true
+  ## 站点访问量(UV)
   site_visit: true
+  ## 页面阅读量(PV)
   page_visit: true
 
+# GitHub 仓库展示小挂件
 github_widget: true
 
+# 页面进度条
 progressBar:
   on: true
   type: "minimal"
