@@ -62,6 +62,16 @@
     <%- partial('post/share') %>
 <% } %>
 
+<% if (!index && theme.valine && theme.valine.on && theme.valine.app_id && theme.valine.app_key){ %>
+  <section id="comments" style="margin:30px;padding:10px;background:#fff;">
+    <%- partial('post/valine', {
+      key: post.slug,
+      title: post.title,
+      url: config.url + url_for(post.path)
+      }) %>
+  </section>
+<% } %>
+
 <%- partial('_partial/post-nav-button') %>
 
 <% if (!index) { %>

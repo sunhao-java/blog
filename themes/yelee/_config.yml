@@ -177,6 +177,18 @@ progressBar:
   type: "minimal"
   color: blue
 
+# 评论
+valine:
+  on: true
+  app_id: OJ2pfpiAsKFEaS0ECgzplSAw-9Nh9j0Va
+  app_key: BWcHSufa9GQHjwLiqu1ILdas
+  notify: false # mail notifier , https://github.com/xCss/Valine/wiki
+  verify: false # Verification code
+  visitor: false # leancloud-counter-security is not supported for now. When visitor is set to be true, appid and appkey are recommended to be the same as leancloud_visitors' for counter compatibility. Article reading statistic https://valine.js.org/visitor.html
+  placeholder: 请留下您宝贵的意见 # comment box placeholder
+  avatar: mp # gravatar style
+  page_size: 10 # pagination sizecomment_count: true # If false, comment count will only be displayed in post page, not in home page
+
 CDN:
   jquery: //cdn.bootcss.com/jquery/2.2.4/jquery.min.js
   require: //cdn.bootcss.com/require.js/2.2.0/require.min.js
@@ -190,3 +202,5 @@ CDN:
   clipboard: //cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js
   mathjax: //cdn.bootcss.com/mathjax/2.6.1/MathJax.js
   scrollreveal: //cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js
+  valine: //unpkg.com/valine/dist/Valine.min.js
+  av_min: //cdn1.lncld.net/static/js/3.0.4/av-min.js
