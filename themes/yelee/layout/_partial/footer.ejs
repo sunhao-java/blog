@@ -3,7 +3,7 @@
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i> 
-                <% if (theme.since && !isNaN(theme.since) && theme.since < date(new Date(), 'YYYY')) { %><%- theme.since%>-<% } %><%= date(new Date(), 'YYYY') %> <%= config.author || config.title %>
+                <% if (theme.since && !isNaN(theme.since) && theme.since < date(new Date(), 'YYYY')) { %><%- theme.since%>-<% } %><%= date(new Date(), 'YYYY') %> <%= config.author || config.title %> 版权所有 <a href="http://www.beian.miit.gov.cn/?spm=a2c4g.11186623.2.16.2b667dc6fSPvXG">苏ICP备20017156号-1</a>
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank" title="<%= __('tooltip.Hexo') %>">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="<%= __('tooltip.Yelee') %>  v<%= theme.Yelee %>">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
