@@ -163,7 +163,7 @@ protected Set<String> doGetActiveProfiles() {
 	- 使用方在扩展该组件时，在`classpath*:META-INF/services/`下以组件接口全路径创建文件
 	- 然后将自己扩展的实现该接口的类全路径写入上面的文件中，多个的话，一行一个
 	- 应用启动后，就可以将使用方扩展的功能通过SPI的方式加载到JVM中了
-4. 已经被弃用的`xny-mybatis`中就使用了Java的SPI来扩展新的接口，可参考[链接](https://gitlab-dmd.oppoer.me/seed/xny-mybatis/blob/master/src/main/java/com/xiniaoyun/mybatis/plugin/BaseDaoInterceptor.java#L70 "链接")
+4. 已经被弃用的`xny-mybatis`中就使用了Java的SPI来扩展新的接口，可参考
 	
 ### Spring的`SpringFactoriesLoader`
 这个主要还是用在`spring-boot-starter`的开发中，只需要引入对应的starter，就可以直接开发了，省去配置的过程（特指JavaConfig的配置），步骤如下：
