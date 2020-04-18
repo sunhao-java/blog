@@ -206,4 +206,5 @@ CDN:
   scrollreveal: //cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js
   valine: //unpkg.com/valine/dist/Valine.min.js
   av_min: //cdn1.lncld.net/static/js/3.0.4/av-min.js
-  jsDelivr: https://cdn.bootcss.com/crypto-js/4.0.0/crypto-js.min.js
+  crypto: https://cdn.bootcss.com/crypto-js/4.0.0/crypto-js.min.js
+  echarts: https://cdn.bootcss.com/echarts/4.7.0/echarts.min.js
