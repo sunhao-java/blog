@@ -126,11 +126,6 @@ ie_updater:
   on: true
   link: //outdatedbrowser.com/
 
-tab_title_change: 
-  on: false
-  left_tab_title: '(つェ⊂) 我藏好了哦~ '
-  return_tab_title: '(*´∇｀*) 被你发现啦~ '
-
 # 本地站内搜索
 search: 
   on: true
