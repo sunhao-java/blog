@@ -124,4 +124,4 @@ a1.sinks.k1.channel = c1
 1. 查看Hbase中的数据可以下载[工具](https://github.com/bit-ware/HBaseXplorer "工具")
 2. 下载完成后按照操作系统选择对应的启动脚本双击，在打开的窗口填入Hbase连接的zookeeper地址，点击确定即可
 3. 效果
-![效果图](/img/big_data/1.png)
+![效果图](/imgs/big_data/1.png)
