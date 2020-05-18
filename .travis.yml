@@ -5,14 +5,14 @@ install:
 script:
 - hexo d -g
 before_install:
-- openssl aes-256-cbc -K $encrypted_5a97868b3888_key -iv $encrypted_5a97868b3888_iv
-  -in .travis/id_rsa_github.enc -out ~/.ssh/id_rsa_github -d
-- chmod 600 ~/.ssh/id_rsa_github
+- openssl aes-256-cbc -K $encrypted_0c1d7b0eb94e_key -iv $encrypted_0c1d7b0eb94e_iv
+  -in .travis/id_rsa_travis.enc -out ~/.ssh/id_rsa_travis -d
+- chmod 600 ~/.ssh/id_rsa_travis
 - eval $(ssh-agent)
-- ssh-add ~/.ssh/id_rsa_github
+- ssh-add ~/.ssh/id_rsa_travis
 - cp .travis/ssh_config ~/.ssh/config
 - git config user.name '孙昊'
 - git config user.email 'sunhao.java@gmail.com'
 dd:
-- openssl aes-256-cbc -K $encrypted_5a97868b3888_key -iv $encrypted_5a97868b3888_iv
-  -in id_rsa_github.enc -out id_rsa_github -d
+- openssl aes-256-cbc -K $encrypted_0c1d7b0eb94e_key -iv $encrypted_0c1d7b0eb94e_iv
+  -in id_rsa_travis.enc -out id_rsa_travis -d
