@@ -28,6 +28,7 @@ categories: 后端
 2. 对象即需要new出来的，但是想想基本数据类型（int/double/boolean...）,并不需要去new
 3. why?
 4. 为了方便去使用，Java对这些基本数据类型提供了装箱类型
+
 ```java
 public class Demo {
     public static void main(String[] args) {
@@ -86,6 +87,7 @@ public static void main(java.lang.String[]);
 1. Java的泛型，其实是 `伪泛型` ，泛型仅仅存在于编码期间，供编译器进行类型检测，编译后，会被擦除。
 2. 运行时，通过类型强制转换来实现的。
 3. 泛型是JDK1.5之后引入
+
 ```java
 // // 1. 源码
 import java.util.*;
@@ -141,6 +143,7 @@ public class Demo {
 # 枚举
 1. 枚举其实就是一个Java类，继承了 `java.lang.Enum` ，并且其本身是不允许被继承的
 2. 用 `enum` 修饰的
+
 ```java
 // 枚举源码
 public enum Demo {
@@ -223,6 +226,7 @@ public final class Demo extends java.lang.Enum<Demo> {
    2. 关闭的过程中如何处理异常
    3. finally中不能写return
 4. 自从JDK7之后，支持 `try-with-resources` 的写法，下面简单介绍一下两种写法的区别：
+
 ```java
 // 1. try-catch-finally写法：
 public static void copy(String src) {
@@ -251,9 +255,11 @@ public static void copy(String src) {
     }
 }
 ```
+
 5. 很明显，第二种写法较第一种，清晰、明了。
 6. 下面进行源码分析：
 7. 查看JDK7版本中的 `FileInputStream` 源码
+
 ```java
 // 1. FileInputStream源码
 public class FileInputStream extends InputStream { 
@@ -295,8 +301,10 @@ public interface AutoCloseable {
 }
 
 ```
+
 8. 可见最终是实现了一个JDK7才提供的接口 `AutoCloseable` 
 9. 我们再去查看一下`try-with-resources` 写法的字节码文件
+
 ```java
 // javap -c Demo
 Compiled from "Demo.java"
@@ -383,6 +391,7 @@ public class Demo {
 	3. jdk7之前，需要实现自己的异常类
 	4. jdk7之后，已经对Throwable类进行了修改以支持这种情况。在java7中为Throwable类增加addSuppressed方法。当一个异常被抛出的时候，可能有其他异常因为该异常而被抑制住，从而无法正常抛出。这时可以通过addSuppressed方法把这些被抑制的方法记录下来。被抑制的异常会出现在抛出的异常的堆栈信息中，也可以通过getSuppressed方法来获取这些异常。这样做的好处是不会丢失任何异常，方便开发人员进行调试。
 	5. 可以查看一下上面例子反编译后的源码：
+    
 	```java
 	import java.io.*;
 
