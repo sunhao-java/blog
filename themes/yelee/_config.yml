@@ -136,11 +136,11 @@ fancybox: true
 mathjax: false
 
 # 分享设置
-# share: 
-#   on: true
-#   baidu: true
-#   addthis: false
-#   addthis_pubid: ""
+share: 
+  on: true
+  baidu: true
+  addthis: false
+  addthis_pubid: ""
 
 # 百度和google 验证使用
 # 填写 HTML 标签 content
@@ -151,7 +151,7 @@ google_site:
 google_analytics: UA-75096622-1
 
 # 百度统计
-# baidu_tongji: 2fbe3a6aa0a9653968e568d4869949e8
+baidu_tongji: 2fbe3a6aa0a9653968e568d4869949e8
 
 # 不蒜子统计
 visit_counter:
