@@ -186,6 +186,7 @@ valine:
   enable_qq: true,
   meta: '["nick"]'
   record_ip: true
+  server: https://oj2pfpia.lc-cn-n1-shared.com
 
 # 阅读文章的密码验证功能，如要使用此功能请激活该配置项，并在对应文章的Front-matter中写上'password'的键和加密后的密文即可.
 # 请注意：为了保证密码原文不会被泄露到网页中，文章的密码必须是通过'SHA256'加密的，这样就不会被破解.
