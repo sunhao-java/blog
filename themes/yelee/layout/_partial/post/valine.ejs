@@ -266,6 +266,9 @@
             verify: '<%- theme.valine.verify %>' === 'true',
             visitor: '<%- theme.valine.visitor %>' === 'true',
             avatar: '<%- theme.valine.avatar %>',
+            <% if (theme.valine.avatar_cdn || theme.valine.avatar_cdn != "") {  %>
+            avatar_cdn: '<%- theme.valine.avatar_cdn %>',
+            <% } %>
             pageSize: '<%- theme.valine.page_size %>',
             lang: '<% if (config.language == "zh-CN") {  %>zh-cn<% } else { %>en<% } %>',
             placeholder: '<%= theme.valine.placeholder %>',
@@ -273,6 +276,6 @@
             recordIP: '<%- theme.valine.record_ip %>' === 'true',
             enableQQ: '<%- theme.valine.enable_qq %>' === 'true',
             serverURLs: '<%- theme.valine.server %>'
-        });
+    });
     }
 </script>
