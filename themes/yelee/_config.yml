@@ -8,7 +8,7 @@ menu:
   关于我: /1900/01/01/ge-ren-jian-li/
 
 # 文章列表页，查看更多显示的文字【自定义】
-show_more: 查看更多  
+show_more: 查看更多
 
 # 头像
 avatar: /imgs/coder.jpg
@@ -81,7 +81,7 @@ animate: true
 jquery_ui: true
 
 # 文章显示部分最大宽度限制
-limit_article_width: 
+limit_article_width:
   on: false
   # 最大宽度
   max_width: 60
@@ -125,7 +125,7 @@ ie_updater:
   link: //outdatedbrowser.com/
 
 # 本地站内搜索
-search: 
+search:
   on: true
   # 索引数据 是否在打开页面即加载
   onload: false
@@ -136,22 +136,24 @@ fancybox: true
 mathjax: false
 
 # 分享设置
-share: 
-  on: true
+share:
+  on: false
   baidu: true
   addthis: false
   addthis_pubid: ""
 
 # 百度和google 验证使用
 # 填写 HTML 标签 content
-baidu_site: 
-google_site: 
+baidu_site:
+google_site:
 
 # 谷歌分析 Google Analytics
-google_analytics: UA-75096622-1
+# google_analytics: UA-75096622-1
+google_analytics:
 
 # 百度统计
-baidu_tongji: 2fbe3a6aa0a9653968e568d4869949e8
+# baidu_tongji: 2fbe3a6aa0a9653968e568d4869949e8
+baidu_tongji:
 
 # 不蒜子统计
 visit_counter:
@@ -181,13 +183,16 @@ valine:
   placeholder: 请留下您宝贵的意见 # comment box placeholder
   avatar: mp # gravatar style
   page_size: 10 # pagination sizecomment_count: true # If false, comment count will only be displayed in post page, not in home page
+  enable_qq: true,
+  meta: '["nick"]'
+  record_ip: true
 
 # 阅读文章的密码验证功能，如要使用此功能请激活该配置项，并在对应文章的Front-matter中写上'password'的键和加密后的密文即可.
 # 请注意：为了保证密码原文不会被泄露到网页中，文章的密码必须是通过'SHA256'加密的，这样就不会被破解.
 verifyPassword:
   enable: true
   promptMessage: 请输入访问本文章的密码
-  errorMessage: 密码错误，将返回主页！  
+  errorMessage: 密码错误，将返回主页！
 
 CDN:
   jquery: //cdn.bootcss.com/jquery/2.2.4/jquery.min.js
@@ -203,6 +208,6 @@ CDN:
   mathjax: //cdn.bootcss.com/mathjax/2.6.1/MathJax.js
   scrollreveal: //cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js
   valine: //unpkg.com/valine/dist/Valine.min.js
-  av_min: //cdn1.lncld.net/static/js/3.0.4/av-min.js
+  av_min: //cdn.jsdelivr.net/npm/leancloud-storage@3.15.0/dist/av-min.min.js
   crypto: //cdn.bootcss.com/crypto-js/4.0.0/crypto-js.min.js
   echarts: //cdn.bootcss.com/echarts/4.7.0/echarts.min.js
