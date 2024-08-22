@@ -2,32 +2,40 @@
     <div class="outer">
         <div id="footer-info">
             <div class="footer-left">
-                <i class="fa fa-copyright"></i> 
-                <% if (theme.since && !isNaN(theme.since) && theme.since < date(new Date(), 'YYYY')) { %><%- theme.since%>-<% } %><%= date(new Date(), 'YYYY') %> 
-                <%= config.author || config.title %> 版权所有 
-                | 备案号：<a href="https://beian.miit.gov.cn/" title="苏ICP备20017156号-1">苏ICP备20017156号-1</a>
-                | Powered by <a href="http://hexo.io/" target="_blank" title="<%= __('tooltip.Hexo') %>">Hexo</a>
+                <i class="fa fa-copyright"></i>
+                <% if (theme.since && !isNaN(theme.since) && theme.since < date(new Date(), 'YYYY' )) { %><%-
+                        theme.since%>-<% } %>
+                            <%= date(new Date(), 'YYYY' ) %>
+                                <%= config.author || config.title %> | <a href="<%= theme.beian.url %>"
+                                        title="<%= theme.beian.number %>">
+                                        <%= theme.beian.number %>
+                                    </a>
+                                    | Powered by <a href="http://hexo.io/" target="_blank"
+                                        title="<%= __('tooltip.Hexo') %>">Hexo</a>
             </div>
             <div class="footer-right">
                 <% if (theme.visit_counter.on) { %>
                     <div class="visit">
                         <% if (theme.visit_counter.site_visit) { %>
                             <span id="busuanzi_container_site_pv" style='display:none'>
-                                <span id="site-visit" title="<%= __('visit_counter.site') %>"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                                <span id="site-visit" title="<%= __('visit_counter.site') %>"><i class="fa fa-user"
+                                        aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
                                 </span>
                             </span>
-                        <% } %>
-                        <% if (theme.visit_counter.site_visit && theme.visit_counter.page_visit) { %>
-                            <span>| </span>
-                        <% } %>
-                        <% if (theme.visit_counter.page_visit) { %>
-                            <span id="busuanzi_container_page_pv" style='display:none'>
-                                <span id="page-visit"  title="<%= __('visit_counter.page') %>"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
-                                </span>
-                            </span>
-                        <% } %>
+                            <% } %>
+                                <% if (theme.visit_counter.site_visit && theme.visit_counter.page_visit) { %>
+                                    <span>| </span>
+                                    <% } %>
+                                        <% if (theme.visit_counter.page_visit) { %>
+                                            <span id="busuanzi_container_page_pv" style='display:none'>
+                                                <span id="page-visit" title="<%= __('visit_counter.page') %>"><i
+                                                        class="fa fa-eye animated infinite pulse"
+                                                        aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                                                </span>
+                                            </span>
+                                            <% } %>
                     </div>
-                <% } %>
+                    <% } %>
             </div>
         </div>
     </div>
