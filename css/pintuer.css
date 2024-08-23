@@ -1,0 +1,156 @@
+.mid-col, .body-wrap, .article {
+	height: 97% !important;
+}
+
+.body-wrap {
+    margin-bottom: 0px !important;
+}
+
+.article-inner {
+	box-shadow: 0px 0px 0px #fff !important;
+}
+
+.container {
+	display: block;
+	width: 1200px;
+	margin: 0 auto;
+	padding: 0 10px;
+	border: 0;
+    font-size: 14px;
+    font: inherit;
+	vertical-align: baseline;
+	box-sizing: border-box;
+}
+
+.panel {
+    border: solid 1px #ddd;
+	border-radius: 4px;
+	font-size: 14px;
+    font: inherit;
+	vertical-align: baseline;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	color: #333;
+}
+
+.margin-big-top {
+	margin-top: 20px;
+}
+
+.text-center {
+	text-align: center;
+	margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 14px;
+    font: inherit;
+	vertical-align: baseline;
+	box-sizing: border-box;
+}
+
+.padding-top {
+    padding-top: 10px;
+}
+
+h2.padding-top {
+	margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+}
+
+.float-left {
+	float: left !important;
+	margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 14px;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+.float-left img, .float-right img {
+    border: 0;
+    vertical-align: bottom;
+}
+
+.alert {
+    border-radius: 5px;
+    padding: 15px;
+    border: solid 1px #ddd;
+	background-color: #f5f5f5;
+	font-size: 14px;
+    font: inherit;
+	vertical-align: baseline;
+	margin: 0;
+}
+
+.float-right {
+	float: right !important;
+	margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 14px;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+.padding-big {
+	padding: 20px;
+	margin: 0;
+    border: 0;
+    font-size: 14px;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+.button {
+    border: solid 1px #ddd;
+    background: transparent;
+    border-radius: 4px;
+    font-size: 14px;
+    padding: 6px 15px;
+    margin: 0;
+    display: inline-block;
+    line-height: 20px;
+    transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1) 0s;
+}
+
+a.button {
+    color: #333;
+    text-decoration: none;
+}
+
+.button.bg-yellow {
+	color: #fff;
+	border-color: #f60;
+	background-color: #f60;
+}
+
+.button.bg-yellow:hover, .button.bg-yellow:focus {
+    color: #fff;
+    border-color: #f90;
+	background-color: #f90;
+	text-decoration: none;
+}
+
+.button:hover, .button:focus {
+    background-color: #f5f5f5;
+	text-decoration: none;
+}
+
+.button:hover {
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1) 0s;
+	text-decoration: none;
+}
+
+a.button:focus, a.button:hover {
+    color: #0a8;
+	text-decoration: none;
+}
+
+a.button:active, a.button:hover {
+    outline: 0;
+	text-decoration: none;
+}
