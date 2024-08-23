@@ -1,4 +1,4 @@
-# Blog
+# [Blog](https://www.crazy-coder.cn/)
 ## Introduce
 
 This is my blog site source code, where the source code is in the master branch and the generated static pages are in the gh-pages branch.
