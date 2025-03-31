@@ -211,9 +211,9 @@ CDN:
   jquery_ui_js: //cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js
   jquery_ui_css: //cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css
   pace_js: //cdn.bootcss.com/pace/1.0.2/pace.min.js
-  clipboard: //cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js
+  clipboard: https://cdn.bootcdn.net/ajax/libs/clipboard.js/1.5.10/clipboard.min.js
   mathjax: //cdn.bootcss.com/mathjax/2.6.1/MathJax.js
-  scrollreveal: //cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js
+  scrollreveal: https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/3.1.4/scrollreveal.min.js
   valine: //unpkg.com/valine/dist/Valine.min.js
   av_min: //cdn.jsdelivr.net/npm/leancloud-storage@3.15.0/dist/av-min.min.js
   crypto: //cdn.bootcss.com/crypto-js/4.0.0/crypto-js.min.js
