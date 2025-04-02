@@ -202,19 +202,19 @@ verifyPassword:
   errorMessage: 密码错误，将返回主页！
 
 CDN:
-  jquery: //cdn.bootcss.com/jquery/2.2.4/jquery.min.js
-  require: //cdn.bootcss.com/require.js/2.2.0/require.min.js
-  fontawesome: //cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css
-  fancybox_js: //cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js
-  fancybox_css: //cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css
-  animate_css: //cdn.bootcss.com/animate.css/3.5.1/animate.min.css
-  jquery_ui_js: //cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js
-  jquery_ui_css: //cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css
-  pace_js: //cdn.bootcss.com/pace/1.0.2/pace.min.js
-  clipboard: https://cdn.bootcdn.net/ajax/libs/clipboard.js/1.5.10/clipboard.min.js
-  mathjax: //cdn.bootcss.com/mathjax/2.6.1/MathJax.js
-  scrollreveal: https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/3.1.4/scrollreveal.min.js
-  valine: //unpkg.com/valine/dist/Valine.min.js
+  jquery: //cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js
+  require: //cdn.jsdelivr.net/npm/requirejs@2.2.0/require.min.js
+  fontawesome: //cdn.jsdelivr.net/npm/font-awesome@4.6.3/css/font-awesome.min.css
+  fancybox_js: //cdn.jsdelivr.net/npm/fancybox@2.1.5/dist/js/jquery.fancybox.pack.min.js
+  fancybox_css: //cdn.jsdelivr.net/npm/fancybox@2.1.5/dist/css/jquery.fancybox.min.css
+  animate_css: //cdn.jsdelivr.net/npm/animate.css@3.5.1/animate.min.css
+  jquery_ui_js: //cdn.jsdelivr.net/npm/jquery-ui@1.10.4/jquery-ui.min.js
+  jquery_ui_css: //cdn.jsdelivr.net/npm/jquery-ui@1.10.4/themes/base/jquery-ui.min.css
+  pace_js: //cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js
+  clipboard: //cdn.jsdelivr.net/npm/clipboard@1.5.10/dist/clipboard.min.js
+  mathjax: //cdn.jsdelivr.net/npm/mathjax@2.6.1/MathJax.min.js
+  scrollreveal: //cdn.jsdelivr.net/npm/scrollreveal@3.1.4/dist/scrollreveal.min.js
+  valine: //cdn.jsdelivr.net/npm/valine@1.5.3/dist/Valine.min.js
   av_min: //cdn.jsdelivr.net/npm/leancloud-storage@3.15.0/dist/av-min.min.js
-  crypto: //cdn.bootcss.com/crypto-js/4.0.0/crypto-js.min.js
-  echarts: //cdn.bootcss.com/echarts/4.7.0/echarts.min.js
+  crypto: //cdn.jsdelivr.net/npm/crypto-js@4.0.0/crypto-js.min.js
+  echarts: //cdn.jsdelivr.net/npm/echarts@4.7.0/dist/echarts.min.js
