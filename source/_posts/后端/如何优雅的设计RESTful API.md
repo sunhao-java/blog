@@ -47,6 +47,7 @@ URL: https://api.example.com/users/123
 | 3xx | 重定向 | 需要后续操作 |
 | 4xx | 客户端错误 | 请求有误 |
 | 5xx | 服务器错误 | 服务器处理出错 |
+
 - `200 OK`：请求成功
 - `201 Created`：资源创建成功
 - `400 Bad Request`：请求参数错误
