@@ -13,6 +13,8 @@ categories: 中间件
 1. 访问：https://wakatime.com/plugins
 2. 输入您使用的IDE名称，回车，点击图标进入详情页面
 
+<!-- more -->
+
 ## 【示例】IntelliJ IDEA
 
 1. 在 IntelliJ IDEA 中，打开插件设置菜单。
