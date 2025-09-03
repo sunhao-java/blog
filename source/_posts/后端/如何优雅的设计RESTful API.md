@@ -1,7 +1,7 @@
 ---
 title: 如何优雅的设计RESTful API
 tags: [Java,RESTful API]
-date: 2024-10-21
+date: 2025-08-28
 categories: 后端
 ---
 
