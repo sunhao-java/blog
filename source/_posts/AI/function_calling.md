@@ -1,5 +1,7 @@
 title: 我对Function Calling认知
 date: 2024-08-22
+tags: [AI, 大模型]
+categories: AI
 ---
 
 1. 什么是大模型
