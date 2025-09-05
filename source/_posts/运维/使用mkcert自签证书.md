@@ -10,7 +10,9 @@ categories: 运维
 <!-- more -->
 
 # 准备工作（安装mkcert）
+
 ## 服务器可联网
+
 1. Windows
     ```bash
     # Chocolatey
@@ -19,6 +21,7 @@ categories: 运维
     scoop bucket add extras
     scoop install mkcert
     ```
+
 2. Linux（CentOS/Ubuntu等）
     ```bash
     # yum
@@ -26,6 +29,7 @@ categories: 运维
     # apt
     sudo apt install libnss3-tools
     ```
+    
 3. MacOS
     ```bash
     # homebrew
@@ -103,7 +107,7 @@ categories: 运维
         ...
     }
     ```
-    
+
 5. 查看自签证书的根证书，将在【验证】环节使用
     ```bash
     -bash-4.2# mkcert -CAROOT
