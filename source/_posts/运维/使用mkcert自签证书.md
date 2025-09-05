@@ -36,17 +36,22 @@ categories: 运维
     sudo port install mkcert
     sudo port install nss
     ```
+
 ## 服务器不可联网
-如果服务器不可以联网，先在可联网电脑下载相关程序，并上传到服务器中。
+> 如果服务器不可以联网，先在可联网电脑下载相关程序，并上传到服务器中。
+
 1. Windows
     1. https://dl.filippo.io/mkcert/v1.4.4?for=windows/arm64
     2. https://dl.filippo.io/mkcert/v1.4.4?for=windows/amd64
+
 2. Linux（CentOS/Ubuntu等）
     1. https://dl.filippo.io/mkcert/v1.4.4?for=linux/arm64
     2. https://dl.filippo.io/mkcert/v1.4.4?for=linux/amd64
+
 3. MacOS
     1. https://dl.filippo.io/mkcert/v1.4.4?for=darwin/arm64
     2. https://dl.filippo.io/mkcert/v1.4.4?for=darwin/amd64
+
 4. 安装
     1. Windows：将下载文件添加到环境变量PATH中即可
     2. MacOS/Linux：
@@ -54,12 +59,16 @@ categories: 运维
         chmod u+x mkcert-v*-linux-amd64
         cp mkcert-v*-linux-amd64 /usr/local/bin/mkcert
         ```
+
 # 生成证书
-通过以上步骤可正常安装mkcert，接下来需要使用mkcert生成证书
+
+> 通过以上步骤可正常安装mkcert，接下来需要使用mkcert生成证书
+
 1. 初始化配置
     ```bash
     mkcert -install
     ```
+    
 2. 为域名生成证书
     ```bash
     # 多个域名
@@ -68,6 +77,7 @@ categories: 运维
     # 多个IP
     mkcert 192.168.1.100 192.168.1.101
     ```
+
 3. 执行第二步操作后，会在当前目录下生成以下文件，如下：
     ```bash
     -bash-4.2# ll
@@ -82,6 +92,7 @@ categories: 运维
     -rw------- 1 root root 1704 Jun  9 13:45 192.168.1.101-key.pem
     -rw-r--r-- 1 root root 1493 Jun  9 13:45 192.168.1.101.pem
     ```
+
 4. 以上文件将在nginx中配置，如下：
     ```nginx
     server {
@@ -92,6 +103,7 @@ categories: 运维
         ...
     }
     ```
+    
 5. 查看自签证书的根证书，将在【验证】环节使用
     ```bash
     -bash-4.2# mkcert -CAROOT
