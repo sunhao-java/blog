@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="孙昊(Hulk)" />
+
+
+    
+    
+
+
+<meta name="description" content="Talk is cheap,show me the code.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="孙昊(Hulk)的博客">
+<meta property="og:url" content="https://www.crazy-coder.cn/page/7/index.html">
+<meta property="og:site_name" content="孙昊(Hulk)的博客">
+<meta property="og:description" content="Talk is cheap,show me the code.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="孙昊(Hulk)">
+<meta name="twitter:card" content="summary">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="孙昊(Hulk)的博客" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/imgs/coder.jpg">
+
+
+
+    <link href="//cdn.jsdelivr.net/npm/animate.css@3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.jsdelivr.net/npm/fancybox@2.1.5/dist/css/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+    <style> .article { opacity: 0;} </style>
+
+
+<link href="//cdn.jsdelivr.net/npm/font-awesome@4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>孙昊(Hulk)的博客</title>
+
+<script src="//cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/clipboard@1.5.10/dist/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: true,
+        isPost: false,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.jsdelivr.net/npm/fancybox@2.1.5/dist/js/jquery.fancybox.pack.min.js",
+        scrollreveal: "//cdn.jsdelivr.net/npm/scrollreveal@3.1.4/dist/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.jsdelivr.net/npm/jquery-ui@1.10.4/jquery-ui.min.js", "//cdn.jsdelivr.net/npm/jquery-ui@1.10.4/themes/base/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/imgs/coder.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/"></a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives">所有文章</a></li>
+                        
+                            <li><a href="/tags">标签云</a></li>
+                        
+                            <li><a href="/1900/01/01/ge-ren-jian-li/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:&#115;&#117;&#110;&#104;&#97;&#111;&#48;&#53;&#53;&#48;&#64;&#49;&#54;&#51;&#46;&#99;&#111;&#109;" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/sunhao-java" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atlas/" rel="tag">Atlas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Deb/" rel="tag">Deb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DevOPS/" rel="tag">DevOPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DevOps/" rel="tag">DevOps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FFmpeg/" rel="tag">FFmpeg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FastDFS/" rel="tag">FastDFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flume/" rel="tag">Flume</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HBase/" rel="tag">HBase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Harbor/" rel="tag">Harbor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JDK/" rel="tag">JDK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JDK8/" rel="tag">JDK8</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Memcached/" rel="tag">Memcached</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mongodb/" rel="tag">Mongodb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/" rel="tag">Nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenResty/" rel="tag">OpenResty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Oracle/" rel="tag">Oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RESTful-API/" rel="tag">RESTful API</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Solr/" rel="tag">Solr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sonar/" rel="tag">Sonar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Svn/" rel="tag">Svn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/" rel="tag">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/" rel="tag">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frontend/" rel="tag">frontend</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/guava/" rel="tag">guava</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hbase/" rel="tag">hbase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kafka/" rel="tag">kafka</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/maven/" rel="tag">maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/" rel="tag">mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongoDB/" rel="tag">mongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/" rel="tag">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/p6spy/" rel="tag">p6spy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rabbitmq/" rel="tag">rabbitmq</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/root/" rel="tag">root</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rpm/" rel="tag">rpm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/solr/" rel="tag">solr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/" rel="tag">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring-cloud/" rel="tag">spring-cloud</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wakatime/" rel="tag">wakatime</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/war/" rel="tag">war</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows7/" rel="tag">windows7</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xxl-job/" rel="tag">xxl-job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yapi/" rel="tag">yapi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zookeeper/" rel="tag">zookeeper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/" rel="tag">中文乱码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%B1%E4%BA%AB%E7%BD%91%E7%BB%9C/" rel="tag">共享网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/" rel="tag">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" rel="tag">单元测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%8B%E7%82%B9%E9%87%87%E9%9B%86/" rel="tag">埋点采集</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" rel="tag">大模型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%99%E6%98%8A/" rel="tag">孙昊</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E7%A0%81/" rel="tag">密码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%BC%E5%85%A5/" rel="tag">导入</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%BC%E5%87%BA/" rel="tag">导出</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%98%E8%AE%B0%E5%AF%86%E7%A0%81/" rel="tag">忘记密码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%81%A2%E5%A4%8D%E6%95%B0%E6%8D%AE/" rel="tag">恢复数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%B7%E8%B4%9D/" rel="tag">拷贝</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%94%B6%E9%9B%86/" rel="tag">收集</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%B6%E9%97%B4/" rel="tag">时间</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%83%E9%99%90/" rel="tag">权限</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" rel="tag">树莓派</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A3%80%E6%9F%A5/" rel="tag">检查</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BA%90%E7%A0%81/" rel="tag">源码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB/" rel="tag">生活</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/" rel="tag">生活随笔</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A1%AC%E4%BB%B6/" rel="tag">硬件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AB%99%E5%8A%A1/" rel="tag">站务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B3%BB%E7%BB%9F/" rel="tag">系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%8A%B1%E7%94%9F%E5%A3%B3/" rel="tag">花生壳</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%81%E4%B9%A6/" rel="tag">证书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%AD%E6%B3%95%E7%B3%96/" rel="tag">语法糖</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AC%E8%BD%BD/" rel="tag">转载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81%E8%A1%A8/" rel="tag">锁表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99/" rel="tag">防火墙</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%99%8D%E7%BA%A7/" rel="tag">降级</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://github.com/sunhao-java">GitHub</a> <br/>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://gitee.com/crazy-coder">Git@OSC</a> <br/>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://my.oschina.net/sunhaojava">开源中国</a> <br/>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://broucetrong.github.io/">路路同学的博客</a> <br/>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">Talk is cheap,show me the code.</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页"></a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/imgs/coder.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页"></a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives">所有文章</a></li>
+                
+                    <li><a href="/tags">标签云</a></li>
+                
+                    <li><a href="/1900/01/01/ge-ren-jian-li/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:&#115;&#117;&#110;&#104;&#97;&#111;&#48;&#53;&#53;&#48;&#64;&#49;&#54;&#51;&#46;&#99;&#111;&#109;" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/sunhao-java" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap">
+  
+    <article id="post-运维/linux_user_permission" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/14/yun-wei/linux-user-permission/" class="article-date">
+      <time datetime="2016-03-14T00:00:00.000Z" itemprop="datePublished">2016-03-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/14/yun-wei/linux-user-permission/">Linux上给新建的用户赋权限</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <blockquote>
+<p>ubuntu的超级管理员root用户默认是不启用的，root默认是空密码，所以root是不能使用的。</p>
+</blockquote>
+<ol>
+<li><p>为root设置密码，在终端执行<code>sudo passwd root</code>指令后，系统会提示你设置一个root账号的密码。在你没有经过当前用户密码验证的时候，还会要求你先输入当前用户的密码，然后才能设置root帐号的密码。设置完成后，就可以在终端切换到root用户了。</p>
+<pre><code>切换用户su root或者su sunhao
+</code></pre>
+</li>
+</ol>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/%E8%BF%90%E7%BB%B4/">运维</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9D%83%E9%99%90/" rel="tag">权限</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2016/03/14/yun-wei/linux-user-permission/#more">查看更多 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-工具/外网访问本机" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/06/27/gong-ju/wai-wang-fang-wen-ben-ji/" class="article-date">
+      <time datetime="2015-06-27T00:00:00.000Z" itemprop="datePublished">2015-06-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/27/gong-ju/wai-wang-fang-wen-ben-ji/">外网访问本机</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <ol>
+<li><p>登陆路由器：一般地址为192.168.1.1，默认用户admin，密码admin。</p>
+</li>
+<li><p>隐射端口：找到“转发规则”―“虚拟服务器”―增加新条目–服务端口号设置为8080，IP地址设置为安装项目的IP，保存即可。</p>
+<pre><code>  8080:指的是项目tomcat的端口号
+</code></pre>
+</li>
+<li><p>找到外网IP：一般在“运行状态”-“WAN口状态”-“IP地址”中显示，如113.<em>.</em>.*</p>
+</li>
+<li><p>此时外网已经可以访问，不过路由器的IP地址是动态的，会经常变，可以通过安装个动态域名解析软件来解决这个问题，以花生壳为例子。</p>
+</li>
+<li><p>注册个动态域名解析花生壳帐号：<a href="http://www.oray.com/passport/register.php">http://www.oray.com/passport/register.php</a></p>
+</li>
+<li><p>登陆花生壳后，在域名管理注册一个免费域名</p>
+</li>
+<li><p>下载花生壳软件：<a href="http://www.oray.com/peanuthull/download.php">http://www.oray.com/peanuthull/download.php</a></p>
+</li>
+<li><p>在安装项目的电脑上安装花生壳软件，并且使用花生壳帐号登陆，如果登陆成功，外网已经可以通过域名访问项目，地址为http:&#x2F;&#x2F;免费域名:8080&#x2F;项目部署名</p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%B3%BB%E7%BB%9F/" rel="tag">系统</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-其他/要去读的书" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/06/18/qi-ta/yao-qu-du-de-shu/" class="article-date">
+      <time datetime="2015-06-18T00:00:00.000Z" itemprop="datePublished">2015-06-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/18/qi-ta/yao-qu-du-de-shu/">要去读的书</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <ol>
+<li>淘宝技术这十年</li>
+<li>反模式</li>
+<li>代码之美</li>
+<li>企业应用架构模式</li>
+<li>编程珠玑</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB/" rel="tag">生活</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-后端/guava vs jdk8" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/06/14/hou-duan/guava-vs-jdk8/" class="article-date">
+      <time datetime="2015-06-14T00:00:00.000Z" itemprop="datePublished">2015-06-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/14/hou-duan/guava-vs-jdk8/">guava vs jdk8</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>#Guava<br>Guava是Google公司开源的一个实用工具库，对Java类库进行了多方面的增强。比如说，对函数式编程的支持，新的集合类（Multimap等），Cache支持，等等。在Java8之前，Guava和Java之间的关系，可以表示成下面这幅图：<br><img src="http://img.blog.csdn.net/20140923165231890?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenhob28=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"></p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JDK8/" rel="tag">JDK8</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/guava/" rel="tag">guava</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/" rel="tag">函数式编程</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2015/06/14/hou-duan/guava-vs-jdk8/#more">查看更多 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-后端/函数式编程介绍" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/06/14/hou-duan/han-shu-shi-bian-cheng-jie-shao/" class="article-date">
+      <time datetime="2015-06-14T00:00:00.000Z" itemprop="datePublished">2015-06-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/14/hou-duan/han-shu-shi-bian-cheng-jie-shao/">函数式编程介绍</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>##什么是函数式编程<br>函数式编程是种编程典范，它将电脑运算视为函数的计算。函数编程语言最重要的基础是 λ 演算（lambda calculus）。而且λ演算的函数可以<strong>接受函数当作输入（参数）和输出（返回值）</strong>。和指令式编程相比，函数式编程强调函数的计算比指令的执行重要。和过程化编程相比，函数式编程里，函数的计算可随时调用。</p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JDK8/" rel="tag">JDK8</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/" rel="tag">函数式编程</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2015/06/14/hou-duan/han-shu-shi-bian-cheng-jie-shao/#more">查看更多 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-其他/我的服务列表" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/10/26/qi-ta/wo-de-fu-wu-lie-biao/" class="article-date">
+      <time datetime="2014-10-26T00:00:00.000Z" itemprop="datePublished">2014-10-26</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/10/26/qi-ta/wo-de-fu-wu-lie-biao/">我的服务列表</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <blockquote>
+<p>Git</p>
+</blockquote>
+<ul>
+<li><a href="http://git.sunhao.com:82/" title="我的gitlab">我的gitlab</a></li>
+</ul>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%99%E6%98%8A/" rel="tag">孙昊</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2014/10/26/qi-ta/wo-de-fu-wu-lie-biao/#more">查看更多 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-中间件/Sonar使用方法" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/10/17/zhong-jian-jian/sonar-shi-yong-fang-fa/" class="article-date">
+      <time datetime="2014-10-17T00:00:00.000Z" itemprop="datePublished">2014-10-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/10/17/zhong-jian-jian/sonar-shi-yong-fang-fa/">Sonar使用方法</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>###方法1：直接在服务器分析</p>
+<ul>
+<li><p>在项目源代码目录新建sonar-project.properties文件<code>touch sonar-project.properties</code></p>
+</li>
+<li><p>编辑此文件<code>vim sonar-project.properties</code>，内容如下：</p>
+<pre><code>  # Required metadata
+  sonar.projectKey=my:project		#项目的key
+  sonar.projectName=My project	#项目显示的名称
+  sonar.projectVersion=1.0		#版本
+</code></pre>
+</li>
+</ul>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/">中间件</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sonar/" rel="tag">Sonar</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2014/10/17/zhong-jian-jian/sonar-shi-yong-fang-fa/#more">查看更多 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-中间件/Sonar安装步骤" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/10/13/zhong-jian-jian/sonar-an-zhuang-bu-zou/" class="article-date">
+      <time datetime="2014-10-13T00:00:00.000Z" itemprop="datePublished">2014-10-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/10/13/zhong-jian-jian/sonar-an-zhuang-bu-zou/">Sonar安装步骤</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <ol>
+<li>下载<strong>sonarqube-4.5.zip</strong>和<strong>sonar-runner-dist-2.4.zip</strong><ul>
+<li>下载地址：<ul>
+<li><a href="http://www.sonarqube.org/downloads/" title="sonarqube">http://www.sonarqube.org/downloads/</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/">中间件</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sonar/" rel="tag">Sonar</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2014/10/13/zhong-jian-jian/sonar-an-zhuang-bu-zou/#more">查看更多 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-中间件/Linux_Ubuntu安装Redis" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/10/12/zhong-jian-jian/linux-ubuntu-an-zhuang-redis/" class="article-date">
+      <time datetime="2014-10-12T00:00:00.000Z" itemprop="datePublished">2014-10-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/10/12/zhong-jian-jian/linux-ubuntu-an-zhuang-redis/">Linux_Ubuntu安装Redis</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <ol>
+<li>下载安装<ul>
+<li><p>将安装包上传，放入<code>/opt/software/redis</code></p>
+</li>
+<li><p>执行命令</p>
+<pre><code>  tar -zxf redis-2.8.13.tar.gz
+  cd redis-2.8.13
+  make
+  sudo make install
+  make test
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/">中间件</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2014/10/12/zhong-jian-jian/linux-ubuntu-an-zhuang-redis/#more">查看更多 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-个人感悟/as_a_coder" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/04/09/ge-ren-gan-wu/as-a-coder/" class="article-date">
+      <time datetime="2014-04-09T11:14:00.000Z" itemprop="datePublished">2014-04-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/04/09/ge-ren-gan-wu/as-a-coder/">作为一个苦逼码农，我要想想我以后的出路</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;程序员，在外行看来是一个很高端的行业，搞IT的，高端人才，天天坐办公室，多爽。可是在我们自己看来，只有自己知道自己的苦。每天不固定的加班不说，还有忍受着客户各种无理苛刻的需求。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;或许是我们自己对技术的热爱，对新技术的狂热追求，他甚至曾经有段时间超越我追求妹子的欲望。我可以为一个bug熬个通宵，我可以为了一个新技术狂啃3天馒头不出门，但是我忍受不了别人对我的努力不赞同。这可能就是最真实的程序猿。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;程序猿不擅长与人交流，因为程序猿最擅长的是和电脑打交道，他们视电脑如媳妇，视代码如孩子，视新技术如新衣服一样的狂热追求。有人说，程序猿是最好的老公人选，他们有着固定的工作，拿着高薪，而且不会乱花钱，接触面很窄，很难出轨，经常会加班，不会约束到另一方。是的，我们确实是这样的状态，但是谁能知道我们心中的狂野吗？我们会骂，这傻逼系统，真垃圾，要我做，绝对比这好一百倍。还有这傻逼客户，怎么会提出这样傻逼的需求呢？</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;今天一个同事说要辞职了，问他原因，他说要去自己做生意了，觉得做程序猿没有前途，要去和朋友合伙卖手机。很好的一个想法，反过来我想想自己，除了能写的了一手好代码，又能干些什么？在公司，每天帮着同事解决各种他们解决不了的问题，然后听着他们说你好厉害啊，我觉得心里特别舒服，很有成就感，或者发现某一个问题很操蛋，然后自己熬了一个通宵写出一个工具，然后心满意足的群发一封邮件给各个同事，最好带着慢慢的成就感上床睡觉去了。可是，一走到外面，那情况就正好反过来了，别人都说，你怎么这个都不会。。。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;我的生活很单调，除了公司、吃饭的地方、睡觉的地方就没有了，每个周末之前都在心里说，明天是个好周末，我要出去转转，结果周五或者周六晚上，领导或者现场一个电话来，说这里有问题，帮忙改改，明天要上线客户要看，我就哼哧哼哧的搞到2-3点钟，第二天一觉睡到下午，久而久之，也就习惯了这样的作息时间。以至于现在没了六块腹肌，没了胸肌，没了肱二头肌。啥也没了。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;如果不做程序猿，我能做什么？去珠江路开个修电脑的店？在小区附近开个奶茶店？还是回老家和我爸一起做装潢？我他妈的到底能做什么？</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%82%9F/">个人感悟</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB/" rel="tag">生活</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-个人感悟/for_you" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/01/14/ge-ren-gan-wu/for-you/" class="article-date">
+      <time datetime="2014-01-14T00:00:00.000Z" itemprop="datePublished">2014-01-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/01/14/ge-ren-gan-wu/for-you/">写给亲爱的媳妇还有未来的娃</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>现在是2014年1月14号晚上6点39。</p>
+<h1 id="致我未来的媳妇（现在叫亲爱的媳妇）："><a href="#致我未来的媳妇（现在叫亲爱的媳妇）：" class="headerlink" title="致我未来的媳妇（现在叫亲爱的媳妇）："></a>致我未来的媳妇（现在叫亲爱的媳妇）：</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;虽然我现在还不知道你到底是谁？到底是哪里人？但是有些话我还是很想跟你说说。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;首先，你可以说你不懂爱情，因为我自己也不太懂，咱可以一起去学习什么是爱情，什么是家庭。我们一起长大，一起慢慢的变老，直到死去。这不是很浪漫很幸福的事情吗。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;其次，咱结婚以后，家里的财政大臣由你来当，我不会理财，也不喜欢去理财，所以这重任只能交给你来做了。我负责挣钱，你负责花钱。在家，你就是我的公主、我的皇上，我是你的取暖器、你的泄气包；在外，我是你的避风港、你的移动指路台、你的保镖。如果以后我们有了孩子，如果是女孩，那我会永远保护你们娘俩，如果是男孩，那我们爷俩永远会保护你。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;最后，也是最重要的一点，我喜欢你能像对你父母兄弟姐妹一样的对待我的父母兄弟姐妹，因为他们是我在这个世界上除了你以外最亲最爱的人了，同样，我也会像对待我自己的父母兄弟姐妹一样对待你的父母兄弟姐妹。也只有这样，我们的小家庭才会永远的幸福美满。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;现在，我想说一句：我会努力的去做一个合格的丈夫，以后我们有了孩子以后，我还会变成一个合格的父亲！</p>
+<h1 id="致我未来的娃："><a href="#致我未来的娃：" class="headerlink" title="致我未来的娃："></a>致我未来的娃：</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;现在我还不知道你这熊孩子是男孩是女，不过不管你是男还是女，我都会爱你的。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;如果你是男孩，在你没有上学之前，我不会要求你去背什么唐诗宋词，学什么乱七八糟的数学英语什么的，我会给你一个美好的童年。在你上学之后，我也不需要你考试每次都能考到第一第二名的，因为谁也不能保证每次考试都能考好。原则上的事情我会对你很严格的，但是我不会动手K你的，打你只能会让你变得更加叛逆。还有，在你18岁之后，请自己为你自己的路做决定，你老爹我只会给你建议。在你18岁之前，老爸我都是你的避风港，18岁之后，你要负责和我一起保护你老妈，一直到我老了，你就要保护我和你老妈了。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;如果你是女孩，我会一直一直把你当成我的小公主，我会给你买最漂亮的衣服，吃最好的，用最好的。考试成绩神马的，老爸都不会要求你的，只需要你给我平平安安的。还有18岁之前不要谈恋爱，18岁之后谈恋爱了，必须要把那家伙给我带回来看看，老爸要是不同意看不上，你就赶紧的让他拜拜。我对你的他的要求就是：能够保护你，要对你百分之一百的好。我在想，在你出嫁的那天，我一定会哭的，因为有个男人把你从我身边抢走了。</p>
+<h1 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;好了，写到这里了，连媳妇都没有的人，在这胡思乱想。唉，洗洗睡吧。</p>
+<p>PS：</p>
+<ol>
+<li>媳妇已经出现了，马上就要一起步入爱情的坟墓了！</li>
+<li>努力造娃ing</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%82%9F/">个人感悟</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB/" rel="tag">生活</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-后端/maven_plugins" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2013/11/18/hou-duan/maven-plugins/" class="article-date">
+      <time datetime="2013-11-18T00:07:00.000Z" itemprop="datePublished">2013-11-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/11/18/hou-duan/maven-plugins/">关于maven的几个常用插件</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <blockquote>
+<p>最近整理了自己写的一个项目,使用maven+svn管理,idea开发,搭建了一个maven的私服.原来是凌乱不堪,所以费了好大劲才整理好,而且平时公司项目上事情多的一米…</p>
+</blockquote>
+<p>下面说说使用的几个插件(至于那些dependency就让它们见鬼去吧)</p>
+<p>不说废话了,代码贴上</p>
+<ol>
+<li><p>clean插件</p>
+<pre><code> &lt;plugin&gt;
+     &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+     &lt;artifactId&gt;maven-clean-plugin&lt;/artifactId&gt;
+     &lt;version&gt;2.5&lt;/version&gt;
+     &lt;configuration&gt;
+         &lt;filesets&gt;
+             &lt;fileset&gt;
+                 &lt;directory&gt;F:/logs&lt;/directory&gt;
+             &lt;/fileset&gt;
+             &lt;fileset&gt;
+                 &lt;directory&gt;../message-test&lt;/directory&gt;
+                 &lt;includes&gt;
+                     &lt;include&gt;spy.log&lt;/include&gt;
+                 &lt;/includes&gt;
+             &lt;/fileset&gt;
+             &lt;fileset&gt;
+                 &lt;directory&gt;../message-test/target&lt;/directory&gt;
+             &lt;/fileset&gt;
+         &lt;/filesets&gt;
+     &lt;/configuration&gt;
+ &lt;/plugin&gt;
+</code></pre>
+<p> 这个插件没啥好说的,要是不需要删除别的地方代码,就用默认的,不用任何配置</p>
+</li>
+<li><p>单元测试插件</p>
+<pre><code> &lt;plugin&gt;
+     &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+     &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;
+     &lt;version&gt;2.16&lt;/version&gt;
+     &lt;configuration&gt;
+         &lt;skip&gt;true&lt;/skip&gt;
+     &lt;/configuration&gt;
+ &lt;/plugin&gt;
+</code></pre>
+<p> 单元测试没做好,一测就报错,干脆给skip了</p>
+</li>
+<li><p>resources</p>
+<pre><code> &lt;plugin&gt;
+     &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+     &lt;artifactId&gt;maven-resources-plugin&lt;/artifactId&gt;
+     &lt;version&gt;2.6&lt;/version&gt;
+     &lt;executions&gt;
+         &lt;execution&gt;
+             &lt;id&gt;copy-resources&lt;/id&gt;
+             &lt;!-- here the phase you need --&gt;
+             &lt;phase&gt;validate&lt;/phase&gt;
+             &lt;goals&gt;
+                 &lt;goal&gt;copy-resources&lt;/goal&gt;
+             &lt;/goals&gt;
+             &lt;configuration&gt;
+                 &lt;outputDirectory&gt;$&#123;basedir&#125;/target/test-classes&lt;/outputDirectory&gt;
+                 &lt;resources&gt;
+                     &lt;resource&gt;
+                         &lt;directory&gt;$&#123;basedir&#125;/src/main/webapp/WEB-INF/config&lt;/directory&gt;
+                         &lt;filtering&gt;true&lt;/filtering&gt;
+                     &lt;/resource&gt;
+                 &lt;/resources&gt;
+             &lt;/configuration&gt;
+         &lt;/execution&gt;
+     &lt;/executions&gt;
+ &lt;/plugin&gt;
+</code></pre>
+<p> 用来复制一些资源文件,配置都是直译的</p>
+</li>
+<li><p>war</p>
+<pre><code> &lt;plugin&gt;
+     &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+     &lt;artifactId&gt;maven-war-plugin&lt;/artifactId&gt;
+     &lt;version&gt;2.4&lt;/version&gt;
+     &lt;configuration&gt;
+         &lt;warName&gt;$&#123;message.war.name&#125;&lt;/warName&gt;
+         &lt;includeEmptyDirectories&gt;true&lt;/includeEmptyDirectories&gt;
+         &lt;webResources&gt;
+             &lt;resource&gt;
+                 &lt;directory&gt;../message-easyjs&lt;/directory&gt;
+                 &lt;targetPath&gt;js&lt;/targetPath&gt;
+                 &lt;excludes&gt;
+                     &lt;exclude&gt;**/.svn&lt;/exclude&gt;
+                     &lt;exclude&gt;**/*.iml&lt;/exclude&gt;
+                     &lt;exclude&gt;**/pom.xml&lt;/exclude&gt;
+                 &lt;/excludes&gt;
+             &lt;/resource&gt;
+         &lt;/webResources&gt;
+     &lt;/configuration&gt;
+ &lt;/plugin&gt;
+</code></pre>
+<p> 打war包的插件</p>
+</li>
+<li><p>jetty</p>
+<pre><code> &lt;plugin&gt;
+     &lt;groupId&gt;org.mortbay.jetty&lt;/groupId&gt;
+     &lt;artifactId&gt;maven-jetty-plugin&lt;/artifactId&gt;
+     &lt;version&gt;6.1.10&lt;/version&gt;
+     &lt;configuration&gt;
+         &lt;!-- 配置扫描时间 --&gt;
+         &lt;scanIntervalSeconds&gt;10&lt;/scanIntervalSeconds&gt;
+         &lt;!-- 配置项目在容器中的根路径 --&gt;
+         &lt;contextPath&gt;$&#123;project.contextPath&#125;&lt;/contextPath&gt;
+         &lt;!-- 配置jetty容器中的jndi --&gt;
+         &lt;jettyEnvXml&gt;src/main/resources/jetty.xml&lt;/jettyEnvXml&gt;
+         &lt;connectors&gt;
+             &lt;connector implementation=&quot;org.mortbay.jetty.nio.SelectChannelConnector&quot;&gt;
+                 &lt;!-- 端口 --&gt;
+                 &lt;port&gt;$&#123;project.port&#125;&lt;/port&gt;
+                 &lt;maxIdleTime&gt;60000&lt;/maxIdleTime&gt;
+             &lt;/connector&gt;
+         &lt;/connectors&gt;
+         &lt;!-- 按照官网上说的是配置停止容器的快捷键和端口,至今不知怎么在idea中如何使用,有知道的麻烦告知下,3Q --&gt;
+         &lt;stopKey&gt;foo&lt;/stopKey&gt;
+         &lt;stopPort&gt;8888&lt;/stopPort&gt;
+     &lt;/configuration&gt;
+     &lt;executions&gt;
+         &lt;!-- 配置在maven哪个生命周期执行插件的哪个动作 --&gt;
+         &lt;execution&gt;
+             &lt;id&gt;jetty_run&lt;/id&gt;
+             &lt;!-- maven生命周期 --&gt;
+             &lt;phase&gt;compile&lt;/phase&gt;
+             &lt;!-- 执行插件的哪个动作 --&gt;
+             &lt;goals&gt;&lt;goal&gt;run&lt;/goal&gt;&lt;/goals&gt;
+         &lt;/execution&gt;
+     &lt;/executions&gt;
+     &lt;dependencies&gt;
+         &lt;!-- 这个插件依赖的几个包 --&gt;
+         &lt;dependency&gt;
+             &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;
+             &lt;artifactId&gt;jetty-io&lt;/artifactId&gt;
+             &lt;version&gt;7.6.6.v20120903&lt;/version&gt;
+         &lt;/dependency&gt;
+         &lt;dependency&gt;
+             &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;
+             &lt;artifactId&gt;jetty-server&lt;/artifactId&gt;
+             &lt;version&gt;7.6.6.v20120903&lt;/version&gt;
+         &lt;/dependency&gt;
+     &lt;/dependencies&gt;
+ &lt;/plugin&gt;
+</code></pre>
+<p> jetty这个插件当时可是整的我头疼,各种报错各种上网找资料,附上jetty的配置文件:jetty.xml</p>
+<pre><code> &lt;?xml version=&quot;1.0&quot;?&gt;
+ &lt;!DOCTYPE Configure PUBLIC &quot;-//Mort Bay Consulting//DTD Configure//EN&quot; &quot;http://jetty.mortbay.org/configure.dtd&quot;&gt;
+ &lt;Configure class=&quot;org.mortbay.jetty.webapp.WebAppContext&quot;&gt;
+     &lt;New id=&quot;mysql&quot; class=&quot;org.mortbay.jetty.plus.naming.Resource&quot;&gt;
+         &lt;Arg&gt;jdbc/core&lt;/Arg&gt;
+         &lt;Arg&gt;
+             &lt;New class=&quot;com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSource&quot;&gt;
+                 &lt;Set name=&quot;Url&quot;&gt;jdbc:mysql://localhost:3306/message&lt;/Set&gt;
+                 &lt;Set name=&quot;User&quot;&gt;root&lt;/Set&gt;
+                 &lt;Set name=&quot;Password&quot;&gt;123456&lt;/Set&gt;
+             &lt;/New&gt;
+         &lt;/Arg&gt;
+     &lt;/New&gt;
+ &lt;/Configure&gt;
+</code></pre>
+</li>
+<li><p>cargo(可以启动tomcat,远程部署,本地部署,都支持的,这里我只用到本地部署,远程部署需要配置tomcat-user.xml和tomcat的控制台)</p>
+<pre><code> &lt;plugin&gt;
+     &lt;groupId&gt;org.codehaus.cargo&lt;/groupId&gt;
+     &lt;artifactId&gt;cargo-maven2-plugin&lt;/artifactId&gt;
+     &lt;version&gt;1.4.3&lt;/version&gt;
+     &lt;configuration&gt;
+         &lt;container&gt;
+             &lt;!-- tomcat的版本,tomcat6使用tomcat6x --&gt;
+             &lt;containerId&gt;$&#123;cargo.tomcat.version&#125;&lt;/containerId&gt;
+             &lt;!-- tomcat在本地的绝对路径 --&gt;
+             &lt;home&gt;$&#123;tomcat.home&#125;&lt;/home&gt;
+             &lt;!-- 本地安装就用installed,远程使用remote --&gt;
+             &lt;type&gt;installed&lt;/type&gt;
+  
+             &lt;!-- tomcat日志文件路径 --&gt;
+             &lt;output&gt;$&#123;tomcat.home&#125;/logs/container.log&lt;/output&gt;
+             &lt;append&gt;false&lt;/append&gt;
+             &lt;log&gt;$&#123;tomcat.home&#125;/logs/cargo.log&lt;/log&gt;
+         &lt;/container&gt;
+         &lt;configuration&gt;
+             &lt;!-- 本地部署,已存在 --&gt;
+             &lt;type&gt;existing&lt;/type&gt;
+             &lt;!-- 再配置一次tomcat绝对路径 --&gt;
+             &lt;home&gt;$&#123;tomcat.home&#125;&lt;/home&gt;
+             &lt;properties&gt;
+                 &lt;!-- 端口 --&gt;
+                 &lt;cargo.servlet.port&gt;$&#123;project.port&#125;&lt;/cargo.servlet.port&gt;
+             &lt;/properties&gt;
+         &lt;/configuration&gt;
+         &lt;!-- 这里一次可以部署多个项目 --&gt;
+         &lt;deployables&gt;
+             &lt;!-- 指定我部署的项目GAV --&gt;
+             &lt;deployable&gt;
+                 &lt;groupId&gt;com.message&lt;/groupId&gt;
+                 &lt;artifactId&gt;message-test&lt;/artifactId&gt;
+                 &lt;!-- war包形式部署 --&gt;
+                 &lt;type&gt;war&lt;/type&gt;
+                 &lt;properties&gt;
+                     &lt;!-- 容器中的上下文根 --&gt;
+                     &lt;context&gt;$&#123;project.contextPath&#125;&lt;/context&gt;
+                 &lt;/properties&gt;
+             &lt;/deployable&gt;
+         &lt;/deployables&gt;
+     &lt;/configuration&gt;
+     &lt;!-- 同jetty --&gt;
+     &lt;executions&gt;
+         &lt;execution&gt;
+             &lt;id&gt;tomcat-run&lt;/id&gt;
+             &lt;phase&gt;package&lt;/phase&gt;
+             &lt;goals&gt;&lt;goal&gt;run&lt;/goal&gt;&lt;/goals&gt;
+         &lt;/execution&gt;
+     &lt;/executions&gt;
+ &lt;/plugin&gt;
+</code></pre>
+<ul>
+<li>tomcat使用cargo这个插件有个缺点,不能debug了,而且不是热部署,不知道cargo有没有热部署的功能,暂时我还没找到,待研究 </li>
+<li>jetty那个是可以热部署的,不管改Java类还是jsp或者css,js都可以(加减方法,改参数不行)</li>
+</ul>
+</li>
+<li><p>附上maven的properties</p>
+<pre><code> &lt;properties&gt;
+     &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+     &lt;junit.version&gt;4.10&lt;/junit.version&gt;
+     &lt;spring.version&gt;3.0.5.RELEASE&lt;/spring.version&gt;
+     &lt;jdk.version&gt;jdk15&lt;/jdk.version&gt;
+     &lt;tomcat.version&gt;6.0.32&lt;/tomcat.version&gt;
+     &lt;message.war.name&gt;message&lt;/message.war.name&gt;
+     &lt;project.port&gt;8099&lt;/project.port&gt;
+     &lt;project.contextPath&gt;/core&lt;/project.contextPath&gt;
+     &lt;tomcat.home&gt;F:\study\apache-tomcat-6.0.32&lt;/tomcat.home&gt;
+     &lt;cargo.tomcat.version&gt;tomcat6x&lt;/cargo.tomcat.version&gt;
+ &lt;/properties&gt;
+</code></pre>
+</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/maven/" rel="tag">maven</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/6/">« Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/8/">Next »</a>
+    </nav>
+  
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i>
+                2012-
+                            2025
+                                孙昊(Hulk) | <a href="https://beian.miit.gov.cn/"
+                                        title="苏ICP备20017156号-1">
+                                        苏ICP备20017156号-1
+                                    </a>
+                                    | Powered by <a href="http://hexo.io/" target="_blank"
+                                        title="快速、简洁且高效的博客框架">Hexo</a>
+            </div>
+            <div class="footer-right">
+                
+                    <div class="visit">
+                        
+                            <span id="busuanzi_container_site_pv" style='display:none'>
+                                <span id="site-visit" title="本站到访数"><i class="fa fa-user"
+                                        aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                                </span>
+                            </span>
+                            
+                                
+                                    <span>| </span>
+                                    
+                                        
+                                            <span id="busuanzi_container_page_pv" style='display:none'>
+                                                <span id="page-visit" title="本页阅读量"><i
+                                                        class="fa fa-eye animated infinite pulse"
+                                                        aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                                                </span>
+                                            </span>
+                                            
+                    </div>
+                    
+            </div>
+        </div>
+    </div>
+</footer>
+    </div>
+    
+    
+<script src="/js/GithubRepoWidget.js"></script>
+
+
+<script data-main="/js/main.js" src="//cdn.jsdelivr.net/npm/requirejs@2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 3;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+             github: ".github-widget a", 
+            
+            
+            
+            
+            
+            
+            
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+  </div>
+</body>
+</html>
