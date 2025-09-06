@@ -8,7 +8,7 @@ subtitle: Crazy Coder
 description: Talk is cheap,show me the code.
 author: 孙昊(Hulk)
 language: zh-CN
-timezone: Asia/Shanghai
+timezone: 
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
