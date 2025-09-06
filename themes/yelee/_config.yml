@@ -74,7 +74,7 @@ copyright: true
 toc:
   on: true
   # 目录序号
-  list_number: true
+  list_number: false
   # 目录最大级数
   max_depth: 3
   # 标题不换行
