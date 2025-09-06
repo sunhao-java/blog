@@ -126,10 +126,10 @@ categories: 运维
     ```nginx
     server {
         listen 443 ssl;
-        server_name www.teamhelper.cn;
+        server_name www.baidu.com;
     
-        ssl_certificate /path/to/your/ssl/www.teamhelper.cn.pem;
-        ssl_certificate_key /path/to/your/ssl/www.teamhelper.cn-key.pem;
+        ssl_certificate /path/to/your/ssl/www.baidu.com.pem;
+        ssl_certificate_key /path/to/your/ssl/www.baidu.com-key.pem;
     
         # 其他配置
     }
@@ -200,6 +200,6 @@ categories: 运维
     ```
 4. 重启容器（注意：这里不能使用docker-compose up -d命令，这会删除容器，重新创建容器）
     ```bash
-    docker restart mengniu-teamhelper-operation-platform
+    docker restart container_name
     ```
 5. 每次更新完成后（recreate容器后），都需要执行上述操作   
