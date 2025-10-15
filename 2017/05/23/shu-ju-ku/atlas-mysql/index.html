@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="孙昊(Hulk)" />
+
+
+
+<meta name="description" content="最近公司项目要求MySQL高可用，加上以前公司听过QiHoo360的Atlas，所以就尝试搭建了一个MySQL读写分离，并且高可用的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="通过Atlas实现MySQL读写分离">
+<meta property="og:url" content="https://www.crazy-coder.cn/2017/05/23/shu-ju-ku/atlas-mysql/index.html">
+<meta property="og:site_name" content="孙昊(Hulk)的博客">
+<meta property="og:description" content="最近公司项目要求MySQL高可用，加上以前公司听过QiHoo360的Atlas，所以就尝试搭建了一个MySQL读写分离，并且高可用的。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-05-23T00:00:00.000Z">
+<meta property="article:modified_time" content="2025-10-15T11:45:49.277Z">
+<meta property="article:author" content="孙昊(Hulk)">
+<meta property="article:tag" content="database">
+<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="Atlas">
+<meta name="twitter:card" content="summary">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="孙昊(Hulk)的博客" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/imgs/coder.jpg">
+
+
+
+    <link href="//cdn.jsdelivr.net/npm/animate.css@3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.jsdelivr.net/npm/fancybox@2.1.5/dist/css/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+
+<link href="//cdn.jsdelivr.net/npm/font-awesome@4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>通过Atlas实现MySQL读写分离 | 孙昊(Hulk)的博客</title>
+
+<script src="//cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/clipboard@1.5.10/dist/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.jsdelivr.net/npm/fancybox@2.1.5/dist/js/jquery.fancybox.pack.min.js",
+        scrollreveal: "//cdn.jsdelivr.net/npm/scrollreveal@3.1.4/dist/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.jsdelivr.net/npm/jquery-ui@1.10.4/jquery-ui.min.js", "//cdn.jsdelivr.net/npm/jquery-ui@1.10.4/themes/base/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/imgs/coder.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/"></a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives">所有文章</a></li>
+                        
+                            <li><a href="/tags">标签云</a></li>
+                        
+                            <li><a href="/1900/01/01/ge-ren-jian-li/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:&#115;&#117;&#110;&#104;&#97;&#111;&#48;&#53;&#53;&#48;&#64;&#49;&#54;&#51;&#46;&#99;&#111;&#109;" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/sunhao-java" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atlas/" rel="tag">Atlas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Deb/" rel="tag">Deb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DevOPS/" rel="tag">DevOPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DevOps/" rel="tag">DevOps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FFmpeg/" rel="tag">FFmpeg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FastDFS/" rel="tag">FastDFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flume/" rel="tag">Flume</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HBase/" rel="tag">HBase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Harbor/" rel="tag">Harbor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JDK/" rel="tag">JDK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JDK8/" rel="tag">JDK8</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Memcached/" rel="tag">Memcached</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mongodb/" rel="tag">Mongodb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/" rel="tag">Nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenResty/" rel="tag">OpenResty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Oracle/" rel="tag">Oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RESTful-API/" rel="tag">RESTful API</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Solr/" rel="tag">Solr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sonar/" rel="tag">Sonar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Svn/" rel="tag">Svn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/" rel="tag">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/" rel="tag">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frontend/" rel="tag">frontend</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/guava/" rel="tag">guava</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hbase/" rel="tag">hbase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kafka/" rel="tag">kafka</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/maven/" rel="tag">maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/" rel="tag">mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongoDB/" rel="tag">mongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/" rel="tag">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/p6spy/" rel="tag">p6spy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rabbitmq/" rel="tag">rabbitmq</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/root/" rel="tag">root</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rpm/" rel="tag">rpm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/solr/" rel="tag">solr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/" rel="tag">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring-cloud/" rel="tag">spring-cloud</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wakatime/" rel="tag">wakatime</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/war/" rel="tag">war</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows7/" rel="tag">windows7</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xxl-job/" rel="tag">xxl-job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yapi/" rel="tag">yapi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zookeeper/" rel="tag">zookeeper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/" rel="tag">中文乱码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%B1%E4%BA%AB%E7%BD%91%E7%BB%9C/" rel="tag">共享网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/" rel="tag">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" rel="tag">单元测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%8B%E7%82%B9%E9%87%87%E9%9B%86/" rel="tag">埋点采集</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" rel="tag">大模型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%99%E6%98%8A/" rel="tag">孙昊</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E7%A0%81/" rel="tag">密码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%BC%E5%85%A5/" rel="tag">导入</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%BC%E5%87%BA/" rel="tag">导出</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%98%E8%AE%B0%E5%AF%86%E7%A0%81/" rel="tag">忘记密码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%81%A2%E5%A4%8D%E6%95%B0%E6%8D%AE/" rel="tag">恢复数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%B7%E8%B4%9D/" rel="tag">拷贝</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%94%B6%E9%9B%86/" rel="tag">收集</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%B6%E9%97%B4/" rel="tag">时间</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%83%E9%99%90/" rel="tag">权限</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" rel="tag">树莓派</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A3%80%E6%9F%A5/" rel="tag">检查</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BA%90%E7%A0%81/" rel="tag">源码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB/" rel="tag">生活</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/" rel="tag">生活随笔</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A1%AC%E4%BB%B6/" rel="tag">硬件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AB%99%E5%8A%A1/" rel="tag">站务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B3%BB%E7%BB%9F/" rel="tag">系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%8A%B1%E7%94%9F%E5%A3%B3/" rel="tag">花生壳</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%81%E4%B9%A6/" rel="tag">证书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%AD%E6%B3%95%E7%B3%96/" rel="tag">语法糖</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AC%E8%BD%BD/" rel="tag">转载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81%E8%A1%A8/" rel="tag">锁表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99/" rel="tag">防火墙</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%99%8D%E7%BA%A7/" rel="tag">降级</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://github.com/sunhao-java">GitHub</a> <br/>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://gitee.com/crazy-coder">Git@OSC</a> <br/>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://my.oschina.net/sunhaojava">开源中国</a> <br/>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://broucetrong.github.io/">路路同学的博客</a> <br/>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">Talk is cheap,show me the code.</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页"></a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/imgs/coder.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页"></a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives">所有文章</a></li>
+                
+                    <li><a href="/tags">标签云</a></li>
+                
+                    <li><a href="/1900/01/01/ge-ren-jian-li/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:&#115;&#117;&#110;&#104;&#97;&#111;&#48;&#53;&#53;&#48;&#64;&#49;&#54;&#51;&#46;&#99;&#111;&#109;" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/sunhao-java" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap">
+    <script src="//cdn.jsdelivr.net/npm/crypto-js@4.0.0/crypto-js.min.js"></script>
+    <script>
+        (function() {
+            let pwd = '';
+            if (pwd && pwd.length > 0) {
+                if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                    alert('密码错误，将返回主页！');
+                    location.href = '/';
+                }
+            }
+        })();
+    </script>
+
+
+<article id="post-数据库/atlas-mysql" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/23/shu-ju-ku/atlas-mysql/" class="article-date">
+      <time datetime="2017-05-23T00:00:00.000Z" itemprop="datePublished">2017-05-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      通过Atlas实现MySQL读写分离
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Atlas/" rel="tag">Atlas</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/database/" rel="tag">database</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <blockquote>
+<p>最近公司项目要求MySQL高可用，加上以前公司听过QiHoo360的Atlas，所以就尝试搭建了一个MySQL读写分离，并且高可用的。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><ol>
+<li>准备4台机器，系统为<code>CentOS release 6.6</code></li>
+<li>Ip分别为<code>192.168.20.121</code>、<code>192.168.20.122</code>、<code>192.168.20.123</code>、<code>192.168.20.124</code></li>
+<li>4台机器分别作为<code>Atlas代理服务</code>，<code>master MySQL</code>，<code>slave MySQL 1</code>，<code>slave MySQL 2</code></li>
+<li>下载QiHoo360的Atlas <a href="https://github.com/Qihoo360/Atlas/releases">地址</a></li>
+</ol>
+<h2 id="安装Atlas"><a href="#安装Atlas" class="headerlink" title="安装Atlas"></a>安装Atlas</h2><ol>
+<li><p>下载得到<code>Atlas-XX.el6.x86_64.rpm</code>安装文件</p>
+</li>
+<li><p><code>sudo rpm –i Atlas-XX.el6.x86_64.rpm</code>安装</p>
+</li>
+<li><p>安装在<code>/usr/local/mysql-proxy</code></p>
+</li>
+<li><p>安装目录分析</p>
+<ul>
+<li><code>bin</code><ul>
+<li>可执行文件</li>
+<li><code>encrypt</code>用来加密密码，后面会用到</li>
+<li><code>mysql-proxy</code>是MySQL自己的读写分离代理</li>
+<li><code>mysql-proxyd</code>操作Atlas</li>
+<li><code>VERSION</code></li>
+</ul>
+</li>
+<li><code>conf</code><ul>
+<li><code>test.cnf</code>配置文件</li>
+<li>一个文件为一个实例，实例名即文件名，启动需要带上这个实例名</li>
+</ul>
+</li>
+<li><code>lib</code>依赖包</li>
+<li><code>log</code>记录日志</li>
+</ul>
+</li>
+<li><p>启动命令：<code>/usr/local/mysql-proxy/bin/mysql-proxyd [实例名] start</code></p>
+</li>
+<li><p>停止命令：<code>/usr/local/mysql-proxy/bin/mysql-proxyd [实例名] stop</code></p>
+</li>
+<li><p>同理，<code>restart</code>为重启，<code>status</code>为查看状态</p>
+</li>
+<li><p>配置文件解释</p>
+<p> 请查看<a href="https://github.com/Qihoo360/Atlas/wiki/Atlas%E7%9A%84%E5%AE%89%E8%A3%85">官方文档</a></p>
+</li>
+</ol>
+<h2 id="数据库配置"><a href="#数据库配置" class="headerlink" title="数据库配置"></a>数据库配置</h2><ol>
+<li><p>1台master2台slave，都要配置相同的用户名密码，且都要可以远程访问</p>
+</li>
+<li><p>分别进入3台服务器，创建相同的用户名密码，创建数据库<code>test</code>，设置权限</p>
+<pre><code> CREATE USER &#39;test&#39;@&#39;%&#39; IDENTIFIED BY &#39;test123&#39;;
+ CREATE USER &#39;test&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;test123&#39;;
+ grant all privileges on test.* to &#39;test&#39;@&#39;%&#39; identified by &#39;test123&#39;;
+ grant all privileges on test.* to &#39;test&#39;@&#39;localhost&#39; identified by &#39;test123&#39;;
+ flush privileges;
+</code></pre>
+</li>
+<li><p>主从数据库配置</p>
+<ol>
+<li>配置master服务器<ul>
+<li><p>找到MySQL配置文件<code>my.cnf</code>，一般在<code>etc</code>目录下</p>
+</li>
+<li><p>修改配置文件</p>
+<pre><code>  [mysqld]
+  # 一些其他配置
+  ... 
+    
+  #主从复制配置  
+  innodb_flush_log_at_trx_commit=1  
+  sync_binlog=1  
+  #需要备份的数据库
+  binlog-do-db=test
+  #不需要备份的数据库
+  binlog-ignore-db=mysql  
+    
+  #启动二进制文件  
+  log-bin=mysql-bin  
+    
+  #服务器ID  
+  server-id=1  
+    
+  # Disabling symbolic-links is recommended to prevent assorted security risks  
+  symbolic-links=0
+</code></pre>
+</li>
+<li><p>重启数据库<code>service mysql restart</code></p>
+</li>
+<li><p>进入数据库，配置主从复制的权限</p>
+<pre><code>  mysql -uroot -p123456
+  grant replication slave on *.* to &#39;test&#39;@&#39;127.0.0.1&#39; identified by &#39;test123&#39;;
+</code></pre>
+</li>
+<li><p>查看主数据库信息，记住下面的<code>File</code>与<code>Position</code>的信息，它们是用来配置从数据库的关键信息。</p>
+<pre><code>  mysql&gt; show master status;
+  +------------------+----------+--------------+------------------+
+  | File             | Position | Binlog_Do_DB | Binlog_Ignore_DB |
+  +------------------+----------+--------------+------------------+
+  | mysql-bin.000002 | 17620976 | test         | mysql            |
+  +------------------+----------+--------------+------------------+
+  1 row in set (0.00 sec)
+</code></pre>
+</li>
+</ul>
+</li>
+<li>配置两台salve服务器<ul>
+<li><p>找到配置文件<code>my.cnf</code></p>
+</li>
+<li><p>修改配置文件如下</p>
+<pre><code>  [mysqld]
+  # 一些其他配置
+  ... 
+  
+  # 几台服务器不能一样
+  server-id=2
+  
+  # Disabling symbolic-links is recommended to prevent assorted security risks
+  symbolic-links=0
+</code></pre>
+</li>
+<li><p>进入数据库，配置从数据库的信息，这里输入刚才记录下来的<code>File</code>与<code>Position</code>的信息，并且在从服务器上执行：</p>
+<pre><code>          # master数据库的ip
+  mysql&gt; change master to master_host=&#39;192.168.20.122&#39;,
+          # master的用户名
+      -&gt; master_user=&#39;buck&#39;,
+          # 密码
+      -&gt; master_password=&#39;hello&#39;,
+          # 端口
+      -&gt; master_port=3306,
+          # master数据库的`File `
+      -&gt; master_log_file=&#39;mysql-bin.000002&#39;,
+          # master数据库的`Position`
+      -&gt; master_log_pos=17620976,
+      -&gt; master_connect_retry=10;
+</code></pre>
+</li>
+<li><p>启动进程</p>
+<pre><code>  mysql&gt; start slave;
+  Query OK, 0 rows affected (0.00 sec)
+</code></pre>
+</li>
+<li><p>检查主从复制状态，要看到下列<code>Slave_IO_Running</code>、<code>Slave_SQL_Running </code>的信息中，两个都是<code>Yes</code>，才说明主从连接正确，如果有一个是No，需要重新确定刚才记录的日志信息，停掉“stop slave”重新进行配置主从连接。</p>
+<pre><code>  mysql&gt; show slave status \G;
+  *************************** 1. row ***************************
+                 Slave_IO_State: Waiting for master to send event
+                    Master_Host: 192.168.246.134
+                    Master_User: buck
+                    Master_Port: 3306
+                  Connect_Retry: 10
+                Master_Log_File: mysql-bin.000002
+            Read_Master_Log_Pos: 17620976
+                 Relay_Log_File: mysqld-relay-bin.000002
+                  Relay_Log_Pos: 251
+          Relay_Master_Log_File: mysql-bin.000002
+               Slave_IO_Running: Yes
+              Slave_SQL_Running: Yes
+                Replicate_Do_DB: 
+            Replicate_Ignore_DB: 
+             Replicate_Do_Table: 
+         Replicate_Ignore_Table: 
+        Replicate_Wild_Do_Table: 
+    Replicate_Wild_Ignore_Table: 
+                     Last_Errno: 0
+                     Last_Error: 
+                   Skip_Counter: 0
+            Exec_Master_Log_Pos: 17620976
+                Relay_Log_Space: 407
+                Until_Condition: None
+                 Until_Log_File: 
+                  Until_Log_Pos: 0
+             Master_SSL_Allowed: No
+             Master_SSL_CA_File: 
+             Master_SSL_CA_Path: 
+                Master_SSL_Cert: 
+              Master_SSL_Cipher: 
+                 Master_SSL_Key: 
+          Seconds_Behind_Master: 0
+  Master_SSL_Verify_Server_Cert: No
+                  Last_IO_Errno: 0
+                  Last_IO_Error: 
+                 Last_SQL_Errno: 0
+                 Last_SQL_Error: 
+  1 row in set (0.00 sec)
+  
+  ERROR: 
+  No query specified
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="Atlas配置"><a href="#Atlas配置" class="headerlink" title="Atlas配置"></a>Atlas配置</h2><ol>
+<li><p>使用Atlas的加密工具对上面用户的密码进行加密</p>
+<pre><code> /usr/local/mysql-proxy/bin/encrypt test123
+ 29uENYYsKLo=
+</code></pre>
+</li>
+<li><p>配置atlas</p>
+<ul>
+<li><p>这是用来登录到Atlas的管理员的账号与密码，与之对应的是<code>Atlas监听的管理接口IP和端口</code>，也就是说需要设置管理员登录的端口，才能进入管理员界面，默认端口是<code>2345</code>，也可以指定IP登录，指定IP后，其他的IP无法访问管理员的命令界面。方便测试，我这里没有指定IP和端口登录。</p>
+</li>
+<li><p>配置主数据的地址与从数据库的地址，这里配置的主数据库是122，从数据库是123、124</p>
+<pre><code>  #Atlas后端连接的MySQL主库的IP和端口，可设置多项，用逗号分隔
+  proxy-backend-addresses = 192.168.20.122:3306
+  #Atlas后端连接的MySQL从库的IP和端口，@后面的数字代表权重，用来作负载均衡，若省略则默认为1，可设置多项，用逗号分隔
+  proxy-read-only-backend-addresses = 192.168.20.123:3306@1,192.168.20.124:3306@2
+</code></pre>
+</li>
+<li><p>这个是用来配置MySQL的账户与密码的，就是上面创建的用户，用户名是<code>test</code>,密码是<code>test123</code>,刚刚使用Atlas提供的工具生成了对应的加密密码</p>
+<pre><code>  pwds = buck:RePBqJ+5gI4=
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>启动Atlas</p>
+<pre><code> [root@localhost /usr/local/mysql-proxy/bin]# ./mysql-proxyd test start
+ OK: MySQL-Proxy of test is started
+</code></pre>
+</li>
+</ol>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><ol>
+<li><p>进入atlas的管理界面</p>
+<pre><code> [root@localhost ~]#mysql -h127.0.0.1 -P2345 -uuser -ppwd
+ Welcome to the MySQL monitor.  Commands end with ; or \g.
+ Your MySQL connection id is 1
+ Server version: 5.0.99-agent-admin
+ 
+ Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
+ 
+ Oracle is a registered trademark of Oracle Corporation and/or its
+ affiliates. Other names may be trademarks of their respective
+ owners.
+ 
+ Type &#39;help;&#39; or &#39;\h&#39; for help. Type &#39;\c&#39; to clear the current input statement.
+ 
+ mysql&gt; select * from help;
+ +----------------------------+---------------------------------------------------------+
+ | command                    | description                                             |
+ +----------------------------+---------------------------------------------------------+
+ | SELECT * FROM help         | shows this help                                         |
+ | SELECT * FROM backends     | lists the backends and their state                      |
+ | SET OFFLINE $backend_id    | offline backend server, $backend_id is backend_ndx&#39;s id |
+ | SET ONLINE $backend_id     | online backend server, ...                              |
+ | ADD MASTER $backend        | example: &quot;add master 127.0.0.1:3306&quot;, ...               |
+ | ADD SLAVE $backend         | example: &quot;add slave 127.0.0.1:3306&quot;, ...                |
+ | REMOVE BACKEND $backend_id | example: &quot;remove backend 1&quot;, ...                        |
+ | SELECT * FROM clients      | lists the clients                                       |
+ | ADD CLIENT $client         | example: &quot;add client 192.168.1.2&quot;, ...                  |
+ | REMOVE CLIENT $client      | example: &quot;remove client 192.168.1.2&quot;, ...               |
+ | SELECT * FROM pwds         | lists the pwds                                          |
+ | ADD PWD $pwd               | example: &quot;add pwd user:raw_password&quot;, ...               |
+ | ADD ENPWD $pwd             | example: &quot;add enpwd user:encrypted_password&quot;, ...       |
+ | REMOVE PWD $pwd            | example: &quot;remove pwd user&quot;, ...                         |
+ | SAVE CONFIG                | save the backends to config file                        |
+ | SELECT VERSION             | display the version of Atlas                            |
+ +----------------------------+---------------------------------------------------------+
+ 16 rows in set (0.00 sec)
+ 
+ mysql&gt; 
+</code></pre>
+</li>
+<li><p>使用工作接口来访问</p>
+<pre><code> [root@localhost ~]#mysql -h127.0.0.1 -P1234 -utest -ptest123
+ Welcome to the MySQL monitor.  Commands end with ; or \g.
+ Your MySQL connection id is 34
+ Server version: 5.0.81-log MySQL Community Server (GPL)
+ 
+ Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
+ 
+ Oracle is a registered trademark of Oracle Corporation and/or its
+ affiliates. Other names may be trademarks of their respective
+ owners.
+ 
+ Type &#39;help;&#39; or &#39;\h&#39; for help. Type &#39;\c&#39; to clear the current input statement.
+ 
+ mysql&gt; show databases;
+ +--------------------+
+ | Database           |
+ +--------------------+
+ | information_schema |
+ | mysql              |
+ | performance_schema |
+ | test               |
+ +--------------------+
+ 4 rows in set (0.00 sec)
+ 
+ mysql&gt;
+</code></pre>
+</li>
+</ol>
+<h2 id="使用可视化管理工具Navicat登录"><a href="#使用可视化管理工具Navicat登录" class="headerlink" title="使用可视化管理工具Navicat登录"></a>使用可视化管理工具<code>Navicat</code>登录</h2><p>使用用户名<code>test</code>、密码<code>test123</code>、端口<code>1234</code>、地址<code>192.168.20.121</code>正常登录。注意，这里登录的是atlas服务器，不再是任何一个MySQL服务器</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/05/23/shu-ju-ku/atlas-mysql/">通过Atlas实现MySQL读写分离</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页"></a></p>
+        <p><span>发布时间:</span>2017-05-23, 00:00:00</p>
+        <p><span>最后更新:</span>2025-10-15, 11:45:49</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/05/23/shu-ju-ku/atlas-mysql/" title="通过Atlas实现MySQL读写分离">https://www.crazy-coder.cn/2017/05/23/shu-ju-ku/atlas-mysql/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://www.crazy-coder.cn/2017/05/23/shu-ju-ku/atlas-mysql/　　作者: " title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/05/24/zhong-jian-jian/redis-high-availability-cluster/">
+                    Redis高可用集群搭建
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/08/30/qi-ta/jay/">
+                    周杰伦Jay所有专辑
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87"><span class="toc-text">前期准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Atlas"><span class="toc-text">安装Atlas</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E9%85%8D%E7%BD%AE"><span class="toc-text">数据库配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Atlas%E9%85%8D%E7%BD%AE"><span class="toc-text">Atlas配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95"><span class="toc-text">测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%8F%AF%E8%A7%86%E5%8C%96%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7Navicat%E7%99%BB%E5%BD%95"><span class="toc-text">使用可视化管理工具Navicat登录</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"true"];
+    </script>
+
+
+
+
+
+  <section id="comments" style="margin:30px;padding:10px;background:#fff;">
+    <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table,
+    th,
+    td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table,
+    th,
+    td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n),
+    thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked),
+    [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table,
+    th,
+    td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n),
+    thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked),
+    [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling"
+        style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fa fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.15.0/dist/av-min.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/valine@1.5.3/dist/Valine.min.js"></script>
+<script>
+    window.onload = function () {
+        new Valine({
+            el: '#vcomments',
+            appId: 'OJ2pfpiAsKFEaS0ECgzplSAw-9Nh9j0Va',
+            appKey: 'BWcHSufa9GQHjwLiqu1ILdas',
+            notify: 'false' === 'true',
+            verify: 'false' === 'true',
+            visitor: 'false' === 'true',
+            avatar: 'mp',
+            
+            avatar_cdn: 'https://cravatar.cn/avatar/',
+            
+            pageSize: '10',
+            lang: 'zh-cn',
+            placeholder: '请留下您宝贵的意见',
+            meta: ["nick"],
+            recordIP: 'true' === 'true',
+            enableQQ: 'false,' === 'true',
+            serverURLs: 'https://oj2pfpia.lc-cn-n1-shared.com'
+    });
+    }
+</script>
+  </section>
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/05/24/zhong-jian-jian/redis-high-availability-cluster/" title="上一篇: Redis高可用集群搭建">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/08/30/qi-ta/jay/" title="下一篇: 周杰伦Jay所有专辑">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2025/09/03/zhong-jian-jian/ide-an-zhuang-wakatime-cha-jian-ji-jie-shao/">IDE安装wakatime插件及介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2025/08/28/hou-duan/ru-he-you-ya-de-she-ji-restful-api/">如何优雅的设计RESTful API</a></li><li class="post-list-item"><a class="post-list-link" href="/2025/06/11/yun-wei/shi-yong-mkcert-zi-qian-zheng-shu/">使用mkcert自签证书</a></li><li class="post-list-item"><a class="post-list-link" href="/2025/03/10/yun-wei/shu-mei-pai-xi-tong-an-zhuang-chu-shi-hua-bu-zou/">树莓派系统安装、初始化步骤</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/08/22/ai/function-calling/">我对Function Calling认知</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/04/18/yun-wei/zhuan-zai-lan-lu-fa-bu-gun-dong-fa-bu-hui-du-fa-bu-jin-si-que-fa-bu-ab-test-dui-bi/">【转载】蓝绿发布、滚动发布、灰度发布/金丝雀发布、AB Test 对比</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/05/gong-ju/centos-an-zhuang-ffmpeg/">CentOS安装FFmpeg</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/13/hou-duan/java-yu-fa-tang-jie-shao/">Java语法糖介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/23/gong-ju/git-tong-shi-push-dao-duo-ge-yuan-duan-cang-ku/">git同时push到多个远端仓库</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/13/da-shu-ju/flume-xiao-fei-kafka-zhong-de-xiao-xi-cun-chu-dao-hbase-zhong/">Flume消费Kafka中的消息存储到Hbase中</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/13/da-shu-ju/kafka-chang-yong-ming-ling/">Kafka常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/13/da-shu-ju/an-zhuang-hbase/">安装HBase</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/11/da-shu-ju/openresty-ji-lu-ri-zhi-shu-chu-dao-kafka/">OpenResty记录日志输出到kafka</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/11/da-shu-ju/an-zhuang-openresty/">安装OpenResty</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/25/hou-duan/gen-wo-yi-qi-xi-lie-zhi-du-spring-zhu-jie-yuan-ma/">跟我一起系列之读Spring注解源码</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/28/hou-duan/xxl-job-ji-ge-guan-jian-xian-cheng-dui-lie-de-fen-xi/">XXL-JOB几个关键线程、队列的分析</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/28/hou-duan/xxl-job-ri-zhi-huo-qu-fen-xi/">XXL-JOB日志获取分析</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/28/hou-duan/mo-ni-ren-wu-zu-sai-chu-li-ce-lue/">模拟任务阻塞处理策略</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/24/hou-duan/xxl-job-diao-yan/">XXL-JOB调研</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/12/yun-wei/failed-to-start-mysql/">记一次MySQL启动失败原因的分析</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/22/yun-wei/helm-yong-fa/">Helm学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/10/hou-duan/shi-yong-powermockito-mockserver-ce-shi-wai-bu-fu-wu/">使用PowerMockito+MockServer测试外部服务</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/10/hou-duan/shi-yong-mockito-jin-xing-dan-yuan-ce-shi/">使用mockito进行单元测试</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/27/gong-ju/git-zhong-de-hou-hui-yao/">git中的后悔药</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/23/gong-ju/shi-yong-docker-an-zhuang-yapi/">使用Docker安装YApi</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/18/yun-wei/da-jian-harbor-qi-ye-ji-docker-cang-ku/">搭建Harbor企业级docker仓库</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/10/yun-wei/an-zhuang-kubernetes/">安装kubernetes</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/13/gong-ju/build-blog-on-travis/">通过Travis来自动构建博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/04/hou-duan/spring-cloud-components/">spring-cloud各组件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/05/zhong-jian-jian/nginx-keepalived-cluster/">keepalived + nginx 实现高可用集群方案</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/05/zhong-jian-jian/install-fastdfs-cluster/">FastDFS之集群部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/26/zhong-jian-jian/fastdfs-install/">安装配置FastDFS</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/26/zhong-jian-jian/mongodb-high-availability-cluster/">Mongodb高可用集群搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/24/zhong-jian-jian/redis-high-availability-cluster/">Redis高可用集群搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/23/shu-ju-ku/atlas-mysql/">通过Atlas实现MySQL读写分离</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/30/qi-ta/jay/">周杰伦Jay所有专辑</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/21/gong-ju/blog-create/">博客搭建过程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/zhong-jian-jian/linux-ubuntu-install-svn-apache/">Linux_Ubuntu下安装配置Svn+Apache服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/zhong-jian-jian/mongodb-install/">MongoDB_安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/zhong-jian-jian/nginx-url/">nginx过滤url实现前台js的配置问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/zhong-jian-jian/solr-delete-index/">Solr删除数据的几种方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/hou-duan/spring-3.0.5-utils/">spring3.0.5的工具类</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/gong-ju/windows7-share-network/">windows7共享网络</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/gong-ju/windows-soft-link/">Windows下创建软连接</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/shu-ju-ku/linux-oracle-manager/">Linux_oracle管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/shu-ju-ku/mysql-command/">MySQL常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/shu-ju-ku/oracle-expdb-impdb/">Oracle_降级导入导出</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/shu-ju-ku/mysql-update-root-pwd/">MySQL_修改root帐号密码</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/shu-ju-ku/oracle-export-import/">Oracle_关于oracle导入导出数据库表结构和数据</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/shu-ju-ku/oracle-forget-password/">Oracle_忘记密码解决方案</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/shu-ju-ku/oracle-table-lock/">Oracle_查看锁表信息及解锁</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/shu-ju-ku/oracle-revert-data/">Oracle_恢复数据</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/yun-wei/linux-ubuntu-install-rpm-deb/">Linux_Ubuntu使用Deb安装rpm</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/15/zhong-jian-jian/linux-ubuntu-install-mongodb/">Linux_Ubuntu_安装mongoDB</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/15/zhong-jian-jian/linux-ubuntu-install-nginx/">Linux_Ubuntu_安装Nginx</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/15/zhong-jian-jian/linux-ubuntu-install-rabbitmq/">Linux_Ubuntu_安装rabbitmq</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/15/zhong-jian-jian/linux-ubuntu-install-redis/">Linux_Ubuntu_安装redis</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/15/zhong-jian-jian/linux-ubuntu-install-zookeeper/">Linux_Ubuntu_安装zookeeper</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/15/zhong-jian-jian/solr-use/">solr_使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/15/shu-ju-ku/linux-mysql-chinese/">Linux下mysql中文乱码解决方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/15/shu-ju-ku/linux-ubuntu-install-oracle/">Linux_Ubuntu_安装Oracle</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/15/yun-wei/linux-copy-remote/">Linux下远程拷贝文件夹</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/15/yun-wei/linux-ubuntu-root-login/">Linux_Ubuntu_允许root登录</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/15/yun-wei/linux-ubuntu-ufw/">Linux_Ubuntu_防火墙操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/14/zhong-jian-jian/install-memcache-linux/">在Linux上安装Memcached服务</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/14/hou-duan/install-jdk-linux/">Linux上安装JDK</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/14/hou-duan/java-war/">Java命令打war包</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/14/gong-ju/install-phddns-linux/">Linux下安装花生壳</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/14/shu-ju-ku/linux-access-mysql-remote/">Linux_远程访问Linux下的mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/14/yun-wei/linux-base-study/">Linux_基本学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/14/yun-wei/linux-hardware/">Linux_检查和收集Linux硬件信息的7个命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/14/yun-wei/linux-setting-time/">Linux_设置时间</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/14/yun-wei/linux-user-permission/">Linux上给新建的用户赋权限</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/27/gong-ju/wai-wang-fang-wen-ben-ji/">外网访问本机</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/18/qi-ta/yao-qu-du-de-shu/">要去读的书</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/14/hou-duan/guava-vs-jdk8/">guava vs jdk8</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/14/hou-duan/han-shu-shi-bian-cheng-jie-shao/">函数式编程介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/26/qi-ta/wo-de-fu-wu-lie-biao/">我的服务列表</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/17/zhong-jian-jian/sonar-shi-yong-fang-fa/">Sonar使用方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/13/zhong-jian-jian/sonar-an-zhuang-bu-zou/">Sonar安装步骤</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/12/zhong-jian-jian/linux-ubuntu-an-zhuang-redis/">Linux_Ubuntu安装Redis</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/04/09/ge-ren-gan-wu/as-a-coder/">作为一个苦逼码农，我要想想我以后的出路</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/01/14/ge-ren-gan-wu/for-you/">写给亲爱的媳妇还有未来的娃</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/11/18/hou-duan/maven-plugins/">关于maven的几个常用插件</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/07/11/hou-duan/p6spy/">关于p6spy的介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/06/05/qian-duan/history/">使用history.back(-1)的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/1900/01/01/ge-ren-jian-li/">个人简历</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i>
+                2012-
+                            2025
+                                孙昊(Hulk) | <a href="https://beian.miit.gov.cn/"
+                                        title="苏ICP备20017156号-1">
+                                        苏ICP备20017156号-1
+                                    </a>
+                                    | Powered by <a href="http://hexo.io/" target="_blank"
+                                        title="快速、简洁且高效的博客框架">Hexo</a>
+            </div>
+            <div class="footer-right">
+                
+                    <div class="visit">
+                        
+                            <span id="busuanzi_container_site_pv" style='display:none'>
+                                <span id="site-visit" title="本站到访数"><i class="fa fa-user"
+                                        aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                                </span>
+                            </span>
+                            
+                                
+                                    <span>| </span>
+                                    
+                                        
+                                            <span id="busuanzi_container_page_pv" style='display:none'>
+                                                <span id="page-visit" title="本页阅读量"><i
+                                                        class="fa fa-eye animated infinite pulse"
+                                                        aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                                                </span>
+                                            </span>
+                                            
+                    </div>
+                    
+            </div>
+        </div>
+    </div>
+</footer>
+    </div>
+    
+    
+<script src="/js/GithubRepoWidget.js"></script>
+
+
+<script data-main="/js/main.js" src="//cdn.jsdelivr.net/npm/requirejs@2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 3;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+             github: ".github-widget a", 
+            
+            
+            
+            
+            
+            
+            
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+  </div>
+</body>
+</html>

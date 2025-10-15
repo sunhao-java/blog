@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="孙昊(Hulk)" />
+
+
+
+<meta name="description" content="环境准备 tracker：192.168.20.116 storage： group1：192.168.20.117 group2：192.168.20.118   准备好安装文件 fastdfs-5.05.zip fastdfs-nginx-module.zip libfastcommon-1.0.7.zip nginx-1.8.1.tar.gz ngx_cache_purge-2.3.tar.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FastDFS之集群部署">
+<meta property="og:url" content="https://www.crazy-coder.cn/2017/06/05/zhong-jian-jian/install-fastdfs-cluster/index.html">
+<meta property="og:site_name" content="孙昊(Hulk)的博客">
+<meta property="og:description" content="环境准备 tracker：192.168.20.116 storage： group1：192.168.20.117 group2：192.168.20.118   准备好安装文件 fastdfs-5.05.zip fastdfs-nginx-module.zip libfastcommon-1.0.7.zip nginx-1.8.1.tar.gz ngx_cache_purge-2.3.tar.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-06-05T15:24:00.000Z">
+<meta property="article:modified_time" content="2025-10-15T11:45:49.274Z">
+<meta property="article:author" content="孙昊(Hulk)">
+<meta property="article:tag" content="FastDFS">
+<meta name="twitter:card" content="summary">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="孙昊(Hulk)的博客" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/imgs/coder.jpg">
+
+
+
+    <link href="//cdn.jsdelivr.net/npm/animate.css@3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.jsdelivr.net/npm/fancybox@2.1.5/dist/css/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+
+<link href="//cdn.jsdelivr.net/npm/font-awesome@4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>FastDFS之集群部署 | 孙昊(Hulk)的博客</title>
+
+<script src="//cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/clipboard@1.5.10/dist/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.jsdelivr.net/npm/fancybox@2.1.5/dist/js/jquery.fancybox.pack.min.js",
+        scrollreveal: "//cdn.jsdelivr.net/npm/scrollreveal@3.1.4/dist/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.jsdelivr.net/npm/jquery-ui@1.10.4/jquery-ui.min.js", "//cdn.jsdelivr.net/npm/jquery-ui@1.10.4/themes/base/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/imgs/coder.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/"></a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives">所有文章</a></li>
+                        
+                            <li><a href="/tags">标签云</a></li>
+                        
+                            <li><a href="/1900/01/01/ge-ren-jian-li/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:&#115;&#117;&#110;&#104;&#97;&#111;&#48;&#53;&#53;&#48;&#64;&#49;&#54;&#51;&#46;&#99;&#111;&#109;" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/sunhao-java" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atlas/" rel="tag">Atlas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Deb/" rel="tag">Deb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DevOPS/" rel="tag">DevOPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DevOps/" rel="tag">DevOps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FFmpeg/" rel="tag">FFmpeg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FastDFS/" rel="tag">FastDFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flume/" rel="tag">Flume</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HBase/" rel="tag">HBase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Harbor/" rel="tag">Harbor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JDK/" rel="tag">JDK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JDK8/" rel="tag">JDK8</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Memcached/" rel="tag">Memcached</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mongodb/" rel="tag">Mongodb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/" rel="tag">Nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenResty/" rel="tag">OpenResty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Oracle/" rel="tag">Oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RESTful-API/" rel="tag">RESTful API</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Solr/" rel="tag">Solr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sonar/" rel="tag">Sonar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Svn/" rel="tag">Svn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/" rel="tag">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/" rel="tag">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frontend/" rel="tag">frontend</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/guava/" rel="tag">guava</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hbase/" rel="tag">hbase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kafka/" rel="tag">kafka</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/maven/" rel="tag">maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/" rel="tag">mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongoDB/" rel="tag">mongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/" rel="tag">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/p6spy/" rel="tag">p6spy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rabbitmq/" rel="tag">rabbitmq</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/root/" rel="tag">root</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rpm/" rel="tag">rpm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/solr/" rel="tag">solr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/" rel="tag">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring-cloud/" rel="tag">spring-cloud</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wakatime/" rel="tag">wakatime</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/war/" rel="tag">war</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows7/" rel="tag">windows7</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xxl-job/" rel="tag">xxl-job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yapi/" rel="tag">yapi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zookeeper/" rel="tag">zookeeper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/" rel="tag">中文乱码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%B1%E4%BA%AB%E7%BD%91%E7%BB%9C/" rel="tag">共享网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/" rel="tag">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" rel="tag">单元测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%8B%E7%82%B9%E9%87%87%E9%9B%86/" rel="tag">埋点采集</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" rel="tag">大模型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%99%E6%98%8A/" rel="tag">孙昊</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E7%A0%81/" rel="tag">密码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%BC%E5%85%A5/" rel="tag">导入</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%BC%E5%87%BA/" rel="tag">导出</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%98%E8%AE%B0%E5%AF%86%E7%A0%81/" rel="tag">忘记密码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%81%A2%E5%A4%8D%E6%95%B0%E6%8D%AE/" rel="tag">恢复数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%B7%E8%B4%9D/" rel="tag">拷贝</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%94%B6%E9%9B%86/" rel="tag">收集</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%B6%E9%97%B4/" rel="tag">时间</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%83%E9%99%90/" rel="tag">权限</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" rel="tag">树莓派</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A3%80%E6%9F%A5/" rel="tag">检查</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BA%90%E7%A0%81/" rel="tag">源码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB/" rel="tag">生活</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/" rel="tag">生活随笔</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A1%AC%E4%BB%B6/" rel="tag">硬件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AB%99%E5%8A%A1/" rel="tag">站务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B3%BB%E7%BB%9F/" rel="tag">系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%8A%B1%E7%94%9F%E5%A3%B3/" rel="tag">花生壳</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%81%E4%B9%A6/" rel="tag">证书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%AD%E6%B3%95%E7%B3%96/" rel="tag">语法糖</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AC%E8%BD%BD/" rel="tag">转载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81%E8%A1%A8/" rel="tag">锁表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99/" rel="tag">防火墙</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%99%8D%E7%BA%A7/" rel="tag">降级</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://github.com/sunhao-java">GitHub</a> <br/>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://gitee.com/crazy-coder">Git@OSC</a> <br/>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://my.oschina.net/sunhaojava">开源中国</a> <br/>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://broucetrong.github.io/">路路同学的博客</a> <br/>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">Talk is cheap,show me the code.</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页"></a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/imgs/coder.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页"></a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives">所有文章</a></li>
+                
+                    <li><a href="/tags">标签云</a></li>
+                
+                    <li><a href="/1900/01/01/ge-ren-jian-li/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:&#115;&#117;&#110;&#104;&#97;&#111;&#48;&#53;&#53;&#48;&#64;&#49;&#54;&#51;&#46;&#99;&#111;&#109;" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/sunhao-java" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap">
+    <script src="//cdn.jsdelivr.net/npm/crypto-js@4.0.0/crypto-js.min.js"></script>
+    <script>
+        (function() {
+            let pwd = '';
+            if (pwd && pwd.length > 0) {
+                if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                    alert('密码错误，将返回主页！');
+                    location.href = '/';
+                }
+            }
+        })();
+    </script>
+
+
+<article id="post-中间件/install_fastdfs_cluster" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/06/05/zhong-jian-jian/install-fastdfs-cluster/" class="article-date">
+      <time datetime="2017-06-05T15:24:00.000Z" itemprop="datePublished">2017-06-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      FastDFS之集群部署
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/">中间件</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FastDFS/" rel="tag">FastDFS</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><ol>
+<li>tracker：192.168.20.116</li>
+<li>storage：<ul>
+<li>group1：192.168.20.117</li>
+<li>group2：192.168.20.118</li>
+</ul>
+</li>
+<li>准备好安装文件<ul>
+<li>fastdfs-5.05.zip</li>
+<li>fastdfs-nginx-module.zip</li>
+<li>libfastcommon-1.0.7.zip</li>
+<li>nginx-1.8.1.tar.gz</li>
+<li>ngx_cache_purge-2.3.tar.gz</li>
+<li>pcre-8.36.zip</li>
+<li>zlib-1.2.8.tar.gz</li>
+</ul>
+</li>
+</ol>
+<span id="more"></span>
+
+<h2 id="安装tracker"><a href="#安装tracker" class="headerlink" title="安装tracker"></a><span id="install_tracker">安装tracker</span></h2><ol>
+<li><p>安装依赖libfastcommon</p>
+<pre><code> unzip libfastcommon-1.0.7.zip
+ cd libfastcommon-1.0.7
+ ./make.sh 
+ ./make.sh  install
+</code></pre>
+</li>
+<li><p>安装FastDFS</p>
+<pre><code> unzip fastdfs-5.05.zip
+ cd fastdfs-5.05
+ ./make.sh 
+ ./make.sh install
+ 
+</code></pre>
+<p> 默认安装目录：<code>/usr/bin</code></p>
+<p> 配置文件在：<code>/etc/fdfs</code>，需要重命名吧<code>.sample</code>去掉</p>
+</li>
+<li><p>配置</p>
+<p> 编辑配置文件目录下的<code>tracker.conf</code>，一般只需改动以下几个参数即可：</p>
+<pre><code> disabled=false            #启用配置文件
+ port=22122                #设置tracker的端口号
+ base_path=/opt/fastdfs   #设置tracker的数据文件和日志目录（需预先创建）
+ http.server_port=8080     #设置http端口号
+</code></pre>
+</li>
+<li><p>创建数据存储文件夹 </p>
+<pre><code> mkdir /opt/fastdfs
+</code></pre>
+</li>
+<li><p>启动</p>
+<pre><code> fdfs_trackerd /etc/fdfs/tracker.conf
+</code></pre>
+</li>
+<li><p>安装tracker代理nginx</p>
+<p> 在tracker上安装的nginx主要为了提供http访问的反向代理、负载均衡以及缓存服务。</p>
+<ol>
+<li><p>安装nginx（具体参考<a href="http://www.crazy-coder.cn/2016/03/15/linux_ubuntu_install_nginx/">安装Nginx</a>）</p>
+<pre><code> tar -zxvf nginx-1.8.1.tar.gz 
+ tar -zxvf ngx_cache_purge-2.3.tar.gz 
+ cd nginx-1.8.1
+ ./configure --prefix=/opt/nginx --add-module=/opt/software/ngx_cache_purge-2.3 --without-http_gzip_module
+ make 
+ make install
+ 
+</code></pre>
+<p> 如果提示错误，可能缺少依赖的软件包，需先安装依赖包，再次运行.&#x2F;configure。nginx以及nginx cache purge插件模块安装完成，安装目录&#x2F;opt&#x2F;nginx。</p>
+</li>
+<li><p>配置nginx</p>
+<pre><code> #user  nobody;
+ worker_processes  1;
+ 
+ error_log  logs/error.log  info;
+ 
+ events &#123;
+     worker_connections  1024;
+ &#125;
+ 
+ http &#123;
+     include       mime.types;
+     default_type  application/octet-stream;
+ 
+     #设置缓存参数
+     server_names_hash_bucket_size 128;
+     client_header_buffer_size 32k;
+     large_client_header_buffers 4 32k;
+     client_max_body_size 300m;
+     sendfile        on;
+     tcp_nopush     on;
+     proxy_redirect off;
+     proxy_set_header Host $http_host;
+     proxy_set_header X-Real-IP $remote_addr;
+     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+     proxy_connect_timeout 90;
+     proxy_send_timeout 90;
+     proxy_read_timeout 90;
+     proxy_buffer_size 16k;
+     proxy_buffers 4 64k;
+     proxy_busy_buffers_size 128k;
+     proxy_temp_file_write_size 128k;
+     # 设置缓存存储路径、存储方式、分配内存大小、磁盘最大空间、缓存期限
+     proxy_cache_path /var/cache/nginx/proxy_cache levels=1:2 keys_zone=http-cache:500m max_size=10g inactive=30d;
+ 
+     proxy_temp_path /var/cache/nginx/proxy_cache/tmp;
+ 
+     keepalive_timeout  65;
+ 
+     #设置group服务器
+     upstream fdfs_group1 &#123;
+         server 192.168.20.117:8090 weight=1 max_fails=2 fail_timeout=30s;
+     &#125;
+ 
+     upstream fdfs_group2 &#123;
+         server 192.168.20.118:8090 weight=1 max_fails=2 fail_timeout=30s;
+     &#125;
+ 
+     server &#123;
+         listen       80;
+         server_name  localhost;
+         charset utf-8;
+ 
+         location /group1/M00 &#123;
+                 proxy_next_upstream http_502 http_504 error timeout invalid_header;
+                 proxy_cache http-cache;
+                 proxy_cache_valid  200 304 12h;
+                 proxy_cache_key $uri$is_args$args;
+                 proxy_pass http://fdfs_group1;
+                 expires 30d;
+         &#125;
+         location /group2/M00 &#123;
+                 proxy_next_upstream http_502 http_504 error timeout invalid_header;
+                 proxy_cache http-cache;
+                 proxy_cache_valid  200 304 12h;
+                 proxy_cache_key $uri$is_args$args;
+                 proxy_pass http://fdfs_group2;
+                 expires 30d;
+         &#125;
+ 
+         #设置清除缓存的访问权限
+         location ~ /purge(/.*) &#123;
+                 allow 127.0.0.1;
+                 allow 192.168.72.0/24;
+                 deny all;
+                 proxy_cache_purge http-cache  $1$is_args$args;
+         &#125;
+     &#125;
+ 
+ &#125;
+</code></pre>
+<p> 创建缓存目录：&#x2F;var&#x2F;cache&#x2F;nginx&#x2F;proxy_cache&#x2F;tmp</p>
+</li>
+<li><p>启动nginx</p>
+<pre><code> /opt/nginx/sbin/nginx
+</code></pre>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="安装storage"><a href="#安装storage" class="headerlink" title="安装storage"></a>安装storage</h2><ol>
+<li><p>安装</p>
+<p> 参考<a href="#install_tracker">安装tracker</a>前2步骤。</p>
+</li>
+<li><p>配置</p>
+<p> 编辑配置文件目录下的storage.conf，只需改动以下几个参数即可：</p>
+<pre><code> disabled=false     #启用配置文件
+ group_name=group1 #组名，根据实际情况修改
+ port=23000 #设置storage的端口号
+ base_path=/opt/fastdfs #设置storage的日志目录（需预先创建）
+ store_path_count=1 #存储路径个数，需要和store_path个数匹配
+ store_path0=/opt/fastdfs#存储路径
+ tracker_server=192.168.20.116:22122#tracker服务器的IP地址和端口号
+ http.server_port=8080   #设置http端口号
+</code></pre>
+</li>
+<li><p>创建存储目录</p>
+<pre><code> mkdir /opt/fastdfs
+</code></pre>
+</li>
+<li><p>运行</p>
+<pre><code> fdfs_storaged /etc/fdfs/storage.conf
+</code></pre>
+</li>
+<li><p>按照同样的配置在<code>192.168.20.118</code>上创建<code>storage2</code>，做相应的调整（ip等）</p>
+<p> 另外每个group中所有storage的端口号必须一致。</p>
+</li>
+<li><p>在storage上安装nginx</p>
+<p> 在storage上安装的nginx主要为了提供http的访问服务，同时解决group中storage服务器的同步延迟问题。</p>
+<ol>
+<li><p>解压<code>fastdfs-nginx-module.zip</code>插件</p>
+<pre><code> unzip  fastdfs-nginx-module.zip
+</code></pre>
+</li>
+<li><p>安装nginx（具体参考<a href="http://blog.crazy-coder.cn/2016/03/15/linux_ubuntu_install_nginx/">安装Nginx</a>）</p>
+<pre><code> tar -zxvf nginx-1.8.1.tar.gz 
+ cd nginx-1.8.1
+ ./configure --prefix=/usr/local/nginx --add-module=../fastdfs-nginx-module/src --without-http_gzip_module
+ make 
+ make install
+</code></pre>
+</li>
+<li><p>配置</p>
+<ul>
+<li><p>配置FastDFS的nginx插件</p>
+<p>  将FastDFS的nginx插件模块的配置文件copy到FastDFS配置文件目录</p>
+<pre><code>  cp /opt/fastdfs-nginx-module/src/mod_fastdfs.conf /etc/fdfs/
+</code></pre>
+<p>  编辑&#x2F;etc&#x2F;fdfs配置文件目录下的mod_fastdfs.conf，设置storage信息并保存。</p>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<p>一般只需改动以下几个参数即可：</p>
+<pre><code>            base_path=/opt/fastdfs #保存日志目录
+            tracker_server=192.168.20.116:22122 #tracker服务器的IP地址以及端口号
+            storage_server_port=23000	 #storage服务器的端口号
+            group_name=group1  #当前服务器的group名
+            url_have_group_name = true        #文件url中是否有group名
+            store_path_count=1                #存储路径个数，需要和store_path个数匹配
+            store_path0=/opt/fastdfs         #存储路径
+            
+        在末尾增加2个组的具体信息：
+        
+            [group1]
+            group_name=group1
+            storage_server_port=23000
+            store_path_count=1
+            store_path0=/opt/fastdfs
+            
+            [group2]
+            group_name=group2
+            storage_server_port=23000
+            store_path_count=1
+            store_path0=/opt/fastdfs
+    - 建立M00至存储目录的符号连接：
+
+            ln -s /opt/fastdfs/data /opt/fastdfs/data/M00
+    - 配置nginx
+
+            vi nginx.conf
+            
+            # 在server中添加如下location
+            location ~/group[1-3]/M00 &#123;
+                root /home/fastdfs/data;
+                ngx_fastdfs_module;
+            &#125;
+    - 启动
+            
+            /usr/local/nginx/sbin/nginx
+            
+</code></pre>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>配置&#x2F;etc&#x2F;fdfs&#x2F;client.conf</p>
+<pre><code>base_path=/opt/fastdfs #日志存放路径
+tracker_server=192.168.20.116:22122 #tracker服务器IP地址和端口号
+http.tracker_server_port=8080   		#tracker服务器的http端口号
+</code></pre>
+<p>通过fdfs_upload_file上传一个文件到FastDFS，程序会自动返回文件的URL</p>
+<pre><code>[root@localhost /opt/]#fdfs_upload_file /etc/fdfs/client.conf test 
+group1/M00/00/00/wKgUdVk1drmARcxsAAAOGgU8nEQ0713851
+</code></pre>
+<p>然后使用浏览器访问，访问正常<code>http://192.168.20.116/group1/M00/00/00/wKgUdVk1drmARcxsAAAOGgU8nEQ0713851</code></p>
+<h2 id="监控"><a href="#监控" class="headerlink" title="监控"></a>监控</h2><p>可以使用fdfs_monitor查看tracker和所有group的运行情况</p>
+<pre><code>[root@localhost /opt/nginx/conf]#fdfs_monitor /etc/fdfs/client.conf   
+[2017-06-05 23:21:50] DEBUG - base_path=/opt/fastdfs, connect_timeout=30, network_timeout=60, tracker_server_count=1, anti_steal_token=0, anti_steal_secret_key length=0, use_connection_pool=0, g_connection_pool_max_idle_time=3600s, use_storage_id=0, storage server id count: 0
+
+server_count=1, server_index=0
+
+tracker server is 192.168.20.116:22122
+
+group count: 2
+
+Group 1:
+group name = group1
+disk total space = 35660 MB
+disk free space = 29390 MB
+trunk free space = 0 MB
+storage server count = 1
+active server count = 1
+storage server port = 23000
+storage HTTP port = 8080
+store path count = 1
+subdir count per path = 256
+current write server index = 0
+current trunk file id = 0
+
+        Storage 1:
+                id = 192.168.20.117
+                ip_addr = 192.168.20.117  ACTIVE
+                http domain = 
+                version = 5.05
+                join time = 2017-06-05 19:59:44
+                up time = 2017-06-05 19:59:44
+                total storage = 35660 MB
+                free storage = 29390 MB
+                upload priority = 10
+                store_path_count = 1
+                subdir_count_per_path = 256
+                storage_port = 23000
+                storage_http_port = 8080
+                current_write_path = 0
+                source storage id = 
+                if_trunk_server = 0
+                connection.alloc_count = 256
+                connection.current_count = 0
+                connection.max_count = 1
+                total_upload_count = 3
+                success_upload_count = 3
+                total_append_count = 0
+                success_append_count = 0
+                total_modify_count = 0
+                success_modify_count = 0
+                total_truncate_count = 0
+                success_truncate_count = 0
+                total_set_meta_count = 0
+                success_set_meta_count = 0
+                total_delete_count = 0
+                success_delete_count = 0
+                total_download_count = 0
+                success_download_count = 0
+                total_get_meta_count = 0
+                success_get_meta_count = 0
+                total_create_link_count = 0
+                success_create_link_count = 0
+                total_delete_link_count = 0
+                success_delete_link_count = 0
+                total_upload_bytes = 7429
+                success_upload_bytes = 7429
+                total_append_bytes = 0
+                success_append_bytes = 0
+                total_modify_bytes = 0
+                success_modify_bytes = 0
+                stotal_download_bytes = 0
+                success_download_bytes = 0
+                total_sync_in_bytes = 0
+                success_sync_in_bytes = 0
+                total_sync_out_bytes = 0
+                success_sync_out_bytes = 0
+                total_file_open_count = 3
+                success_file_open_count = 3
+                total_file_read_count = 0
+                success_file_read_count = 0
+                total_file_write_count = 3
+                success_file_write_count = 3
+                last_heart_beat_time = 2017-06-05 23:21:47
+                last_source_update = 2017-06-05 23:20:24
+                last_sync_update = 1970-01-01 08:00:00
+                last_synced_timestamp = 1970-01-01 08:00:00 
+
+Group 2:
+group name = group2
+disk total space = 35660 MB
+disk free space = 29390 MB
+trunk free space = 0 MB
+storage server count = 1
+active server count = 1
+storage server port = 23000
+storage HTTP port = 8080
+store path count = 1
+subdir count per path = 256
+current write server index = 0
+current trunk file id = 0
+
+        Storage 1:
+                id = 192.168.20.118
+                ip_addr = 192.168.20.118  ACTIVE
+                http domain = 
+                version = 5.05
+                join time = 2017-06-05 20:05:35
+                up time = 2017-06-05 20:05:35
+                total storage = 35660 MB
+                free storage = 29390 MB
+                upload priority = 10
+                store_path_count = 1
+                subdir_count_per_path = 256
+                storage_port = 23000
+                storage_http_port = 8080
+                current_write_path = 0
+                source storage id = 
+                if_trunk_server = 0
+                connection.alloc_count = 256
+                connection.current_count = 0
+                connection.max_count = 1
+                total_upload_count = 1
+                success_upload_count = 1
+                total_append_count = 0
+                success_append_count = 0
+                total_modify_count = 0
+                success_modify_count = 0
+                total_truncate_count = 0
+                success_truncate_count = 0
+                total_set_meta_count = 0
+                success_set_meta_count = 0
+                total_delete_count = 0
+                success_delete_count = 0
+                total_download_count = 0
+                success_download_count = 0
+                total_get_meta_count = 0
+                success_get_meta_count = 0
+                total_create_link_count = 0
+                success_create_link_count = 0
+                total_delete_link_count = 0
+                success_delete_link_count = 0
+                total_upload_bytes = 833473
+                success_upload_bytes = 833473
+                total_append_bytes = 0
+                success_append_bytes = 0
+                total_modify_bytes = 0
+                success_modify_bytes = 0
+                stotal_download_bytes = 0
+                success_download_bytes = 0
+                total_sync_in_bytes = 0
+                success_sync_in_bytes = 0
+                total_sync_out_bytes = 0
+                success_sync_out_bytes = 0
+                total_file_open_count = 1
+                success_file_open_count = 1
+                total_file_read_count = 0
+                success_file_read_count = 0
+                total_file_write_count = 4
+                success_file_write_count = 4
+                last_heart_beat_time = 2017-06-05 23:21:37
+                last_source_update = 2017-06-05 22:26:05
+                last_sync_update = 1970-01-01 08:00:00
+                last_synced_timestamp = 1970-01-01 08:00:00
+</code></pre>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/06/05/zhong-jian-jian/install-fastdfs-cluster/">FastDFS之集群部署</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页"></a></p>
+        <p><span>发布时间:</span>2017-06-05, 15:24:00</p>
+        <p><span>最后更新:</span>2025-10-15, 11:45:49</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/06/05/zhong-jian-jian/install-fastdfs-cluster/" title="FastDFS之集群部署">https://www.crazy-coder.cn/2017/06/05/zhong-jian-jian/install-fastdfs-cluster/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://www.crazy-coder.cn/2017/06/05/zhong-jian-jian/install-fastdfs-cluster/　　作者: " title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/06/05/zhong-jian-jian/nginx-keepalived-cluster/">
+                    keepalived + nginx 实现高可用集群方案
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/05/26/zhong-jian-jian/fastdfs-install/">
+                    安装配置FastDFS
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-text">环境准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85tracker"><span class="toc-text">安装tracker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85storage"><span class="toc-text">安装storage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95"><span class="toc-text">测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%91%E6%8E%A7"><span class="toc-text">监控</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"true"];
+    </script>
+
+
+
+
+
+  <section id="comments" style="margin:30px;padding:10px;background:#fff;">
+    <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table,
+    th,
+    td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table,
+    th,
+    td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n),
+    thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked),
+    [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table,
+    th,
+    td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n),
+    thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked),
+    [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling"
+        style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fa fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.15.0/dist/av-min.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/valine@1.5.3/dist/Valine.min.js"></script>
+<script>
+    window.onload = function () {
+        new Valine({
+            el: '#vcomments',
+            appId: 'OJ2pfpiAsKFEaS0ECgzplSAw-9Nh9j0Va',
+            appKey: 'BWcHSufa9GQHjwLiqu1ILdas',
+            notify: 'false' === 'true',
+            verify: 'false' === 'true',
+            visitor: 'false' === 'true',
+            avatar: 'mp',
+            
+            avatar_cdn: 'https://cravatar.cn/avatar/',
+            
+            pageSize: '10',
+            lang: 'zh-cn',
+            placeholder: '请留下您宝贵的意见',
+            meta: ["nick"],
+            recordIP: 'true' === 'true',
+            enableQQ: 'false,' === 'true',
+            serverURLs: 'https://oj2pfpia.lc-cn-n1-shared.com'
+    });
+    }
+</script>
+  </section>
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/06/05/zhong-jian-jian/nginx-keepalived-cluster/" title="上一篇: keepalived + nginx 实现高可用集群方案">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/05/26/zhong-jian-jian/fastdfs-install/" title="下一篇: 安装配置FastDFS">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2025/09/03/zhong-jian-jian/ide-an-zhuang-wakatime-cha-jian-ji-jie-shao/">IDE安装wakatime插件及介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2025/08/28/hou-duan/ru-he-you-ya-de-she-ji-restful-api/">如何优雅的设计RESTful API</a></li><li class="post-list-item"><a class="post-list-link" href="/2025/06/11/yun-wei/shi-yong-mkcert-zi-qian-zheng-shu/">使用mkcert自签证书</a></li><li class="post-list-item"><a class="post-list-link" href="/2025/03/10/yun-wei/shu-mei-pai-xi-tong-an-zhuang-chu-shi-hua-bu-zou/">树莓派系统安装、初始化步骤</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/08/22/ai/function-calling/">我对Function Calling认知</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/04/18/yun-wei/zhuan-zai-lan-lu-fa-bu-gun-dong-fa-bu-hui-du-fa-bu-jin-si-que-fa-bu-ab-test-dui-bi/">【转载】蓝绿发布、滚动发布、灰度发布/金丝雀发布、AB Test 对比</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/05/gong-ju/centos-an-zhuang-ffmpeg/">CentOS安装FFmpeg</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/13/hou-duan/java-yu-fa-tang-jie-shao/">Java语法糖介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/23/gong-ju/git-tong-shi-push-dao-duo-ge-yuan-duan-cang-ku/">git同时push到多个远端仓库</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/13/da-shu-ju/flume-xiao-fei-kafka-zhong-de-xiao-xi-cun-chu-dao-hbase-zhong/">Flume消费Kafka中的消息存储到Hbase中</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/13/da-shu-ju/kafka-chang-yong-ming-ling/">Kafka常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/13/da-shu-ju/an-zhuang-hbase/">安装HBase</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/11/da-shu-ju/openresty-ji-lu-ri-zhi-shu-chu-dao-kafka/">OpenResty记录日志输出到kafka</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/11/da-shu-ju/an-zhuang-openresty/">安装OpenResty</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/25/hou-duan/gen-wo-yi-qi-xi-lie-zhi-du-spring-zhu-jie-yuan-ma/">跟我一起系列之读Spring注解源码</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/28/hou-duan/xxl-job-ji-ge-guan-jian-xian-cheng-dui-lie-de-fen-xi/">XXL-JOB几个关键线程、队列的分析</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/28/hou-duan/xxl-job-ri-zhi-huo-qu-fen-xi/">XXL-JOB日志获取分析</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/28/hou-duan/mo-ni-ren-wu-zu-sai-chu-li-ce-lue/">模拟任务阻塞处理策略</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/24/hou-duan/xxl-job-diao-yan/">XXL-JOB调研</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/12/yun-wei/failed-to-start-mysql/">记一次MySQL启动失败原因的分析</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/22/yun-wei/helm-yong-fa/">Helm学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/10/hou-duan/shi-yong-powermockito-mockserver-ce-shi-wai-bu-fu-wu/">使用PowerMockito+MockServer测试外部服务</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/10/hou-duan/shi-yong-mockito-jin-xing-dan-yuan-ce-shi/">使用mockito进行单元测试</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/27/gong-ju/git-zhong-de-hou-hui-yao/">git中的后悔药</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/23/gong-ju/shi-yong-docker-an-zhuang-yapi/">使用Docker安装YApi</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/18/yun-wei/da-jian-harbor-qi-ye-ji-docker-cang-ku/">搭建Harbor企业级docker仓库</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/10/yun-wei/an-zhuang-kubernetes/">安装kubernetes</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/13/gong-ju/build-blog-on-travis/">通过Travis来自动构建博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/04/hou-duan/spring-cloud-components/">spring-cloud各组件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/05/zhong-jian-jian/nginx-keepalived-cluster/">keepalived + nginx 实现高可用集群方案</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/05/zhong-jian-jian/install-fastdfs-cluster/">FastDFS之集群部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/26/zhong-jian-jian/fastdfs-install/">安装配置FastDFS</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/26/zhong-jian-jian/mongodb-high-availability-cluster/">Mongodb高可用集群搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/24/zhong-jian-jian/redis-high-availability-cluster/">Redis高可用集群搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/23/shu-ju-ku/atlas-mysql/">通过Atlas实现MySQL读写分离</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/30/qi-ta/jay/">周杰伦Jay所有专辑</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/21/gong-ju/blog-create/">博客搭建过程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/zhong-jian-jian/linux-ubuntu-install-svn-apache/">Linux_Ubuntu下安装配置Svn+Apache服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/zhong-jian-jian/mongodb-install/">MongoDB_安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/zhong-jian-jian/nginx-url/">nginx过滤url实现前台js的配置问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/zhong-jian-jian/solr-delete-index/">Solr删除数据的几种方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/hou-duan/spring-3.0.5-utils/">spring3.0.5的工具类</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/gong-ju/windows7-share-network/">windows7共享网络</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/gong-ju/windows-soft-link/">Windows下创建软连接</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/shu-ju-ku/linux-oracle-manager/">Linux_oracle管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/shu-ju-ku/mysql-command/">MySQL常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/shu-ju-ku/oracle-expdb-impdb/">Oracle_降级导入导出</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/shu-ju-ku/mysql-update-root-pwd/">MySQL_修改root帐号密码</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/shu-ju-ku/oracle-export-import/">Oracle_关于oracle导入导出数据库表结构和数据</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/shu-ju-ku/oracle-forget-password/">Oracle_忘记密码解决方案</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/shu-ju-ku/oracle-table-lock/">Oracle_查看锁表信息及解锁</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/shu-ju-ku/oracle-revert-data/">Oracle_恢复数据</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/yun-wei/linux-ubuntu-install-rpm-deb/">Linux_Ubuntu使用Deb安装rpm</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/15/zhong-jian-jian/linux-ubuntu-install-mongodb/">Linux_Ubuntu_安装mongoDB</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/15/zhong-jian-jian/linux-ubuntu-install-nginx/">Linux_Ubuntu_安装Nginx</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/15/zhong-jian-jian/linux-ubuntu-install-rabbitmq/">Linux_Ubuntu_安装rabbitmq</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/15/zhong-jian-jian/linux-ubuntu-install-redis/">Linux_Ubuntu_安装redis</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/15/zhong-jian-jian/linux-ubuntu-install-zookeeper/">Linux_Ubuntu_安装zookeeper</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/15/zhong-jian-jian/solr-use/">solr_使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/15/shu-ju-ku/linux-mysql-chinese/">Linux下mysql中文乱码解决方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/15/shu-ju-ku/linux-ubuntu-install-oracle/">Linux_Ubuntu_安装Oracle</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/15/yun-wei/linux-copy-remote/">Linux下远程拷贝文件夹</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/15/yun-wei/linux-ubuntu-root-login/">Linux_Ubuntu_允许root登录</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/15/yun-wei/linux-ubuntu-ufw/">Linux_Ubuntu_防火墙操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/14/zhong-jian-jian/install-memcache-linux/">在Linux上安装Memcached服务</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/14/hou-duan/install-jdk-linux/">Linux上安装JDK</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/14/hou-duan/java-war/">Java命令打war包</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/14/gong-ju/install-phddns-linux/">Linux下安装花生壳</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/14/shu-ju-ku/linux-access-mysql-remote/">Linux_远程访问Linux下的mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/14/yun-wei/linux-base-study/">Linux_基本学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/14/yun-wei/linux-hardware/">Linux_检查和收集Linux硬件信息的7个命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/14/yun-wei/linux-setting-time/">Linux_设置时间</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/14/yun-wei/linux-user-permission/">Linux上给新建的用户赋权限</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/27/gong-ju/wai-wang-fang-wen-ben-ji/">外网访问本机</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/18/qi-ta/yao-qu-du-de-shu/">要去读的书</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/14/hou-duan/guava-vs-jdk8/">guava vs jdk8</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/14/hou-duan/han-shu-shi-bian-cheng-jie-shao/">函数式编程介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/26/qi-ta/wo-de-fu-wu-lie-biao/">我的服务列表</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/17/zhong-jian-jian/sonar-shi-yong-fang-fa/">Sonar使用方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/13/zhong-jian-jian/sonar-an-zhuang-bu-zou/">Sonar安装步骤</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/12/zhong-jian-jian/linux-ubuntu-an-zhuang-redis/">Linux_Ubuntu安装Redis</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/04/09/ge-ren-gan-wu/as-a-coder/">作为一个苦逼码农，我要想想我以后的出路</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/01/14/ge-ren-gan-wu/for-you/">写给亲爱的媳妇还有未来的娃</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/11/18/hou-duan/maven-plugins/">关于maven的几个常用插件</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/07/11/hou-duan/p6spy/">关于p6spy的介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/06/05/qian-duan/history/">使用history.back(-1)的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/1900/01/01/ge-ren-jian-li/">个人简历</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i>
+                2012-
+                            2025
+                                孙昊(Hulk) | <a href="https://beian.miit.gov.cn/"
+                                        title="苏ICP备20017156号-1">
+                                        苏ICP备20017156号-1
+                                    </a>
+                                    | Powered by <a href="http://hexo.io/" target="_blank"
+                                        title="快速、简洁且高效的博客框架">Hexo</a>
+            </div>
+            <div class="footer-right">
+                
+                    <div class="visit">
+                        
+                            <span id="busuanzi_container_site_pv" style='display:none'>
+                                <span id="site-visit" title="本站到访数"><i class="fa fa-user"
+                                        aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                                </span>
+                            </span>
+                            
+                                
+                                    <span>| </span>
+                                    
+                                        
+                                            <span id="busuanzi_container_page_pv" style='display:none'>
+                                                <span id="page-visit" title="本页阅读量"><i
+                                                        class="fa fa-eye animated infinite pulse"
+                                                        aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                                                </span>
+                                            </span>
+                                            
+                    </div>
+                    
+            </div>
+        </div>
+    </div>
+</footer>
+    </div>
+    
+    
+<script src="/js/GithubRepoWidget.js"></script>
+
+
+<script data-main="/js/main.js" src="//cdn.jsdelivr.net/npm/requirejs@2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 3;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+             github: ".github-widget a", 
+            
+            
+            
+            
+            
+            
+            
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+  </div>
+</body>
+</html>

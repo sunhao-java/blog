@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>孙昊(Hulk)的博客</title>
+  
+  <subtitle>Crazy Coder</subtitle>
+  <link href="https://www.crazy-coder.cn/atom.xml" rel="self"/>
+  
+  <link href="https://www.crazy-coder.cn/"/>
+  <updated>2025-10-15T11:45:49.274Z</updated>
+  <id>https://www.crazy-coder.cn/</id>
+  
+  <author>
+    <name>孙昊(Hulk)</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>IDE安装wakatime插件及介绍</title>
+    <link href="https://www.crazy-coder.cn/2025/09/03/zhong-jian-jian/ide-an-zhuang-wakatime-cha-jian-ji-jie-shao/"/>
+    <id>https://www.crazy-coder.cn/2025/09/03/zhong-jian-jian/ide-an-zhuang-wakatime-cha-jian-ji-jie-shao/</id>
+    <published>2025-09-03T09:27:00.000Z</published>
+    <updated>2025-10-15T11:45:49.274Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;Wakapi私服地址：&lt;a href=&quot;https://xxx.your-domain.com/&quot;&gt;https://xxx.your-domain.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Wakapi私服api地址：&lt;a href=&quot;https://xxx.your-domain.com/api&quot;&gt;https://xxx.your-domain.com/api&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;注册好后，点击右上角头像-&amp;gt;Show API Key获得API Key值&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;获得插件&quot;&gt;&lt;a href=&quot;#获得插件&quot; class=&quot;headerlink&quot; title=&quot;获得插件&quot;&gt;&lt;/a&gt;获得插件&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;访问：&lt;a href=&quot;https://wakatime.com/plugins&quot;&gt;https://wakatime.com/plugins&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;输入您使用的IDE名称，回车，点击图标进入详情页面&lt;/li&gt;
+&lt;/ol&gt;</summary>
+    
+    
+    
+    <category term="中间件" scheme="https://www.crazy-coder.cn/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+    
+    
+    <category term="wakatime" scheme="https://www.crazy-coder.cn/tags/wakatime/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何优雅的设计RESTful API</title>
+    <link href="https://www.crazy-coder.cn/2025/08/28/hou-duan/ru-he-you-ya-de-she-ji-restful-api/"/>
+    <id>https://www.crazy-coder.cn/2025/08/28/hou-duan/ru-he-you-ya-de-she-ji-restful-api/</id>
+    <published>2025-08-28T00:00:00.000Z</published>
+    <updated>2025-10-15T11:45:49.276Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;在现代 Web 开发中，RESTful API 已经成为前后端交互的标准方式。一个设计良好的 API 不仅能提高开发效率，还能降低维护成本。本文将深入探讨如何优雅地设计 RESTful API。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight markdown&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;思考几个问题​&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;1.&lt;/span&gt; 为什么要有规范？​&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;2.&lt;/span&gt; 如何让前后端快速开发、联调？&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="后端" scheme="https://www.crazy-coder.cn/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+    <category term="Java" scheme="https://www.crazy-coder.cn/tags/Java/"/>
+    
+    <category term="RESTful API" scheme="https://www.crazy-coder.cn/tags/RESTful-API/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用mkcert自签证书</title>
+    <link href="https://www.crazy-coder.cn/2025/06/11/yun-wei/shi-yong-mkcert-zi-qian-zheng-shu/"/>
+    <id>https://www.crazy-coder.cn/2025/06/11/yun-wei/shi-yong-mkcert-zi-qian-zheng-shu/</id>
+    <published>2025-06-11T00:00:00.000Z</published>
+    <updated>2025-10-15T11:45:49.278Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;假设需要为域名（&lt;a href=&quot;http://www.baidu.com)或者/&quot;&gt;www.baidu.com）或者&lt;/a&gt; IP （192.168.1.100）生成自签证书。&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="运维" scheme="https://www.crazy-coder.cn/categories/%E8%BF%90%E7%BB%B4/"/>
+    
+    
+    <category term="DevOPS" scheme="https://www.crazy-coder.cn/tags/DevOPS/"/>
+    
+    <category term="证书" scheme="https://www.crazy-coder.cn/tags/%E8%AF%81%E4%B9%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>树莓派系统安装、初始化步骤</title>
+    <link href="https://www.crazy-coder.cn/2025/03/10/yun-wei/shu-mei-pai-xi-tong-an-zhuang-chu-shi-hua-bu-zou/"/>
+    <id>https://www.crazy-coder.cn/2025/03/10/yun-wei/shu-mei-pai-xi-tong-an-zhuang-chu-shi-hua-bu-zou/</id>
+    <published>2025-03-10T00:00:00.000Z</published>
+    <updated>2025-10-15T11:45:49.278Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;系统安装&quot;&gt;&lt;a href=&quot;#系统安装&quot; class=&quot;headerlink&quot; title=&quot;系统安装&quot;&gt;&lt;/a&gt;系统安装&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;下载烧录工具&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://downloads.raspberrypi.org/imager/imager_latest.exe&quot;&gt;Windows 版&lt;/a&gt;、&lt;a href=&quot;https://downloads.raspberrypi.org/imager/imager_latest.dmg&quot;&gt;macOS 版&lt;/a&gt;、&lt;a href=&quot;https://downloads.raspberrypi.org/imager/imager_latest_amd64.deb&quot;&gt;Ubuntu X86 版&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;具体烧录步骤参考：&lt;a href=&quot;https://shumeipai.nxez.com/2024/04/23/install-the-operating-system-for-the-raspberry-pi.html&quot;&gt;烧录步骤&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;插入存储卡、通电&lt;/p&gt;
+&lt;figure class=&quot;highlight txt&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;第一次安装需要注意：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1. 清除配置后烧录系统&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2. 通电开机后，需要连接显示器，进行配置（涉及到用户初始化、网络设置、语言选择、时区选择等）&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;/ol&gt;</summary>
+    
+    
+    
+    <category term="运维" scheme="https://www.crazy-coder.cn/categories/%E8%BF%90%E7%BB%B4/"/>
+    
+    
+    <category term="树莓派" scheme="https://www.crazy-coder.cn/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我对Function Calling认知</title>
+    <link href="https://www.crazy-coder.cn/2024/08/22/ai/function-calling/"/>
+    <id>https://www.crazy-coder.cn/2024/08/22/ai/function-calling/</id>
+    <published>2024-08-22T00:00:00.000Z</published>
+    <updated>2025-10-15T11:45:49.274Z</updated>
+    
+    
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;什么是大模型&lt;/li&gt;
+&lt;li&gt;大模型可以用来做什么</summary>
+    
+    
+    
+    <category term="AI" scheme="https://www.crazy-coder.cn/categories/AI/"/>
+    
+    
+    <category term="AI" scheme="https://www.crazy-coder.cn/tags/AI/"/>
+    
+    <category term="大模型" scheme="https://www.crazy-coder.cn/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【转载】蓝绿发布、滚动发布、灰度发布/金丝雀发布、AB Test 对比</title>
+    <link href="https://www.crazy-coder.cn/2022/04/18/yun-wei/zhuan-zai-lan-lu-fa-bu-gun-dong-fa-bu-hui-du-fa-bu-jin-si-que-fa-bu-ab-test-dui-bi/"/>
+    <id>https://www.crazy-coder.cn/2022/04/18/yun-wei/zhuan-zai-lan-lu-fa-bu-gun-dong-fa-bu-hui-du-fa-bu-jin-si-que-fa-bu-ab-test-dui-bi/</id>
+    <published>2022-04-18T00:00:00.000Z</published>
+    <updated>2025-10-15T11:45:49.278Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;转载自知乎：蓝绿发布、滚动发布、灰度发布&amp;#x2F;金丝雀发布、AB Test 对比【&lt;a href=&quot;https://zhuanlan.zhihu.com/p/147567222%E3%80%91&quot;&gt;https://zhuanlan.zhihu.com/p/147567222】&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="运维" scheme="https://www.crazy-coder.cn/categories/%E8%BF%90%E7%BB%B4/"/>
+    
+    
+    <category term="DevOPS" scheme="https://www.crazy-coder.cn/tags/DevOPS/"/>
+    
+    <category term="转载" scheme="https://www.crazy-coder.cn/tags/%E8%BD%AC%E8%BD%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CentOS安装FFmpeg</title>
+    <link href="https://www.crazy-coder.cn/2020/09/05/gong-ju/centos-an-zhuang-ffmpeg/"/>
+    <id>https://www.crazy-coder.cn/2020/09/05/gong-ju/centos-an-zhuang-ffmpeg/</id>
+    <published>2020-09-05T00:00:00.000Z</published>
+    <updated>2025-10-15T11:45:49.276Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;设置环境变量&quot;&gt;&lt;a href=&quot;#设置环境变量&quot; class=&quot;headerlink&quot; title=&quot;设置环境变量&quot;&gt;&lt;/a&gt;设置环境变量&lt;/h2&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;export FFMPEG_PACKAGE=/home/tools/packages&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export FFMPEG_INSTALL=/home/tools/ffmpeg_install&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export PATH=$PATH:$HOME/bin:$FFMPEG_INSTALL/bin&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="工具" scheme="https://www.crazy-coder.cn/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="Docker" scheme="https://www.crazy-coder.cn/tags/Docker/"/>
+    
+    <category term="FFmpeg" scheme="https://www.crazy-coder.cn/tags/FFmpeg/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java语法糖介绍</title>
+    <link href="https://www.crazy-coder.cn/2020/08/13/hou-duan/java-yu-fa-tang-jie-shao/"/>
+    <id>https://www.crazy-coder.cn/2020/08/13/hou-duan/java-yu-fa-tang-jie-shao/</id>
+    <published>2020-08-13T00:00:00.000Z</published>
+    <updated>2025-10-15T11:45:49.275Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;什么是语法糖&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;语法糖（Syntactic sugar），也译为糖衣语法，是由英国计算机科学家彼得·兰丁发明的一个术语，指计算机语言中添加的某种语法，这种语法对语言的功能没有影响，但是更方便程序员使用。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;能够带来的好处&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;语法糖让程序更加简洁，有更高的可读性&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;有哪些语法糖&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;自动拆箱、装箱&lt;/li&gt;
+&lt;li&gt;泛型擦除&lt;/li&gt;
+&lt;li&gt;不定长参数&lt;/li&gt;
+&lt;li&gt;迭代器&lt;/li&gt;
+&lt;li&gt;枚举&lt;/li&gt;
+&lt;li&gt;switch支持枚举和字符串&lt;/li&gt;
+&lt;li&gt;内部类&lt;/li&gt;
+&lt;li&gt;try-with-resources&lt;/li&gt;
+&lt;li&gt;lambda&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</summary>
+    
+    
+    
+    <category term="后端" scheme="https://www.crazy-coder.cn/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+    <category term="Java" scheme="https://www.crazy-coder.cn/tags/Java/"/>
+    
+    <category term="语法糖" scheme="https://www.crazy-coder.cn/tags/%E8%AF%AD%E6%B3%95%E7%B3%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>git同时push到多个远端仓库</title>
+    <link href="https://www.crazy-coder.cn/2020/07/23/gong-ju/git-tong-shi-push-dao-duo-ge-yuan-duan-cang-ku/"/>
+    <id>https://www.crazy-coder.cn/2020/07/23/gong-ju/git-tong-shi-push-dao-duo-ge-yuan-duan-cang-ku/</id>
+    <published>2020-07-23T00:00:00.000Z</published>
+    <updated>2025-10-15T11:45:49.277Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;当你的项目同时放在两个远程仓库(例如：一个开源中国，一个github)上时，需要分别push两次，进行以下修改，即可一次push，推送到两个远程库！&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="工具" scheme="https://www.crazy-coder.cn/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="git" scheme="https://www.crazy-coder.cn/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Flume消费Kafka中的消息存储到Hbase中</title>
+    <link href="https://www.crazy-coder.cn/2020/05/13/da-shu-ju/flume-xiao-fei-kafka-zhong-de-xiao-xi-cun-chu-dao-hbase-zhong/"/>
+    <id>https://www.crazy-coder.cn/2020/05/13/da-shu-ju/flume-xiao-fei-kafka-zhong-de-xiao-xi-cun-chu-dao-hbase-zhong/</id>
+    <published>2020-05-13T00:00:00.000Z</published>
+    <updated>2025-10-15T11:45:49.276Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot; class=&quot;headerlink&quot; title=&quot;准备&quot;&gt;&lt;/a&gt;准备&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;先安装《OpenResty记录日志输出到kafka.md》和《安装HBase.md》实际操作安装好以下中间件&lt;ul&gt;
+&lt;li&gt;openResty[1.15.8.3]&lt;/li&gt;
+&lt;li&gt;kafka[2.5.0]&lt;/li&gt;
+&lt;li&gt;zookeeper[3.6.0]&lt;/li&gt;
+&lt;li&gt;hbase[0.94.27]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;特别注意Flume和Hbase的版本号可能会有兼容问题&lt;/li&gt;
+&lt;/ol&gt;</summary>
+    
+    
+    
+    <category term="大数据" scheme="https://www.crazy-coder.cn/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    
+    <category term="Flume" scheme="https://www.crazy-coder.cn/tags/Flume/"/>
+    
+    <category term="kafka" scheme="https://www.crazy-coder.cn/tags/kafka/"/>
+    
+    <category term="hbase" scheme="https://www.crazy-coder.cn/tags/hbase/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kafka常用命令</title>
+    <link href="https://www.crazy-coder.cn/2020/05/13/da-shu-ju/kafka-chang-yong-ming-ling/"/>
+    <id>https://www.crazy-coder.cn/2020/05/13/da-shu-ju/kafka-chang-yong-ming-ling/</id>
+    <published>2020-05-13T00:00:00.000Z</published>
+    <updated>2025-10-15T11:45:49.276Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;查看kafka topic列表，使用–list参数&lt;/p&gt;
+ &lt;figure class=&quot;highlight jboss-cli&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="大数据" scheme="https://www.crazy-coder.cn/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    
+    <category term="kafka" scheme="https://www.crazy-coder.cn/tags/kafka/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>安装HBase</title>
+    <link href="https://www.crazy-coder.cn/2020/05/13/da-shu-ju/an-zhuang-hbase/"/>
+    <id>https://www.crazy-coder.cn/2020/05/13/da-shu-ju/an-zhuang-hbase/</id>
+    <published>2020-05-13T00:00:00.000Z</published>
+    <updated>2025-10-15T11:45:49.276Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;下载&quot;&gt;&lt;a href=&quot;#下载&quot; class=&quot;headerlink&quot; title=&quot;下载&quot;&gt;&lt;/a&gt;下载&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;地址：&lt;a href=&quot;https://mirror-hk.koddos.net/apache/hbase/$%7Bhbase_version%7D/hbase-$%7Bhbase_version%7D-bin.tar.gz&quot;&gt;https://mirror-hk.koddos.net/apache/hbase/${hbase_version}&amp;#x2F;hbase-${hbase_version}-bin.tar.gz&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;${hbase_version}替换成具体的版本&lt;/li&gt;
+&lt;li&gt;tar -zxvf hbase-${hbase_version}-bin.tar.gz&lt;/li&gt;
+&lt;li&gt;cd hbase-${hbase_version}-bin&amp;#x2F;bin&lt;/li&gt;
+&lt;li&gt;.&amp;#x2F;start-hbase.sh&lt;/li&gt;
+&lt;/ol&gt;</summary>
+    
+    
+    
+    <category term="大数据" scheme="https://www.crazy-coder.cn/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    
+    <category term="HBase" scheme="https://www.crazy-coder.cn/tags/HBase/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OpenResty记录日志输出到kafka</title>
+    <link href="https://www.crazy-coder.cn/2020/05/11/da-shu-ju/openresty-ji-lu-ri-zhi-shu-chu-dao-kafka/"/>
+    <id>https://www.crazy-coder.cn/2020/05/11/da-shu-ju/openresty-ji-lu-ri-zhi-shu-chu-dao-kafka/</id>
+    <published>2020-05-11T00:00:00.000Z</published>
+    <updated>2025-10-15T11:45:49.276Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;安装zookeeper（基于docker安装）&quot;&gt;&lt;a href=&quot;#安装zookeeper（基于docker安装）&quot; class=&quot;headerlink&quot; title=&quot;安装zookeeper（基于docker安装）&quot;&gt;&lt;/a&gt;安装zookeeper（基于docker安装）&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;docker-compose.yml&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&quot;highlight nestedtext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attribute&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&amp;#x27;3.1&amp;#x27;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attribute&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;punctuation&quot;&gt;:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;zookeeper&lt;/span&gt;&lt;span class=&quot;punctuation&quot;&gt;:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;zookeeper&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;container_name&lt;/span&gt;&lt;span class=&quot;punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;zookeeper&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;restart&lt;/span&gt;&lt;span class=&quot;punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;always&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;network_mode&lt;/span&gt;&lt;span class=&quot;punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&amp;quot;bridge&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;ports&lt;/span&gt;&lt;span class=&quot;punctuation&quot;&gt;:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;bullet&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&amp;quot;2181:2181&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;volumes&lt;/span&gt;&lt;span class=&quot;punctuation&quot;&gt;:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;bullet&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;/home/docker_volume/zookeeper/zoo.cfg:/conf/zoo.cfg&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;bullet&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;/home/docker_volume/zookeeper/data/:/data/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;bullet&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;/home/docker_volume/zookeeper/logs/:/datalog/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;&lt;code&gt;docker-compose up -d&lt;/code&gt;</summary>
+    
+    
+    
+    <category term="大数据" scheme="https://www.crazy-coder.cn/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    
+    <category term="kafka" scheme="https://www.crazy-coder.cn/tags/kafka/"/>
+    
+    <category term="OpenResty" scheme="https://www.crazy-coder.cn/tags/OpenResty/"/>
+    
+    <category term="埋点采集" scheme="https://www.crazy-coder.cn/tags/%E5%9F%8B%E7%82%B9%E9%87%87%E9%9B%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>安装OpenResty</title>
+    <link href="https://www.crazy-coder.cn/2020/05/11/da-shu-ju/an-zhuang-openresty/"/>
+    <id>https://www.crazy-coder.cn/2020/05/11/da-shu-ju/an-zhuang-openresty/</id>
+    <published>2020-05-11T00:00:00.000Z</published>
+    <updated>2025-10-15T11:45:49.276Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;下载&quot;&gt;&lt;a href=&quot;#下载&quot; class=&quot;headerlink&quot; title=&quot;下载&quot;&gt;&lt;/a&gt;下载&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;打开url：&lt;a href=&quot;https://openresty.org/cn/download.html&quot;&gt;https://openresty.org/cn/download.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;找到最新版本或者合适的版本&lt;figure class=&quot;highlight jboss-cli&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;curl https:&lt;span class=&quot;string&quot;&gt;//openresty.org/download/openresty-&lt;/span&gt;$&amp;#123;&lt;span class=&quot;keyword&quot;&gt;version&lt;/span&gt;&amp;#125;&lt;span class=&quot;string&quot;&gt;.tar.gz&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;tar -zxvf openresty-$&amp;#123;&lt;span class=&quot;keyword&quot;&gt;version&lt;/span&gt;&amp;#125;&lt;span class=&quot;string&quot;&gt;.tar.gz&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;cd&lt;/span&gt; openresty-$&amp;#123;&lt;span class=&quot;keyword&quot;&gt;version&lt;/span&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="大数据" scheme="https://www.crazy-coder.cn/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    
+    <category term="OpenResty" scheme="https://www.crazy-coder.cn/tags/OpenResty/"/>
+    
+    <category term="埋点采集" scheme="https://www.crazy-coder.cn/tags/%E5%9F%8B%E7%82%B9%E9%87%87%E9%9B%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>跟我一起系列之读Spring注解源码</title>
+    <link href="https://www.crazy-coder.cn/2020/03/25/hou-duan/gen-wo-yi-qi-xi-lie-zhi-du-spring-zhu-jie-yuan-ma/"/>
+    <id>https://www.crazy-coder.cn/2020/03/25/hou-duan/gen-wo-yi-qi-xi-lie-zhi-du-spring-zhu-jie-yuan-ma/</id>
+    <published>2020-03-25T00:00:00.000Z</published>
+    <updated>2025-10-15T11:45:49.276Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;读源码系列之Spring注解&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="后端" scheme="https://www.crazy-coder.cn/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+    <category term="spring" scheme="https://www.crazy-coder.cn/tags/spring/"/>
+    
+    <category term="源码" scheme="https://www.crazy-coder.cn/tags/%E6%BA%90%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>XXL-JOB几个关键线程、队列的分析</title>
+    <link href="https://www.crazy-coder.cn/2020/02/28/hou-duan/xxl-job-ji-ge-guan-jian-xian-cheng-dui-lie-de-fen-xi/"/>
+    <id>https://www.crazy-coder.cn/2020/02/28/hou-duan/xxl-job-ji-ge-guan-jian-xian-cheng-dui-lie-de-fen-xi/</id>
+    <published>2020-02-28T00:00:00.000Z</published>
+    <updated>2025-10-15T11:45:49.275Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;XXL-JOB几个关键线程、队列的分析&quot;&gt;&lt;a href=&quot;#XXL-JOB几个关键线程、队列的分析&quot; class=&quot;headerlink&quot; title=&quot;XXL-JOB几个关键线程、队列的分析&quot;&gt;&lt;/a&gt;XXL-JOB几个关键线程、队列的分析&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;XXL-JOB在初始化时，会执行一系列的方法，这些方法启动了一系列的线程，还创建了一些队列，这些线程、队列对于整个任务调度来说都是至关重要的，现在就来分析一下这些线程、队列。&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="后端" scheme="https://www.crazy-coder.cn/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+    <category term="Java" scheme="https://www.crazy-coder.cn/tags/Java/"/>
+    
+    <category term="xxl-job" scheme="https://www.crazy-coder.cn/tags/xxl-job/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>XXL-JOB日志获取分析</title>
+    <link href="https://www.crazy-coder.cn/2020/02/28/hou-duan/xxl-job-ri-zhi-huo-qu-fen-xi/"/>
+    <id>https://www.crazy-coder.cn/2020/02/28/hou-duan/xxl-job-ri-zhi-huo-qu-fen-xi/</id>
+    <published>2020-02-28T00:00:00.000Z</published>
+    <updated>2025-10-15T11:45:49.275Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;XXL-JOB日志获取分析&quot;&gt;&lt;a href=&quot;#XXL-JOB日志获取分析&quot; class=&quot;headerlink&quot; title=&quot;XXL-JOB日志获取分析&quot;&gt;&lt;/a&gt;XXL-JOB日志获取分析&lt;/h1&gt;&lt;h2 id=&quot;现状&quot;&gt;&lt;a href=&quot;#现状&quot; class=&quot;headerlink&quot; title=&quot;现状&quot;&gt;&lt;/a&gt;现状&lt;/h2&gt;&lt;p&gt;xxl-job在任务执行时，可以看到日志，并且是实时、一行一行的展示出来。起初我认为是执行器在执行时，在每一个关键步骤向调度中心输出日志，而调度中心展示的日志也是实时接收到执行器返回的，后来在跟代码时，发现我的认知是错误的！其实是间隔一段时间(3s)就去执行器读取执行器服务器本地的日志文件！&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="后端" scheme="https://www.crazy-coder.cn/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+    <category term="Java" scheme="https://www.crazy-coder.cn/tags/Java/"/>
+    
+    <category term="xxl-job" scheme="https://www.crazy-coder.cn/tags/xxl-job/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>模拟任务阻塞处理策略</title>
+    <link href="https://www.crazy-coder.cn/2020/02/28/hou-duan/mo-ni-ren-wu-zu-sai-chu-li-ce-lue/"/>
+    <id>https://www.crazy-coder.cn/2020/02/28/hou-duan/mo-ni-ren-wu-zu-sai-chu-li-ce-lue/</id>
+    <published>2020-02-28T00:00:00.000Z</published>
+    <updated>2025-10-15T11:45:49.276Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;模拟任务阻塞处理策略&quot;&gt;&lt;a href=&quot;#模拟任务阻塞处理策略&quot; class=&quot;headerlink&quot; title=&quot;模拟任务阻塞处理策略&quot;&gt;&lt;/a&gt;模拟任务阻塞处理策略&lt;/h1&gt;&lt;h2 id=&quot;官方描述&quot;&gt;&lt;a href=&quot;#官方描述&quot; class=&quot;headerlink&quot; title=&quot;官方描述&quot;&gt;&lt;/a&gt;官方描述&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;阻塞处理策略：调度过于密集执行器来不及处理时的处理策略；&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;单机串行（默认）：调度请求进入单机执行器后，调度请求进入FIFO队列并以串行方式运行；&lt;/li&gt;
+&lt;li&gt;丢弃后续调度：调度请求进入单机执行器后，发现执行器存在运行的调度任务，本次请求将会被丢弃并标记为失败；&lt;/li&gt;
+&lt;li&gt;覆盖之前调度：调度请求进入单机执行器后，发现执行器存在运行的调度任务，将会终止运行中的调度任务并清空队列，然后运行本地调度任务；&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;为了验证并且更加熟悉XXL-JOB这一块的功能，遂做了如下的实验：&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="后端" scheme="https://www.crazy-coder.cn/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+    <category term="Java" scheme="https://www.crazy-coder.cn/tags/Java/"/>
+    
+    <category term="xxl-job" scheme="https://www.crazy-coder.cn/tags/xxl-job/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>XXL-JOB调研</title>
+    <link href="https://www.crazy-coder.cn/2020/02/24/hou-duan/xxl-job-diao-yan/"/>
+    <id>https://www.crazy-coder.cn/2020/02/24/hou-duan/xxl-job-diao-yan/</id>
+    <published>2020-02-24T00:00:00.000Z</published>
+    <updated>2025-10-15T11:45:49.275Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;架构图&quot;&gt;&lt;a href=&quot;#架构图&quot; class=&quot;headerlink&quot; title=&quot;架构图&quot;&gt;&lt;/a&gt;架构图&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/imgs/xxl-job/1.png&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="后端" scheme="https://www.crazy-coder.cn/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+    <category term="Java" scheme="https://www.crazy-coder.cn/tags/Java/"/>
+    
+    <category term="xxl-job" scheme="https://www.crazy-coder.cn/tags/xxl-job/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>记一次MySQL启动失败原因的分析</title>
+    <link href="https://www.crazy-coder.cn/2020/02/12/yun-wei/failed-to-start-mysql/"/>
+    <id>https://www.crazy-coder.cn/2020/02/12/yun-wei/failed-to-start-mysql/</id>
+    <published>2020-02-12T00:00:00.000Z</published>
+    <updated>2025-10-15T11:45:49.277Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;今天在我的Windows电脑上准备启动MySQL服务，测试一点东西，但是发现每次都启动不成功，所以就引出本次的分析&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="运维" scheme="https://www.crazy-coder.cn/categories/%E8%BF%90%E7%BB%B4/"/>
+    
+    
+    <category term="MySQL" scheme="https://www.crazy-coder.cn/tags/MySQL/"/>
+    
+  </entry>
+  
+</feed>
