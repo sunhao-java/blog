@@ -53,7 +53,7 @@ categories: 中间件
 
 ```YAML
 [settings]
-api_url = https://wakapi.url.mo.cn/api
+api_url = https://api.wakatime.com/api
 api_key = Your API Key In Wakaapi
 debug = false
 status_bar_enabled = true
@@ -81,5 +81,6 @@ proxy =
    ![](https://imgs.lodsve.com:9000/images/2025/09/03/a6510c27bb2f.png)
 
 4. 按语言排序
+
 
    ![](https://imgs.lodsve.com:9000/images/2025/09/03/1d0c6add0079.png)
