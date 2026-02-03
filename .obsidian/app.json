@@ -1,8 +1,0 @@
-{
-  "userIgnoreFilters": [
-    "scaffolds/*",
-    "themes/*",
-    "_config.yml",
-    "package*"
-  ]
-}
