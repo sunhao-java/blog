@@ -12,4 +12,4 @@ xxl-job在任务执行时，可以看到日志，并且是实时、一行一行�
 <!-- more -->
 
 ## 获取执行器日志的时序图
-![xxl-job实时获取执行器日志的时序图.png](/imgs/xxl-job/2.png)
+![xxl-job实时获取执行器日志的时序图.png](https://fs.lodsve.com:9000/images-bed/imgs/xxl-job/2.png)

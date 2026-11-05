@@ -6,7 +6,7 @@ categories: 后端
 ---
 
 # 架构图
-![](/imgs/xxl-job/1.png)
+![](https://fs.lodsve.com:9000/images-bed/imgs/xxl-job/1.png)
 <!-- more -->
 # xxl-job的jar包
 1. xxl-job-admin: 调度中心（包含了前端html）

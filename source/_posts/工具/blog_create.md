@@ -54,13 +54,13 @@ categories: 工具
 
 			npm install hexo -g
 	- 测试是否安装成功
-		![](/imgs/hexo/1.png)
+		![](https://fs.lodsve.com:9000/images-bed/imgs/hexo/1.png)
 
 ## 开始搭建博客
 1. 选择一个目录
 2. 进入之后执行`hexo init`
 3. 等待步骤2下载一堆依赖后,即创建好基于Hexo的博客基本目录结构
-	![](/imgs/hexo/2.png)
+	![](https://fs.lodsve.com:9000/images-bed/imgs/hexo/2.png)
 4. 简单应用
 	- 直接在本机运行博客
 	
@@ -97,9 +97,9 @@ categories: 工具
 4. 我就是采用这个方法的,所以我买了一个域名和一个阿里云服务器并且将域名备案了
 5. 搭建过程
 	- 将项目托管到git上,我选择的是Git@OSC,毕竟是天朝局域网直接互相访问,速度快
-		![](/imgs/hexo/3.png)
+		![](https://fs.lodsve.com:9000/images-bed/imgs/hexo/3.png)
 	- 配置git的push钩子
-		![](/imgs/hexo/4.png)
+		![](https://fs.lodsve.com:9000/images-bed/imgs/hexo/4.png)
 	- 在服务器上将Node.JS+Npm+Hexo的环境搭建好
 	- 在服务器上将git上得博客pull下来,路径如:`/opt/blog`
 	- 在服务器上利用Node.JS起一个服务

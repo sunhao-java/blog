@@ -11,13 +11,13 @@ categories: 运维
 1. 首先，我的MySQL服务已经注册到windows的服务中了，所以需要查看windows服务的启动日志
 2. 打开windows的`事件查看器`(windows开始图标上右键-事件查看器)
 3. 左边菜单树上选择`Windows 日志 - 应用程序`
-![](/imgs/mysql/1.png)
+![](https://fs.lodsve.com:9000/images-bed/imgs/mysql/1.png)
 
 4. 右边操作栏选择`筛选当前日志...`，设置事件级别为`错误`如下图：
-![](/imgs/mysql/2.png)
+![](https://fs.lodsve.com:9000/images-bed/imgs/mysql/2.png)
 
 5. 通过筛选查看，可以发现如下信息，MySQL的端口被占用了
-![](/imgs/mysql/3.png)
+![](https://fs.lodsve.com:9000/images-bed/imgs/mysql/3.png)
 
 ## 排查端口占用情况
 1. 在Windows下查看端口被占用的情况（被哪个进程占用了）
@@ -42,6 +42,6 @@ vmnat.exe                     4564 Services                   0      5,364 K
 2. 而且我的网络策略是`nat模式`
 3. 为了将虚拟机里的MySQL给同事使用，就做了一个映射出来
 4. 一查，果然是的了
-![](/imgs/mysql/4.png)
+![](https://fs.lodsve.com:9000/images-bed/imgs/mysql/4.png)
 
 5. 删除这个配置，Windows上的MySQL就可以顺利启动了。

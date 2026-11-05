@@ -10,13 +10,13 @@ categories: 前端
 
 1. 选择一个事物分类进行查询，搜到一条记录，然后进入申请页面。
 	
-	![](/imgs/history/1.png)
+	![](https://fs.lodsve.com:9000/images-bed/imgs/history/1.png)
 	
 2. 进入申请页面之后点返回，页面立即没有了（只在IE下会出现问题）而且页面上显示的是webpage has expired!页面已经过期。
 
 	ps:返回按钮触发的事件是：`window.history.back(-1);`
 	
-	![](/imgs/history/2.jpg)
+	![](https://fs.lodsve.com:9000/images-bed/imgs/history/2.jpg)
 	
 3. 解决办法：
 

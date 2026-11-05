@@ -19,4 +19,4 @@ categories: AI
   2. 大模型如何理解上下文
 7. Function calling + 多轮对话实现的聊天Demo
 
-![Function Calling](/imgs/ai/1.jpg)
+![Function Calling](https://fs.lodsve.com:9000/images-bed/imgs/ai/1.jpg)

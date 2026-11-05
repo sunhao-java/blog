@@ -12,9 +12,9 @@ categories: 工具
 # 准备工作
 1. 通过github账号登录Travis
 2. 并且启用已经在github上创建好的博客项目，如下图
-![](/imgs/build_blog_by_travis/1.png)
+![](https://fs.lodsve.com:9000/images-bed/imgs/build_blog_by_travis/1.png)
 3. 点击右侧的`Setting`，按下图配置（红框处，暂时可以不管）
-![](/imgs/build_blog_by_travis/2.png)
+![](https://fs.lodsve.com:9000/images-bed/imgs/build_blog_by_travis/2.png)
 
 # 修改原来的博客项目
 1. 在根目录增加`.travis.yml`文件和`.travis`文件夹
@@ -55,7 +55,7 @@ categories: 工具
     ```
     # 如果是github项目，先用travis login登录，如图
     ```
-![](/imgs/build_blog_by_travis/3.png)
+![](https://fs.lodsve.com:9000/images-bed/imgs/build_blog_by_travis/3.png)
     ```
     # 通过命令travis encrypt-file id_rsa_github -add加密私钥
     [sunhao@sunhaode-MacBook-Pro blog_hexo]$ travis encrypt-file id_rsa_github -add
