@@ -6,7 +6,8 @@
     "build": "hexo generate",
     "clean": "hexo clean",
     "deploy": "hexo deploy",
-    "server": "hexo server"
+    "server": "hexo server",
+    "images:migrate": "node scripts/s3-image-migrator.mjs"
   },
   "hexo": {
     "version": "7.3.0"
@@ -27,5 +28,8 @@
     "hexo-renderer-marked": "^6.3.0",
     "hexo-renderer-stylus": "^3.0.1",
     "hexo-server": "^3.0.0"
+  },
+  "devDependencies": {
+    "@aws-sdk/client-s3": "^3.1162.0"
   }
 }
