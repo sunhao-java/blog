@@ -145,15 +145,15 @@ categories: 运维
 # 验证
 1. 浏览器直接访问该域名，会出现以下错误：
 
-   ![image-20250905111652117](https://imgs.lodsve.com:9000/images/2025/09/05/48126498f3e5.png)
+   ![image-20250905111652117](https://fs.lodsve.com:9000/images-bed/2025/09/05/48126498f3e5.png)
 
    并且在地址栏会提示域名证书错误：
 
-   ![image-20250905111713759](https://imgs.lodsve.com:9000/images/2025/09/05/0d185534e6a1.png)
+   ![image-20250905111713759](https://fs.lodsve.com:9000/images-bed/2025/09/05/0d185534e6a1.png)
 
 2. 点击地址栏红色的不安全，检查证书是否被替换成上面的自签证书
 
-    ![image-20250905111739571](https://imgs.lodsve.com:9000/images/2025/09/05/74db92dc8615.png)
+    ![image-20250905111739571](https://fs.lodsve.com:9000/images-bed/2025/09/05/74db92dc8615.png)
 
 3. 两种处理证书错误的方案：
     - 安装根证书（但是需要在**每一台**访问的**客户端**都需要进行操作）
@@ -161,13 +161,13 @@ categories: 运维
         
         - Windows上，需要将该证书重命名为`rootCA.crt`，然后双击或者右键选择安装证书
         
-          ![image-20250905111837315](https://imgs.lodsve.com:9000/images/2025/09/05/50594506ccac.png)
+          ![image-20250905111837315](https://fs.lodsve.com:9000/images-bed/2025/09/05/50594506ccac.png)
         
         - Mac上参考https://blog.csdn.net/qq_43004620/article/details/137969884进行配置
         
     - 仅忽略异常
 
-        ![image-20250905111901107](https://imgs.lodsve.com:9000/images/2025/09/05/d7453e318f92.png)
+        ![image-20250905111901107](https://fs.lodsve.com:9000/images-bed/2025/09/05/d7453e318f92.png)
 
 4. 两种方案的弊端
     1. 证书有过期时间，默认是1年，也可设置成别的时间，过期后，需要重新安装，且每一个客户端都需要进行操作，但是浏览器地址栏不会再显示**不安全**的提示
@@ -175,11 +175,11 @@ categories: 运维
 
 5. 如果点击页面的高级后无继续前往...按钮，则需要进行以下步骤：
 
-   ![image-20250905111901107](https://imgs.lodsve.com:9000/images/2025/09/05/d7453e318f92.png)
+   ![image-20250905111901107](https://fs.lodsve.com:9000/images-bed/2025/09/05/d7453e318f92.png)
 
    浏览器地址栏输入以下地址，访问
 
-   ![image-20250905112027474](https://imgs.lodsve.com:9000/images/2025/09/05/052864d8afbc.png)
+   ![image-20250905112027474](https://fs.lodsve.com:9000/images-bed/2025/09/05/052864d8afbc.png)
 
    输入自签证书的域名，然后点击Delete按钮，即可看到**继续前往...**按钮
 

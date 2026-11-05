@@ -30,15 +30,15 @@ categories: 中间件
 
 1. 按 F1 或 CMD + Shift + P，然后输入 install。选择扩展：安装扩展。
 
-   ![](https://imgs.lodsve.com:9000/images/2025/09/03/92d8cc194c9a.png)
+   ![](https://fs.lodsve.com:9000/images-bed/2025/09/03/92d8cc194c9a.png)
 
 2. 输入 wakatime 然后按回车。
 
-![](https://imgs.lodsve.com:9000/images/2025/09/03/4b881572c35f.png)
+![](https://fs.lodsve.com:9000/images-bed/2025/09/03/4b881572c35f.png)
 
 3. 输入你的API密钥，然后按回车。（如果没有提示，请按F1或CMD + Shift + P，然后输入 WakaTime API Key。）
 
-![](https://imgs.lodsve.com:9000/images/2025/09/03/66f656c288af.png)
+![](https://fs.lodsve.com:9000/images-bed/2025/09/03/66f656c288af.png)
 
 4. 像平常一样使用 VS Code/Trae，你的编码活动将会显示在你的 WakaTime 仪表板上。
 
@@ -66,21 +66,21 @@ proxy =
 
 ## Dashboard（仪表盘）
 
-![](https://imgs.lodsve.com:9000/images/2025/09/03/ed273189cda0.png)
+![](https://fs.lodsve.com:9000/images-bed/2025/09/03/ed273189cda0.png)
 
 ## Leaderboard（排行榜）
 
 1. Wakapi 的排行榜显示了此服务器上最活跃的用户排名，前提是这些用户**选择加入**公开排行榜。统计数据至少每 12 小时更新一次，基于用户在预设时间段内的总编码时间。要参与排行榜，请登录后前往**`Settings 🠒 Permissions`**，并**启用**排行榜功能。
 
-   ![](https://imgs.lodsve.com:9000/images/2025/09/03/f4d78aed4686.png)
+   ![](https://fs.lodsve.com:9000/images-bed/2025/09/03/f4d78aed4686.png)
 
 2. 生成数据时间：**每天下午6点半**，统计全量数据
 
 3. 总时长排序
 
-   ![](https://imgs.lodsve.com:9000/images/2025/09/03/a6510c27bb2f.png)
+   ![](https://fs.lodsve.com:9000/images-bed/2025/09/03/a6510c27bb2f.png)
 
 4. 按语言排序
 
 
-   ![](https://imgs.lodsve.com:9000/images/2025/09/03/1d0c6add0079.png)
+   ![](https://fs.lodsve.com:9000/images-bed/2025/09/03/1d0c6add0079.png)

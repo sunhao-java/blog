@@ -9,7 +9,7 @@ categories: 运维
 
 <!-- more -->
 
-![v2-5557108bfe0fc61396e069149d1a1292_720w](https://imgs.lodsve.com:9000/images/2022/04/18/v2-5557108bfe0fc61396e069149d1a1292_720w.jpg)
+![v2-5557108bfe0fc61396e069149d1a1292_720w](https://fs.lodsve.com:9000/images-bed/2022/04/18/v2-5557108bfe0fc61396e069149d1a1292_720w.jpg)
 
 # 发布类型
 

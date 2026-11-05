@@ -61,7 +61,7 @@ categories: AI
 
 下图展示了 RAG 的整体架构：
 
-![RAG 整体架构图](https://imgs.lodsve.com:9000/images/2026/04/17/b0e26c0c241a.png)
+![RAG 整体架构图](https://fs.lodsve.com:9000/images-bed/2026/04/17/b0e26c0c241a.png)
 
 *图：RAG 系统架构 —— 从文档入库到查询生成的全流程*
 
@@ -73,7 +73,7 @@ categories: AI
 原始文档 → 文档解析 → 文档分块 → 向量化 → 存入向量数据库
 ```
 
-![文档向量化时序图](https://imgs.lodsve.com:9000/images/2026/04/17/e587e03d3e85.png)
+![文档向量化时序图](https://fs.lodsve.com:9000/images-bed/2026/04/17/e587e03d3e85.png)
 
 *图：文档向量化流程时序图 —— 用户上传文档后，系统依次完成解析、分块、向量化并存入向量数据库*
 
@@ -83,7 +83,7 @@ categories: AI
 用户提问 → 查询向量化 → 向量检索 → 获取相关文档块 → 组合 Prompt → LLM 生成回答
 ```
 
-![查询处理时序图](https://imgs.lodsve.com:9000/images/2026/04/17/65bfaac15702.png)
+![查询处理时序图](https://fs.lodsve.com:9000/images-bed/2026/04/17/65bfaac15702.png)
 
 *图：查询处理时序图 —— 用户提问后，系统经过问题优化、向量检索、ReRank 重排序，最终由 LLM 生成回答*
 
@@ -142,7 +142,7 @@ categories: AI
 
 下图展示了一个典型的向量存储表结构设计。核心字段包括 `chunk_id`（关联分块）、`content_vector`（存储向量化结果）、`team_id`（租户隔离）等：
 
-![向量存储表结构](https://imgs.lodsve.com:9000/images/2026/04/17/6b0a522bff29.png)
+![向量存储表结构](https://fs.lodsve.com:9000/images-bed/2026/04/17/6b0a522bff29.png)
 
 *图：向量存储表结构 —— `content_vector` 字段使用 PostgreSQL 的 vector 类型存储嵌入向量*
 
@@ -150,7 +150,7 @@ categories: AI
 
 在 PostgreSQL 中，可以通过 pgvector 扩展创建 HNSW 索引，实现高效的向量近似搜索：
 
-![HNSW 索引 SQL](https://imgs.lodsve.com:9000/images/2026/04/17/8ec5a12a5ca4.png)
+![HNSW 索引 SQL](https://fs.lodsve.com:9000/images-bed/2026/04/17/8ec5a12a5ca4.png)
 
 *图：使用 pgvector 创建 HNSW 索引，参数 `m=16` 控制图的连接度，`ef_construction=64` 控制构建时的搜索范围*
 
@@ -158,7 +158,7 @@ categories: AI
 
 以下是向量检索的核心代码，展示了从查询向量化到数据库检索的完整流程：
 
-![向量检索代码](https://imgs.lodsve.com:9000/images/2026/04/17/793efb303a29.png)
+![向量检索代码](https://fs.lodsve.com:9000/images-bed/2026/04/17/793efb303a29.png)
 
 *图：向量检索实现 —— 将查询文本向量化后，通过 SQL 查询在向量数据库中进行相似度匹配*
 
@@ -176,7 +176,7 @@ categories: AI
 
 全文检索需要额外的分词字段来支持关键词匹配。下图展示了分块表中用于全文检索的字段设计：
 
-![全文检索表结构](https://imgs.lodsve.com:9000/images/2026/04/17/e4c48d72dad4.png)
+![全文检索表结构](https://fs.lodsve.com:9000/images-bed/2026/04/17/e4c48d72dad4.png)
 
 *图：分块表结构 —— 包含 `fts_vector` 等用于全文检索的字段*
 
@@ -184,7 +184,7 @@ categories: AI
 
 利用 PostgreSQL 的 jieba 分词插件，可以自动为不同类型的分块（QA 模式、图片模式、普通模式）生成 `tsvector`：
 
-![fts_vector 生成 SQL](https://imgs.lodsve.com:9000/images/2026/04/17/c7f191bdf333.png)
+![fts_vector 生成 SQL](https://fs.lodsve.com:9000/images-bed/2026/04/17/c7f191bdf333.png)
 
 *图：通过 `GENERATED ALWAYS AS` 计算列，根据分块类型（QA/图片/普通）自动拼接不同字段进行 jieba 分词*
 
@@ -192,7 +192,7 @@ categories: AI
 
 以下是全文检索的核心代码实现，展示了如何利用 PostgreSQL 的 tsvector 进行关键词匹配和相关性排序：
 
-![全文检索代码](https://imgs.lodsve.com:9000/images/2026/04/17/58f1bb2207d2.png)
+![全文检索代码](https://fs.lodsve.com:9000/images-bed/2026/04/17/58f1bb2207d2.png)
 
 *图：全文检索实现 —— 使用 jieba 分词对查询进行处理，通过 tsvector 匹配并按相关度排序*
 
@@ -212,7 +212,7 @@ categories: AI
 
 下图展示了一个实际的混合检索配置界面，可以灵活调整语义检索和全文检索的权重比例，以及 ReRank 模型参数：
 
-![混合检索配置](https://imgs.lodsve.com:9000/images/2026/04/17/8d8d307d05cc.png)
+![混合检索配置](https://fs.lodsve.com:9000/images-bed/2026/04/17/8d8d307d05cc.png)
 
 *图：混合检索配置 —— 支持语义检索（权重 0.58）与全文检索（权重 0.42）的比例调节，以及 ReRank 重排序模型选择*
 
@@ -220,7 +220,7 @@ categories: AI
 
 以下代码展示了混合检索的实现逻辑，包括双路检索的并行执行和 RRF 融合排序：
 
-![混合检索代码](https://imgs.lodsve.com:9000/images/2026/04/17/fb7ac0709090.png)
+![混合检索代码](https://fs.lodsve.com:9000/images-bed/2026/04/17/fb7ac0709090.png)
 
 *图：混合检索实现 —— 并行执行向量检索与全文检索，通过 RRF 算法合并结果*
 
@@ -251,7 +251,7 @@ RAG 技术仍在快速演进，以下是一些主要的优化方向：
 
 评估 RAG 系统效果时，最常用的两个指标是**准确率（Precision）**和**召回率（Recall）**：
 
-![准确率与召回率](https://imgs.lodsve.com:9000/images/2026/04/17/8b446514be80.png)
+![准确率与召回率](https://fs.lodsve.com:9000/images-bed/2026/04/17/8b446514be80.png)
 
 *图：准确率 P = A/(A+B)，即检索到的结果中有多少是相关的；召回率 R = A/(A+C)，即所有相关内容中有多少被检索到了*
 
