@@ -11,9 +11,9 @@ menu:
 show_more: 查看更多
 
 # 头像
-avatar: /imgs/coder.jpg
+avatar: https://fs.lodsve.com:9000/images-bed/imgs/coder.jpg
 # 网站icon
-favicon: /imgs/coder.jpg
+favicon: https://fs.lodsve.com:9000/images-bed/imgs/coder.jpg
 
 # 页脚 网站成立年份
 since: 2012
