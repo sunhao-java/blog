@@ -14,7 +14,7 @@ Mongodb的三种集群方式的搭建：Replica Set / Sharding / Master-Slaver�
 
 	其实简单来说就是集群当中包含了多份数据，保证主节点挂掉了，备节点能继续提供数据服务，提供的前提就是数据需要和主节点一致。
 	
-	![](http://img.my.csdn.net/uploads/201301/13/1358056331_2790.png)
+	![](https://fs.lodsve.com:9000/images-bed/imgs/mongodb/1.png)
 	
 	Mongodb(M)表示主节点，Mongodb(S)表示备节点，Mongodb(A)表示仲裁节点。主备节点存储数据，仲裁节点不存储数据。客户端同时连接主节点与备节点，不连接仲裁节点。
 	
@@ -26,7 +26,7 @@ Mongodb的三种集群方式的搭建：Replica Set / Sharding / Master-Slaver�
 
 	和Replica Set类似，都需要一个仲裁节点，但是Sharding还需要配置节点和路由节点。就三种集群搭建方式来说，这种是最复杂的。部署图如下：
 	
-	![](http://img.my.csdn.net/uploads/201301/13/1358091861_1772.png)
+	![](https://fs.lodsve.com:9000/images-bed/imgs/mongodb/2.png)
 	
 3. Master-Slaver
 

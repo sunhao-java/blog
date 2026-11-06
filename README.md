@@ -43,7 +43,7 @@ npm install
 
 2. Configuration in gihub
 
-    ![](https://imgs.lodsve.com:9000/images/2025/02/09/04ca30eba3ba5a5c05ca727af3f3910b.png)
+    ![](https://fs.lodsve.com:9000/images-bed/2025/02/09/04ca30eba3ba5a5c05ca727af3f3910b.png)
 
 3. Using custom domain names
     - Create a file named `CNAME` in the `blog/source` directory
