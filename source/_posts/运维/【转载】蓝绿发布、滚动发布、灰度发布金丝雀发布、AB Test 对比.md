@@ -9,7 +9,7 @@ categories: 运维
 
 <!-- more -->
 
-![v2-5557108bfe0fc61396e069149d1a1292_720w](https://fs.lodsve.com:9000/images-bed/2022/04/18/v2-5557108bfe0fc61396e069149d1a1292_720w.jpg)
+![v2-5557108bfe0fc61396e069149d1a1292_720w](/images/posts/运维/【转载】蓝绿发布、滚动发布、灰度发布金丝雀发布、AB Test 对比/v2-5557108bfe0fc61396e069149d1a1292_720w.jpg)
 
 # 发布类型
 

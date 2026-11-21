@@ -6,10 +6,10 @@ categories: 后端
 
 #Guava
 Guava是Google公司开源的一个实用工具库，对Java类库进行了多方面的增强。比如说，对函数式编程的支持，新的集合类（Multimap等），Cache支持，等等。在Java8之前，Guava和Java之间的关系，可以表示成下面这幅图：
-![](https://fs.lodsve.com:9000/images-bed/imgs/guava/1.png)
+![](/images/posts/后端/guava vs jdk8/1.png)
 <!-- more -->
 但是随着Java8的发布，Guava和Java的关系发生了一些改变。Guava提供的很多功能，被内置在了Java8里，如下图所示：
-![](https://fs.lodsve.com:9000/images-bed/imgs/guava/2.png)
+![](/images/posts/后端/guava vs jdk8/2.png)
 
 - 源码： [Github](https://github.com/google/guava  "Github") [Google Code](https://code.google.com/p/guava-libraries/ "Google Code" )
 - API： [API](http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/index.html  "API")
